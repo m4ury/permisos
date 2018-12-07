@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('permisos', 'PermisoController');
+
 Route::get('/', function () {
     return view('welcome');
 });

@@ -1,7 +1,19 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: usuario
- * Date: 07/12/2018
- * Time: 12:15
- */
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-default">
+                    <div class="card-header">Nuevo Permiso</div>
+                    @if(session()->has('info'))
+                        <div class="alert alert-success">{{ session('info') }}</div>
+                    @endif
+                    <div class="card-body">
+                        @include('permiso.form', [ 'url' => 'permisos', 'method' => 'POST', 'action' => route('permisos.store')] );
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
