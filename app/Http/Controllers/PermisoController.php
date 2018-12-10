@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permiso;
 use Illuminate\Http\Request;
 
 
@@ -14,6 +15,9 @@ class PermisoController extends Controller
      */
     public function index()
     {
+        $permisos = Permiso::paginate(10);
+
+        return view('permiso.admin.index', compact('permisos'));
 
     }
 
