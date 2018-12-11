@@ -13,8 +13,9 @@
                         {{ session('status') }}
                     </div>
                     @endif
+
                         <a class="btn btn-outline-primary" href="{{ route('permisos.index') }}" role="button">Mis Permisos</a>
-                        <a class="btn btn-outline-success" href="{{ route('permisos.create') }}" role="button">Solicitar Permiso</a>
+                        <a class="btn btn-outline-success" href="{{ route('permisos.create') }}" role="button">Solicitar</a>
                 </div>
             </div>
         </div>

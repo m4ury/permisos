@@ -10,7 +10,7 @@
                         <div class="alert alert-success">{{ session('info') }}</div>
                     @endif
                     <div class="card-body">
-                        @include('permiso.form', [ 'url' => 'permisos', 'method' => 'POST', 'action' => route('permisos.store')] );
+                        @include('permiso.form', [ 'url' => 'permisos', 'method' => 'POST', 'action' => route('permisos.store')])
                     </div>
                 </div>
             </div>

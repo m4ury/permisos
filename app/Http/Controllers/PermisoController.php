@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cargo;
 use App\Permiso;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class PermisoController extends Controller
@@ -15,9 +19,16 @@ class PermisoController extends Controller
      */
     public function index()
     {
-        $permisos = Permiso::paginate(10);
+        $permisosUsuario = DB::table('permisos')
+            ->join('users', 'users.id', '=', 'permisos.user_id')
+            ->join('rols', 'rols.id', '=', 'users.rol_id')
+            ->join ('cargos', 'cargos.id', '=', 'users.cargo_id')
+            ->join ('unidads', 'unidads.id', '=', 'users.unidad_id')
+            ->where('permisos.user_id', '=', Auth::user()->id)
+            ->select('permisos.dia_inicio', 'permisos.dia_fin', 'permisos.created_at', 'permisos.descripcion', 'permisos.lugar', 'permisos.estado', 'permisos.tipo')
+            ->paginate(10);
 
-        return view('permiso.admin.index', compact('permisos'));
+        return view('permiso.index', compact('permisosUsuario'));
 
     }
 
@@ -28,7 +39,11 @@ class PermisoController extends Controller
      */
     public function create()
     {
-        //
+        $permiso = new Permiso;
+        $user = new User;
+        $cargo = new Cargo;
+
+        return view('permiso.create', compact('permiso', 'user', 'cargo'));
     }
 
     /**
@@ -86,4 +101,5 @@ class PermisoController extends Controller
     {
         //
     }
+
 }
