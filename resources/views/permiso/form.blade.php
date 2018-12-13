@@ -1,21 +1,12 @@
-{{ Form::open([ 'url' => $url, 'method' => $method, 'action' => $action]) }}
+
+{{ Form::open([ 'url' => $url, 'method' => $method, 'action' => $action,]) }}
 
 @csrf
 
+{!! Form::hidden( 'user_id', Auth::user()->id) !!}
+
 <div class="form-group">
-    {!! Form::label('rut', 'Rut') !!} {!! Form::text('rut', $user->rut, ['class' => 'form-control', 'placeholder' => 'Ingrese Rut', 'autofocus']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('name', 'Nombres') !!} {!! Form::text('name', $user->name, ['class' => 'form-control', 'placeholder' => 'Ingrese Nombres']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('apellido_paterno', 'Apellido Paterno') !!} {!! Form::text('apellido_paterno', $user->apellido_paterno, ['class' => 'form-control', 'placeholder' => 'Ingrese Apellido Paterno']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('apellido_materno', 'Apellido Materno') !!} {!! Form::text('apellido_materno', $user->apellido_materno, ['class' => 'form-control', 'placeholder' => 'Ingrese Apellido Materno']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('cargo', 'Cargo') !!} {!! Form::text('cargo', $cargo->descripcion, ['class' => 'form-control', 'placeholder' => 'Ostenta al cargo de...']) !!}
+    {!! Form::label('tipo', 'Tipo de permiso') !!} {!! Form::select('tipo', ['Cometido' => 'Cometido', 'Salida' => 'Salida'], $permiso->tipo, ['class' => 'form-control', 'placeholder' => 'Indique tipo de permiso ']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('hora_inicio', 'Desde') !!} {!! Form::time('hora_inicio', $permiso->hora_inicio, ['class' => 'form-control']) !!}
@@ -32,13 +23,17 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('sexo', 'Sexo') !!} {!! Form::select('sexo', ['Masculino' => 'Masculino', 'Femenino' => 'Femenino', 'Homosexual' => 'Homosexual' ], $user->sexo, ['class' => 'form-control', 'placeholder' => 'Indique sexualidad']) !!}
+    {!! Form::label('descripcion', 'Motivo') !!} {!! Form::textarea('descripcion', $permiso->descripcion, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('edad', 'Edad') !!} {!! Form::number('edad', $user->edad, ['class' => 'form-control', 'placeholder' => 'Ingrese edad']) !!}
+    {!! Form::label('lugar', 'Lugar') !!} {!! Form::select('lugar', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion' ], $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'Indique lugar ']) !!}
 </div>
-<div class="form-group">
-    {!! Form::label('fecha_nacimiento', 'Fecha nacimiento') !!} {!! Form::date('fecha_nacimiento', $user->fecha_nacimiento, ['class' => 'form-control']) !!}
+<div class="form-group text-justify">
+    {!! Form::label('viatico', 'Viatico') !!} {!! Form::checkbox('viatico', 'viatico', $permiso->viatico, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::submit('Guardar', ['class' => 'btn btn-success']) !!}

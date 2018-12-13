@@ -54,7 +54,10 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($permiso = Permiso::create($request->except('_token'))){
+            return redirect(route('permisos.index'));
+        }else
+            return redirect(route('permisos.create'));
     }
 
     /**
