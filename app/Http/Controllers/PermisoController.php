@@ -28,7 +28,8 @@ class PermisoController extends Controller
             ->select('permisos.dia_inicio', 'permisos.dia_fin', 'permisos.created_at', 'permisos.descripcion', 'permisos.lugar', 'permisos.estado', 'permisos.tipo')
             ->paginate(10);
 
-        return view('permiso.index', compact('permisosUsuario'));
+        //return view('permiso.index', compact('permisosUsuario'));
+        return $permisosUsuario;
 
     }
 
@@ -54,10 +55,18 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-        if ($permiso = Permiso::create($request->except('_token'))){
+        /*if ($permiso = Permiso::create($request->except('_token'))){
             return redirect(route('permisos.index'));
         }else
-            return redirect(route('permisos.create'));
+            return redirect(route('permisos.create'));*/
+
+        /*$permiso = new Permiso();
+        $permiso->descripcion = $request->descripcion;
+        $permiso->tipo = $request->tipo;
+        $permiso->user_id = $request->user_id;
+        $permiso->save($request->all());*/
+
+        $permiso = Permiso::create($request->except('_token'));
     }
 
     /**
