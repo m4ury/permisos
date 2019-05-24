@@ -4,15 +4,6 @@
 
 {!! Form::hidden('user_id', Auth::user()->id) !!}
 
-{{--<div class="form-group">
-    {!! Form::label('tipo', 'Tipo de permiso') !!} {!! Form::select('tipo', ['Cometido' => 'Cometido', 'Salida' => 'Salida'], $permiso->tipo, ['class' => 'form-control'.($errors->has('tipo') ? ' is-invalid' : ''), 'placeholder' => 'Indique tipo de
-    permiso ']) !!}
-    @if ($errors->has('tipo'))
-    <span class="invalid-feedback">
-        <strong>{{ $errors->first('tipo') }}</strong>
-    </span>
-    @endif
-</div>--}}
 <div class="form-group">
     {!! Form::label('hora_inicio', 'Desde') !!} {!! Form::time('hora_inicio', $permiso->hora_inicio, ['class' => 'form-control'.($errors->has('hora_inicio') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_inicio'))
@@ -47,15 +38,20 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('lugar', 'Lugar') !!} {!! Form::select('lugar', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion' ], $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'Indique lugar ']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' =>
     'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
 </div>
-<div class="form-group">
-    {!! Form::label('lugar', 'Lugar') !!} {!! Form::select('lugar', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion' ], $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'Indique lugar ']) !!}
-</div>
+
+<hr>
 <div class="form-group text-center">
     {!! Form::label('viatico', 'Viatico') !!} {!! Form::checkbox('viatico', 'viatico', $permiso->viatico, ['class' => 'form-control']) !!}
 </div>
+<hr>
+
 <div class="row">
     <div class="col">
         {!! Form::submit('Guardar', ['class' => 'btn btn-primary btn-lg btn-block']) !!}

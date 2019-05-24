@@ -25,7 +25,8 @@
                             <tr>
                                 <th>Dia inicio</th>
                                 <th>Dia fin</th>
-                                <th>Dias</th>
+                                <th>Hora Inicio</th>
+                                <th>Hora Fin</th>
                                 <th>Nº Resolucion</th>
                                 <th>Fecha Resolucion</th>
                                 <th>Motivo</th>
@@ -40,7 +41,10 @@
                             <tr>
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
                                 <td>{{ $fin = Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>
-                                <td>{{ Carbon\Carbon::parse($permiso->dia_fin)->diffInMinutes(Carbon\Carbon::parse($permiso->dia_inicio)) }}</td>
+
+                                <td>{{ Carbon\Carbon::parse($permiso->hora_inicio)->format("H:i") }}</td>
+                                <td>{{ Carbon\Carbon::parse($permiso->hora_fin)->format("H:i") }}</td>
+                                {{--<td>{{ Carbon\Carbon::parse($permiso->dia_fin)->diffInMinutes(Carbon\Carbon::parse($permiso->dia_inicio)) }}</td>--}}
                                 <td>{{ $permiso->correlativo }}</td>
 
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>

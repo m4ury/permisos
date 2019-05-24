@@ -16,8 +16,7 @@
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>{{ session('danger') }}</strong>
             </div>
-            @endif
-
+    @endif
             <div class="row">
                 <div class="col">
                     <table class="table table-striped table">
@@ -26,11 +25,9 @@
                                 <th>Fecha Solicitud</th>
                                 <th>Hora Salida</th>
                                 <th>Hora Llegada</th>
-                                <th>Tiempo Ocupado / Minutos</th>
+                                <th>Minutos Ocupado</th>
                                 <th>Motivo</th>
-                                <th>Tiempo Ocupado Mes Actual</th>
-                                <th>Saldo Mes Actual</th>
-
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +43,7 @@
                                 <td>{{ Carbon\Carbon::parse($hora_llegada)->diffInMinutes(Carbon\Carbon::parse($hora_salida)) }}</td>
 
                                 <td>{{ strtoupper($salida->descripcion) }}</td>
+                                <td><a class="btn btn-outline-primary" href="{{ route('salidas.create') }}">Print <i class="fas fa-print"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
