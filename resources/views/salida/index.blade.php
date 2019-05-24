@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="py-5 text-center">
-        <h2 class="title">Cometidos</h2>
+        <h2 class="title">Permiso Salida Especial</h2>
     </div>
 
     @if(session()->has('info'))
@@ -23,43 +23,42 @@
                     <table class="table table-striped table">
                         <thead>
                             <tr>
-                                <th>Dia inicio</th>
-                                <th>Dia fin</th>
-                                <th>Dias</th>
-                                <th>Nº Resolucion</th>
-                                <th>Fecha Resolucion</th>
+                                <th>Fecha Solicitud</th>
+                                <th>Hora Salida</th>
+                                <th>Hora Llegada</th>
+                                <th>Tiempo Ocupado / Minutos</th>
                                 <th>Motivo</th>
-                                <th>Lugar</th>
-                                <th>Acciones</th>
+                                <th>Tiempo Ocupado Mes Actual</th>
+                                <th>Saldo Mes Actual</th>
+
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach($permisosUsuario as $permiso)
+                            @foreach($salidaUsuario as $salida)
 
                             <tr>
-                                <td>{{ $inicio = Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
-                                <td>{{ $fin = Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>
-                                <td>{{ Carbon\Carbon::parse($permiso->dia_fin)->diffInMinutes(Carbon\Carbon::parse($permiso->dia_inicio)) }}</td>
-                                <td>{{ $permiso->correlativo }}</td>
+                                <td>{{ Carbon\Carbon::parse($salida->dia_salida)->format("d-m-Y") }}</td>
 
-                                <td>{{ $inicio = Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
-                                <td>{{ $permiso->descripcion }}</td>
-                                <td>{{ $permiso->lugar }}</td>
-                                <td><a class="btn btn-outline-primary" href="{{ route('permisos.create') }}">Print <i class="fas fa-print"></i></a></td>
+                                <td>{{ $hora_salida = Carbon\Carbon::parse($salida->hora_salida)->format("H:i") }}</td>
+                                <td>{{ $hora_llegada = Carbon\Carbon::parse($salida->hora_llegada)->format("H:i") }}</td>
+
+                                <td>{{ Carbon\Carbon::parse($hora_llegada)->diffInMinutes(Carbon\Carbon::parse($hora_salida)) }}</td>
+
+                                <td>{{ strtoupper($salida->descripcion) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="form-group">
-                        <a id="new" class="btn btn-success" href="{{ route('permisos.create') }}">
+                        <a id="new" class="btn btn-success" href="{{ route('salidas.create') }}">
                             Nuevo <i class="fas fa-plus"></i>
                         </a>
                         <a href="{{ route('home') }}" class="btn btn-secondary">Atras</a>
 
                     </div>
                     <div>
-                        {{ $permisosUsuario->links() }}
+                        {{ $salidaUsuario->links() }}
                     </div>
                 </div>
             </div>

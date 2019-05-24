@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StorePermiso;
 
 
 class PermisoController extends Controller
@@ -21,15 +22,12 @@ class PermisoController extends Controller
     {
         $permisosUsuario = DB::table('permisos')
             ->join('users', 'users.id', '=', 'permisos.user_id')
-            ->join('rols', 'rols.id', '=', 'users.rol_id')
-            ->join ('cargos', 'cargos.id', '=', 'users.cargo_id')
-            ->join ('unidads', 'unidads.id', '=', 'users.unidad_id')
             ->where('permisos.user_id', '=', Auth::user()->id)
-            ->select('permisos.dia_inicio', 'permisos.dia_fin', 'permisos.created_at', 'permisos.descripcion', 'permisos.lugar', 'permisos.estado', 'permisos.tipo')
+            ->select('permisos.dia_inicio', 'permisos.dia_fin', 'permisos.created_at', 'permisos.descripcion', 'permisos.lugar', 'permisos.estado', 'permisos.tipo', 'permisos.correlativo', 'permisos.hora_inicio', 'permisos.hora_fin', 'permisos.id')
+            ->orderBy('permisos.created_at', 'DESC')
             ->paginate(10);
 
-        //return view('permiso.index', compact('permisosUsuario'));
-        return $permisosUsuario;
+            return view('permiso.index', compact('permisosUsuario'));
 
     }
 
@@ -53,20 +51,12 @@ class PermisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePermiso $request)
     {
-        /*if ($permiso = Permiso::create($request->except('_token'))){
-            return redirect(route('permisos.index'));
+        if ($permiso = Permiso::create($request->except('_token'))){
+            return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!');
         }else
-            return redirect(route('permisos.create'));*/
-
-        /*$permiso = new Permiso();
-        $permiso->descripcion = $request->descripcion;
-        $permiso->tipo = $request->tipo;
-        $permiso->user_id = $request->user_id;
-        $permiso->save($request->all());*/
-
-        $permiso = Permiso::create($request->except('_token'));
+            return redirect()->route('permisos.create');
     }
 
     /**

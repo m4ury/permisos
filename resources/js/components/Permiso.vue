@@ -1,8 +1,6 @@
-
 <template>
+  <div class="container">
         <div class="row">
-
-            <div class="table">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -17,21 +15,13 @@
                     </thead>
                     <tbody>
 
-                    <tr v-for ="permisos in arrayPermisos" v-bind:key="permnisos.id">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr v-for ="permisos in arrayPermisos" v-bind:key="permisos.id">
+                        <td>{{ dd(permisos)}}</td>
                     </tr>
                     </tbody>
                 </table>
-
-
-            </div>
         </div>
+  </div>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 

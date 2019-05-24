@@ -12,6 +12,7 @@
 */
 
 Route::resource('permisos', 'PermisoController');
+Route::resource('salidas', 'SalidaController');
 
 
 Route::get('/', function () {
