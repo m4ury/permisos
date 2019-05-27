@@ -43,7 +43,7 @@
                                 <td>{{ Carbon\Carbon::parse($hora_llegada)->diffInMinutes(Carbon\Carbon::parse($hora_salida)) }}</td>
 
                                 <td>{{ strtoupper($salida->descripcion) }}</td>
-                                <td><a class="btn btn-outline-primary" href="{{ route('salidas.create') }}">Print <i class="fas fa-print"></i></a></td>
+                                <td><a class="btn btn-outline-primary" href="{{ url('salidas/'.$salida->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

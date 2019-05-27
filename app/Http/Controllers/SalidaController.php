@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use \Carbon;
+use \Barryvdh\DomPDF;
+use Illuminate\Support\Facades\App;
 
 class SalidaController extends Controller
 {
@@ -68,12 +70,22 @@ class SalidaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Salida  $salida
+     * @param  \App\Salida  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Salida $salida)
+    public function show($id)
     {
-        //
+        /*$salida = DB::table('salidas')
+            ->join('users', 'users.id', '=', 'salidas.user_id')
+            ->where('salidas.user_id', '=', $id)
+            ->select('salidas.dia_salida', 'salidas.created_at', 'salidas.descripcion', 'salidas.estado', 'salidas.tipo', 'salidas.hora_llegada', 'salidas.hora_salida', 'salidas.id');*/
+        $salida = Salida::findOrFail($id);
+
+        $view = view('salida.show', compact('salida'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
+
+        return $pdf->stream('salida');
     }
 
     /**

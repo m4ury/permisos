@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    @section('nav')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -75,11 +76,11 @@
                 </div>
             </div>
         </nav>
+        @show
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
-
 </html>
