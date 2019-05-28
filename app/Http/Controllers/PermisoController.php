@@ -20,12 +20,15 @@ class PermisoController extends Controller
      */
     public function index()
     {
-        $permisosUsuario = DB::table('permisos')
+        $user = User::find(Auth::user()->id);
+        $permisosUsuario = $user->permisos()->paginate(10);
+
+        /*$permisosUsuario = DB::table('permisos')
             ->join('users', 'users.id', '=', 'permisos.user_id')
             ->where('permisos.user_id', '=', Auth::user()->id)
             ->select('permisos.dia_inicio', 'permisos.dia_fin', 'permisos.created_at', 'permisos.descripcion', 'permisos.lugar', 'permisos.estado', 'permisos.tipo', 'permisos.correlativo', 'permisos.hora_inicio', 'permisos.hora_fin', 'permisos.id')
             ->orderBy('permisos.created_at', 'DESC')
-            ->paginate(10);
+            ->paginate(10);*/
 
             return view('permiso.index', compact('permisosUsuario'));
 

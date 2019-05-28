@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'rut', 'apellido_paterno', 'apellido_materno'
+        'name', 'email', 'password', 'rut', 'apellido_paterno', 'apellido_materno', 'horas_ocupado', 'horas_saldo'
     ];
 
     /**
@@ -27,4 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function salidas(){
+        return $this->hasMany(Salida::class);
+    }
+
+    public function permisos(){
+        return $this->hasMany(Permiso::class);
+    }
 }

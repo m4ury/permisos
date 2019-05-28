@@ -18,6 +18,9 @@
             </div>
     @endif
             <div class="row">
+
+                {{--{{ $mes_actual }}--}}
+
                 <div class="col">
                     <table class="table table-striped table">
                         <thead>
@@ -27,6 +30,7 @@
                                 <th>Hora Llegada</th>
                                 <th>Minutos Ocupado</th>
                                 <th>Motivo</th>
+                                <th>Minutos restantes (de 120 al mes)</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -40,10 +44,12 @@
                                 <td>{{ $hora_salida = Carbon\Carbon::parse($salida->hora_salida)->format("H:i") }}</td>
                                 <td>{{ $hora_llegada = Carbon\Carbon::parse($salida->hora_llegada)->format("H:i") }}</td>
 
-                                <td>{{ Carbon\Carbon::parse($hora_llegada)->diffInMinutes(Carbon\Carbon::parse($hora_salida)) }}</td>
+                                <td>{{ $diferencia = Carbon\Carbon::parse($hora_llegada)->diffInMinutes(Carbon\Carbon::parse($hora_salida)) }}</td>
 
                                 <td>{{ strtoupper($salida->descripcion) }}</td>
+                                <td>{{ 120 - $diferencia }}</td>
                                 <td><a class="btn btn-outline-primary" href="{{ url('salidas/'.$salida->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
+                                
                             </tr>
                             @endforeach
                         </tbody>
@@ -60,6 +66,5 @@
                     </div>
                 </div>
             </div>
-
 </div>
 @stop
