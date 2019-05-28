@@ -24,18 +24,9 @@ class SalidaController extends Controller
     {
         $mes_actual = Carbon\Carbon::parse(now())->format('m');
 
-        $salida = User::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
 
-        $salidaUsuario = $salida->salidas()->paginate(10);
-
-
-        /*$salidaUsuario = DB::table('salidas')
-            ->join('users', 'users.id', '=', 'salidas.user_id')
-            ->where('salidas.user_id', '=', Auth::user()->id)
-            ->whereMonth('salidas.dia_salida', '=', $mes_actual)
-            ->select('salidas.dia_salida', 'salidas.created_at', 'salidas.descripcion', 'salidas.estado', 'salidas.tipo', 'salidas.hora_llegada', 'salidas.hora_salida', 'salidas.id', 'users.horas_inicial', 'users.horas_saldo')
-            ->orderBy('salidas.created_at', 'DESC')
-            ->paginate(10);*/
+        $salidaUsuario = $user->salidas()->paginate(10);
 
             return view('salida.index', compact('salidaUsuario', 'mes_actual'));
     }
