@@ -22,13 +22,11 @@ class SalidaController extends Controller
      */
     public function index()
     {
-        $mes_actual = Carbon\Carbon::parse(now())->format('m');
+        $user = User::find(Auth::id());
 
-        $user = User::find(Auth::user()->id);
+        $salidaUsuario = $user->salidas()->whereMonth('dia_salida', '=', date('m'))->paginate(10);
 
-        $salidaUsuario = $user->salidas()->paginate(10);
-
-            return view('salida.index', compact('salidaUsuario', 'mes_actual'));
+            return view('salida.index', compact('salidaUsuario'));
     }
 
     /**
@@ -81,13 +79,11 @@ class SalidaController extends Controller
      */
     public function show($id)
     {
-        /*$salida = DB::table('salidas')
-            ->join('users', 'users.id', '=', 'salidas.user_id')
-            ->where('salidas.user_id', '=', $id)
-            ->select('salidas.dia_salida', 'salidas.created_at', 'salidas.descripcion', 'salidas.estado', 'salidas.tipo', 'salidas.hora_llegada', 'salidas.hora_salida', 'salidas.id');*/    
         $salida = Salida::findOrFail($id);
+        $salidaUser = $salida->user;
+        $unidadUser = $salidaUser->unidad;
 
-        $view = view('salida.show', compact('salida'));
+        $view = view('salida.show', compact('salida', 'salidaUser', 'unidadUser'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 

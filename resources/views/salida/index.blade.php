@@ -6,12 +6,12 @@
         <h2 class="title">Permiso Salida Especial</h2>
     </div>
 
-    @if(session()->has('info'))
-        <div id="alert" class="alert alert-success text-center">
+    @if(session('info'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strong>{{ session('info') }}</strong>
         </div>
-        @elseif(session()->has('danger'))
+        @elseif(session('danger'))
             <div id="alert" class="alert alert-danger text-center">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>{{ session('danger') }}</strong>

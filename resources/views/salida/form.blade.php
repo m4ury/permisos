@@ -22,7 +22,7 @@
     @endif
 </div>
 <div class="form-group">
-    {!! Form::label('hora_llegada', 'Desde') !!} {!! Form::time('hora_llegada', $salida->hora_llegada, ['class' => 'form-control'.($errors->has('hora_llegada') ? ' is-invalid' : '')]) !!}
+    {!! Form::label('hora_llegada', 'Hora llegada') !!} {!! Form::time('hora_llegada', $salida->hora_llegada, ['class' => 'form-control'.($errors->has('hora_llegada') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_llegada'))
     <span class="invalid-feedback">
         <strong>{{ $errors->first('hora_llegada') }}</strong>

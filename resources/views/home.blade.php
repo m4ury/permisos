@@ -9,26 +9,32 @@
                     <h5>Informacion Funcionario</h5>
                 </div>
                 <div class="card-body">
-                    @if (session('status'))
+                    {{--@if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
-                    @endif
+                    @endif--}}
                     <div class="row">
-                        <div class="col-8">
-                            Nombre: {{ strtoupper(Auth::user()->name) }} {{ strtoupper(Auth::user()->apellido_paterno) }}
+                        <div class="col-6">
+                            Nombre: {{ ucfirst($usuario->name) }} {{ ucfirst($usuario->apellido_paterno) }}
+                        </div>
+                        <div class="col-6">
+                            Rut: {{ $usuario->rut }}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
-                            Rut: {{ Auth::user()->rut }}
+                        <div class="col-6">
+                            Calidad Contr.: {{ $usuario->contrato }}
+                        </div>
+                        <div class="col-6">
+                            Cargo: {{ $cargoUsuario->nombre }}
                         </div>
                     </div>
-                        <div class="row">
-                            <div class="col-8">
-                                Calidad Contr.: {{ Auth::user()->contrato }}
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            Unidad: {{ $unidadUsuario->nombre }}
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,12 +46,11 @@
                 <div class="card-header"><h5>Permisos</h5></div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    {{--@if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
-                    @endif
-
+                    @endif--}}
                     <a class="btn btn-outline-primary" href="{{ route('permisos.index') }}" role="button">Cometidos</a>
                     <a class="btn btn-outline-success" href="{{ route('salidas.index') }}" role="button">Permiso Salida Especial</a>
                 </div>

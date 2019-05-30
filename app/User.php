@@ -35,4 +35,12 @@ class User extends Authenticatable
     public function permisos(){
         return $this->hasMany(Permiso::class);
     }
+
+    public function cargo(){
+        return $this->belongsTo(Cargo::class);
+    }
+
+    public function unidad(){
+        return $this->belongsTo(Unidad::class);
+    }
 }

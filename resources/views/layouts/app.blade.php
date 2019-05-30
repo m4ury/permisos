@@ -13,6 +13,14 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/all.js') }}" defer></script>
+    <script>
+        $(document).ready(function(){
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 3000);
+        });
+    </script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
