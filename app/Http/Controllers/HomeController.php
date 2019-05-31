@@ -30,7 +30,6 @@ class HomeController extends Controller
         $cargoUsuario = $usuario->cargo;
         $unidadUsuario = $usuario->unidad;
 
-
         return view('home', compact('usuario', 'cargoUsuario', 'unidadUsuario'));
     }
 }

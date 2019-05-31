@@ -36,7 +36,7 @@
                         </thead>
                         <tbody>
 
-                            @foreach($salidaUsuario as $salida)
+                            @foreach($salidas as $salida)
 
                             <tr>
                                 <td>{{ Carbon\Carbon::parse($salida->dia_salida)->format("d-m-Y") }}</td>
@@ -62,7 +62,7 @@
 
                     </div>
                     <div>
-                        {{ $salidaUsuario->links() }}
+                        {{ $salidas->links() }}
                     </div>
                 </div>
             </div>

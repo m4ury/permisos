@@ -24,9 +24,9 @@ class SalidaController extends Controller
     {
         $user = User::find(Auth::id());
 
-        $salidaUsuario = $user->salidas()->whereMonth('dia_salida', '=', date('m'))->paginate(10);
+        $salidas = $user->salidas()->whereMonth('dia_salida', '=', date('m'))->paginate(10);
 
-            return view('salida.index', compact('salidaUsuario'));
+            return view('salida.index', compact('salidas'));
     }
 
     /**
@@ -37,10 +37,8 @@ class SalidaController extends Controller
     public function create()
     {
         $salida = new Salida();
-        $user = new User;
-        $cargo = new Cargo;
 
-        return view('salida.create', compact('salida','user', 'cargo'));
+        return view('salida.create', compact('salida'));
 
     }
 
@@ -52,19 +50,12 @@ class SalidaController extends Controller
      */
     public function store(StoreSalida $request)
     {
-        /*$salida = Salida::create($request->except('_token'));
-
-        dd($salida->user()->find());
-
-        $salida->user()->create([
-            'horas_coupado' => 20,
-            'horas_saldo' => 30,
-        ]);
-
-        return redirect()->route('salidas.index');
-*/
-
         if ($salida = Salida::create($request->except('_token'))){
+
+            $salida->user()->update([
+                'horas_coupado' => Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida)),
+                'horas_saldo' => $salida->user->horas_saldo - $salida->user->horas_ocupado,
+            ]);
 
             return redirect()->route('salidas.index')->with('info', 'Nueva Salida creada!');
         }else

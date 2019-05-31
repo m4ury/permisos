@@ -35,7 +35,7 @@
             </div>
             <div class="col-4">
                 <hr style="border-color: black; height: 3px; width: 250px; margin-left:600px; right: 0px">
-                <p><strong>FIRMA FUNCIONARIO SOLICITANTE</strong></p>
+                <p><strong>VºBº JEFE DIRECTO</strong></p>
             </div>
         </div>
 
