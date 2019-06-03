@@ -50,12 +50,9 @@ class SalidaController extends Controller
      */
     public function store(StoreSalida $request)
     {
-        if ($salida = Salida::create($request->except('_token'))){
+        $diferencia = Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida));
 
-            $salida->user()->update([
-                'horas_coupado' => Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida)),
-                'horas_saldo' => $salida->user->horas_saldo - $salida->user->horas_ocupado,
-            ]);
+        if ($salida = Salida::create([$request->except('_token'), 'horas_ocupado' => $diferencia])){
 
             return redirect()->route('salidas.index')->with('info', 'Nueva Salida creada!');
         }else

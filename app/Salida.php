@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salida extends Model
 {
-    protected $fillable = ['user_id', 'descripcion', 'dia_salida', 'hora_salida', 'hora_llegada'];
+    protected $fillable = ['user_id', 'descripcion', 'dia_salida', 'hora_salida', 'hora_llegada', 'horas_ocupado', 'horas_saldo', 'horas_inicial'];
 
     public function user(){
         return $this->belongsTo(User::class);

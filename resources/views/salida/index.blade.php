@@ -44,10 +44,10 @@
                                 <td>{{ $hora_salida = Carbon\Carbon::parse($salida->hora_salida)->format("H:i") }}</td>
                                 <td>{{ $hora_llegada = Carbon\Carbon::parse($salida->hora_llegada)->format("H:i") }}</td>
 
-                                <td>{{ $diferencia = Carbon\Carbon::parse($hora_llegada)->diffInMinutes(Carbon\Carbon::parse($hora_salida)) }}</td>
+                                <td>{{ $salida->horas_ocupado }}</td>
 
                                 <td>{{ strtoupper($salida->descripcion) }}</td>
-                                <td>{{ 120 - $diferencia }}</td>
+                                <td>{{ $salida->horas_saldo }}</td>
                                 <td><a class="btn btn-outline-primary" href="{{ url('salidas/'.$salida->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
                                 
                             </tr>

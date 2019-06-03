@@ -13,14 +13,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/all.js') }}" defer></script>
-    <script>
-        $(document).ready(function(){
-            setTimeout(function() {
-                $(".alert").alert('close');
-            }, 3000);
-        });
-    </script>
-
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -37,6 +29,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
+
+                @if (session()->has('flash'))
+                    <div class="alert alert-info">{{ session('flash') }}</div>
+                @endif
+
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name') }}
                 </a>
