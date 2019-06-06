@@ -1,9 +1,16 @@
+<?php $salida = new App\Salida; ?>
+
 @extends('layouts.app')
 @section('content')
 
 <div class="container">
-    <div class="py-5 text-center">
-        <h2 class="title">Permiso Salida Especial</h2>
+    <div class=" row py-5">
+        <div class="col-4">
+            <h2 class="title">Permiso Salida Especial</h2>
+        </div>
+        <div class="col-4">
+            <span class="badge badge-pill badge-primary"> Total ocupado: {{ $salida->totalHorasMes(Auth::id()) }}</span>
+        </div>
     </div>
 
     @if(session('info'))
@@ -30,7 +37,7 @@
                                 <th>Hora Llegada</th>
                                 <th>Minutos Ocupado</th>
                                 <th>Motivo</th>
-                                <th>Minutos restantes (de 120 al mes)</th>
+                                {{--<th>Minutos restantes (de 120 al mes)</th>--}}
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -47,7 +54,7 @@
                                 <td>{{ $salida->horas_ocupado }}</td>
 
                                 <td>{{ strtoupper($salida->descripcion) }}</td>
-                                <td>{{ $salida->horas_saldo }}</td>
+                                {{--<td>{{ $salida->horas_saldo }}</td>--}}
                                 <td><a class="btn btn-outline-primary" href="{{ url('salidas/'.$salida->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
                                 
                             </tr>

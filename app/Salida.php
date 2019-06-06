@@ -4,6 +4,7 @@ namespace App;
 
 use function foo\func;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Salida extends Model
 {
@@ -11,5 +12,11 @@ class Salida extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    function totalHorasMes($id){
+        return Salida::whereMonth('dia_salida', '=', date('m'))
+            ->whereUserId($id)
+            ->sum('horas_ocupado');
     }
 }

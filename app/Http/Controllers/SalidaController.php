@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSalida;
 use App\Salida;
-use App\Cargo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use \Carbon;
-use \Barryvdh\DomPDF;
 use Illuminate\Support\Facades\App;
 
 class SalidaController extends Controller
@@ -24,7 +21,7 @@ class SalidaController extends Controller
     {
         $user = User::find(Auth::id());
 
-        $salidas = $user->salidas()->whereMonth('dia_salida', '=', date('m'))->paginate(10);
+        $salidas = $user->salidas()->latest()->whereMonth('dia_salida', '=', date('m'))->paginate(10);
 
             return view('salida.index', compact('salidas'));
     }
@@ -50,9 +47,11 @@ class SalidaController extends Controller
      */
     public function store(StoreSalida $request)
     {
-        $diferencia = Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida));
+        if ($salida = Salida::updateOrCreate($request->except('_token'))){
 
-        if ($salida = Salida::create([$request->except('_token'), 'horas_ocupado' => $diferencia])){
+            $diferencia = Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida));
+            $salida->horas_ocupado = $diferencia;
+            $salida->save();
 
             return redirect()->route('salidas.index')->with('info', 'Nueva Salida creada!');
         }else
@@ -111,4 +110,5 @@ class SalidaController extends Controller
     {
         //
     }
+
 }

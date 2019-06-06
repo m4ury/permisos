@@ -24,7 +24,7 @@ class StoreSalida extends FormRequest
     public function rules()
     {
         return [
-            //'tipo' => 'required',
+
             'hora_salida' => 'required',
             'hora_llegada' => 'required',
             'descripcion' => 'required|min:5',
