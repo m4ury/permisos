@@ -3,7 +3,7 @@
     @stop
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container-fluid" xmlns:float="http://www.w3.org/1999/xhtml" xmlns:bottom="http://www.w3.org/1999/xhtml">
         <div class="row">
             <div class="col-2">
                 <img src="" alt="">
@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="py-5 text-center">
-                <h2 class="title">PERMISO DE SALIDA ESPECIAL Nº.: {{ $salida->id }}</h2>
+                <h2 class="title">PERMISO DE SALIDA ESPECIAL Nº {{ $salida->id }}</h2>
             </div>
         </div>
         <div class="row">
@@ -29,16 +29,11 @@
         </div>
 
         <div class="row">
-            <div class="col-4 ">
-                <hr style="border-color: black; height: 3px; width: 250px; margin-left:0px ">
-                <p><strong>FIRMA FUNCIONARIO SOLICITANTE</strong></p>
-            </div>
-            <div class="col-4">
-                <hr style="border-color: black; height: 3px; width: 250px; margin-left:600px; right: 0px">
-                <p><strong>VºBº JEFE DIRECTO</strong></p>
+            <div class="col text-center">
+                <hr style="bottom: 0; float: none;">
+                <p class="align-text-bottom font-weight-bold">VºBº JEFE DIRECTO</p>
             </div>
         </div>
-
     </div>
 
     @stop
