@@ -14,7 +14,7 @@
     </div>
 
     @if(session('info'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div id="alert" class="alert alert-success alert-dismissible fade show" role="alert">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strong>{{ session('info') }}</strong>
         </div>
@@ -74,4 +74,11 @@
                 </div>
             </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('#alert').delay(2000).slideUp(200, function(){
+            $(this).remove();
+        });
+    }, 5000);
+</script>
 @stop

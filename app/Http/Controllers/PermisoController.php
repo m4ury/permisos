@@ -20,10 +20,11 @@ class PermisoController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::user()->id);
-        $permisosUsuario = $user->permisos()->paginate(10);
+        $user = User::find(Auth::id());
+        $permisos = $user->permisos()->latest()->whereMonth('dia_inicio', '=', date('m'))->paginate(10);
 
-        return view('permiso.index', compact('permisosUsuario'));
+       return view('permiso.index', compact('permisos'));
+
 
     }
 
@@ -35,10 +36,8 @@ class PermisoController extends Controller
     public function create()
     {
         $permiso = new Permiso;
-        $user = new User;
-        $cargo = new Cargo;
 
-        return view('permiso.create', compact('permiso', 'user', 'cargo'));
+        return view('permiso.create', compact('permiso'));
     }
 
     /**
@@ -63,7 +62,17 @@ class PermisoController extends Controller
      */
     public function show($id)
     {
-        //
+        $permiso = Permiso::findOrFail($id);
+        $user = User::findOrFail($id);
+
+        $permisoUser = $permisos->user;
+        $cargoUser = $user->cargo;
+
+        $view = view('permiso.show', compact('permiso', 'user', 'permisoUser', 'cargoUser'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
+
+        return $pdf->stream('permiso');
     }
 
     /**

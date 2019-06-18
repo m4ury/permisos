@@ -17,7 +17,7 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('permiso', require('./components/Permiso.vue'));
+//Vue.component('permiso', require('./components/Permiso.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 

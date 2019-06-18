@@ -5,9 +5,26 @@
 {!! Form::hidden('user_id', Auth::user()->id) !!}
 
 <div class="form-group">
+    {!! Form::label('dia_inicio', 'Dia inicio') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control'.($errors->has('dia_inicio') ? ' is-invalid' : '')]) !!}
+    @if ($errors->has('dia_inicio'))
+        <span class="invalid-feedback">
+        <strong>{{ $errors->first('dia_inicio') }}</strong>
+    </span>
+    @endif
+</div>
+<div class="form-group">
+    {!! Form::label('dia_fin', 'Dia fin') !!} {!! Form::date('dia_fin', $permiso->dia_fin, ['class' => 'form-control'.($errors->has('dia_fin') ? ' is-invalid' : '')]) !!}
+    @if ($errors->has('dia_fin'))
+        <span class="invalid-feedback">
+        <strong>{{ $errors->first('dia_fin') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group">
     {!! Form::label('hora_inicio', 'Desde') !!} {!! Form::time('hora_inicio', $permiso->hora_inicio, ['class' => 'form-control'.($errors->has('hora_inicio') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_inicio'))
-    <span class="invalid-feedback">
+        <span class="invalid-feedback">
         <strong>{{ $errors->first('hora_inicio') }}</strong>
     </span>
     @endif
@@ -15,17 +32,10 @@
 <div class="form-group">
     {!! Form::label('hora_fin', 'Desde') !!} {!! Form::time('hora_fin', $permiso->hora_fin, ['class' => 'form-control'.($errors->has('hora_fin') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_fin'))
-    <span class="invalid-feedback">
+        <span class="invalid-feedback">
         <strong>{{ $errors->first('hora_fin') }}</strong>
     </span>
     @endif
-</div>
-
-<div class="form-group">
-    {!! Form::label('dia_inicio', 'Dia inicio') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('dia_fin', 'Dia fin') !!} {!! Form::date('dia_fin', $permiso->dia_fin, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -47,8 +57,8 @@
 </div>
 
 <hr>
-<div class="form-group text-center">
-    {!! Form::label('viatico', 'Viatico') !!} {!! Form::checkbox('viatico', 'viatico', $permiso->viatico, ['class' => 'form-control']) !!}
+<div class="form-group btn btn-outline-success btn-block">
+    {!! Form::label('viatico', 'Viatico', ['class' => '' ]) !!} {!! Form::checkbox('viatico', 1, $permiso->viatico, ['class' => 'form-control']) !!}
 </div>
 <hr>
 

@@ -4,15 +4,10 @@
 
 {!! Form::hidden('user_id', Auth::user()->id) !!}
 
-{{--<div class="form-group">
-    {!! Form::label('tipo', 'Tipo de permiso') !!} {!! Form::select('tipo', ['Cometido' => 'Cometido', 'Salida' => 'Salida'], $salida->tipo, ['class' => 'form-control'.($errors->has('tipo') ? ' is-invalid' : ''), 'placeholder' => 'Indique tipo de
-    permiso ']) !!}
-    @if ($errors->has('tipo'))
-    <span class="invalid-feedback">
-        <strong>{{ $errors->first('tipo') }}</strong>
-    </span>
-    @endif
-</div>--}}
+<div class="form-group">
+    {!! Form::label('dia_salida', 'Fecha del Permiso') !!} {!! Form::date('dia_salida', $salida->dia_salida, ['class' => 'form-control']) !!}
+</div>
+
 <div class="form-group">
     {!! Form::label('hora_salida', 'Hora Salida') !!} {!! Form::time('hora_salida', $salida->hora_salida, ['class' => 'form-control'.($errors->has('hora_salida') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_salida'))
@@ -28,10 +23,6 @@
         <strong>{{ $errors->first('hora_llegada') }}</strong>
     </span>
     @endif
-</div>
-
-<div class="form-group">
-    {!! Form::label('dia_salida', 'Fecha de Permiso') !!} {!! Form::date('dia_salida', $salida->dia_salida, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

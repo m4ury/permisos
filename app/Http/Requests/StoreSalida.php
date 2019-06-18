@@ -26,7 +26,7 @@ class StoreSalida extends FormRequest
         return [
 
             'hora_salida' => 'required',
-            'hora_llegada' => 'required',
+            'hora_llegada' => 'required|after:hora_salida',
             'descripcion' => 'required|min:5',
         ];
     }

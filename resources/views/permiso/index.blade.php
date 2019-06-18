@@ -36,7 +36,7 @@
                         </thead>
                         <tbody>
 
-                            @foreach($permisosUsuario as $permiso)
+                            @foreach($permisos as $permiso)
 
                             <tr>
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
@@ -50,7 +50,7 @@
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
-                                <td><a class="btn btn-outline-primary" href="{{ route('permisos.create') }}">Print <i class="fas fa-print"></i></a></td>
+                                <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -63,7 +63,7 @@
 
                     </div>
                     <div>
-                        {{ $permisosUsuario->links() }}
+                        {{ $permisos->links() }}
                     </div>
                 </div>
             </div>
