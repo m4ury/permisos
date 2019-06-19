@@ -2,7 +2,7 @@
 @section('nav')
     @stop
 @section('content')
-
+        <?php use Freshwork\ChileanBundle\Rut; ?>
     <div class="container-fluid" xmlns:float="http://www.w3.org/1999/xhtml" xmlns:bottom="http://www.w3.org/1999/xhtml">
         <div class="row">
             <div class="col-2">
@@ -15,26 +15,37 @@
             </div>
         </div>
             <div class="row">
-                LICANTEN, a
+                <div class="col-8">
+                    <p class="text-right"><strong>LICANTEN</strong>, a {{ Carbon\Carbon::parse($permisos->created_at)->format("d") }} de {{ Carbon\Carbon::parse($permisos->created_at)->format("M") }} del {{ Carbon\Carbon::parse($permisos->created_at)->format("Y") }}</p>
+                </div>
             </div>
-        <div class="row">
-        <div class="col-12 text">
-            <table class="table-striped">
-                <thead>
-                    {{--<tr><th>FECHA SOLICITUD: </th> <td>{{ Carbon\Carbon::parse($salida->created_at)->format("d-m-Y") }}</td><th>SERVICIO: </th> <td>{{ $unidadUser->nombre }}</td></tr>
-                    <tr><th>NOMBRES Y APELLIDOS: </th><td>{{  strtoupper($salidaUser->name) }} {{ strtoupper($salidaUser->apellido_paterno) }} {{ strtoupper($salidaUser->apellido_materno) }}</td></tr>
-                    <tr><th>FECHA DE PERMISO: </th><td>{{ Carbon\Carbon::parse($salida->dia_salida)->format("d-m-Y") }}</td></tr>
-                    <tr><th>MOTIVO DE SALIDA: </th><td>{{ strtoupper($salida->descripcion) }}</td></tr>
-                    <tr><th>HORA DE SALIDA: </th><td>{{ $salida->hora_salida }}</td><th>HORA LLEGADA: </th><td>{{ $salida->hora_llegada }}</td></tr>--}}
-                </thead>
-            </table>
+            <div class="row py-2">
+                <div class="col-12">
+                    <p>
+                        La Dirección del Hospital de Licantén autoriza a don(ña) {{ ucfirst($permisos->user->name) }} {{ ucfirst($permisos->user->apellido_paterno) }} {{ ucfirst($permisos->user->apellido_materno) }}, C. Identidad Nº {{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}, quien ostenta el cargo de {{ $permisos->user->cargo->nombre }} para ausentarse de las dependencias del Servicio desde las {{ Carbon\Carbon::parse($permisos->hora_inicio)->format("H:i") }} hasta las {{ Carbon\Carbon::parse($permisos->hora_fin)->format("H:i") }} horas del dia {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("d") }} de {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("M") }} del {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("Y") }}, con el objeto de realizar el siguiente cometido: {{ $permisos->descripcion }}
+                        <br>
+                        en {{ $permisos->lugar }}<br>
+                    <hr>
+                    <div class="row py-2">
+                        <div class="col">
+                            <p>
+                                Se moviliza en {{ $permisos->movilizacion }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col">
+                            @if ($permisos->viatico == 1)
+                                <div class="alert alert-success text-center font-weight-bold">Viatico</div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col text-center">
-                <hr style="bottom: 0; float: none;">
-                <p class="align-text-bottom font-weight-bold">VºBº JEFE DIRECTO</p>
+        <div class="row py-4">
+            <div class="col fixed-bottom clearfix">
+                <span class="float-left font-weight-bold">Firma Funcionario(a)</span>
+                <span class="float-right font-weight-bold">Firma y Timbre Dirección</span>
             </div>
         </div>
     </div>

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Cargo;
 use App\Permiso;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 use App\Http\Requests\StorePermiso;
 
 
@@ -62,13 +61,9 @@ class PermisoController extends Controller
      */
     public function show($id)
     {
-        $permiso = Permiso::findOrFail($id);
-        $user = User::findOrFail($id);
+        $permisos = Permiso::findOrFail($id);
 
-        $permisoUser = $permisos->user;
-        $cargoUser = $user->cargo;
-
-        $view = view('permiso.show', compact('permiso', 'user', 'permisoUser', 'cargoUser'));
+        $view = view('permiso.show', compact('permisos'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 

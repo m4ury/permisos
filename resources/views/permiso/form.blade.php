@@ -5,21 +5,21 @@
 {!! Form::hidden('user_id', Auth::user()->id) !!}
 
 <div class="form-group">
-    {!! Form::label('dia_inicio', 'Dia inicio') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control'.($errors->has('dia_inicio') ? ' is-invalid' : '')]) !!}
+    {!! Form::label('dia_inicio', 'Dia') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control'.($errors->has('dia_inicio') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('dia_inicio'))
         <span class="invalid-feedback">
         <strong>{{ $errors->first('dia_inicio') }}</strong>
     </span>
     @endif
 </div>
-<div class="form-group">
+{{--<div class="form-group">
     {!! Form::label('dia_fin', 'Dia fin') !!} {!! Form::date('dia_fin', $permiso->dia_fin, ['class' => 'form-control'.($errors->has('dia_fin') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('dia_fin'))
         <span class="invalid-feedback">
         <strong>{{ $errors->first('dia_fin') }}</strong>
     </span>
     @endif
-</div>
+</div>--}}
 
 <div class="form-group">
     {!! Form::label('hora_inicio', 'Desde') !!} {!! Form::time('hora_inicio', $permiso->hora_inicio, ['class' => 'form-control'.($errors->has('hora_inicio') ? ' is-invalid' : '')]) !!}
@@ -48,7 +48,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('lugar', 'Lugar') !!} {!! Form::select('lugar', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion' ], $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'Indique lugar ']) !!}
+    {!! Form::label('lugar', 'Lugar') !!} {!! Form::select('lugar', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion', 'Curepto' => 'Curepto', 'Licanten' => 'Licanten', 'Hualañe' => 'Hualañe' ], $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'Indique lugar ']) !!}
 </div>
 
 <div class="form-group">

@@ -67,10 +67,8 @@ class SalidaController extends Controller
     public function show($id)
     {
         $salida = Salida::findOrFail($id);
-        $salidaUser = $salida->user;
-        $unidadUser = $salidaUser->unidad;
 
-        $view = view('salida.show', compact('salida', 'salidaUser', 'unidadUser'));
+        $view = view('salida.show', compact('salida'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 

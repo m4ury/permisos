@@ -23,8 +23,8 @@
                     <table class="table table-striped table">
                         <thead>
                             <tr>
-                                <th>Dia inicio</th>
-                                <th>Dia fin</th>
+                                <th>Dia</th>
+                                {{--<th>Dia fin</th>--}}
                                 <th>Hora Inicio</th>
                                 <th>Hora Fin</th>
                                 <th>Nº Resolucion</th>
@@ -40,7 +40,7 @@
 
                             <tr>
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
-                                <td>{{ $fin = Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>
+                                {{--<td>{{ $fin = Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>--}}
 
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_inicio)->format("H:i") }}</td>
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_fin)->format("H:i") }}</td>
@@ -67,6 +67,12 @@
                     </div>
                 </div>
             </div>
-
 </div>
+<script>
+    $(document).ready(function(){
+        $('#alert').delay(2000).slideUp(200, function(){
+            $(this).remove();
+        });
+    }, 5000);
+</script>
 @stop

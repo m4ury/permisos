@@ -9,11 +9,11 @@
                     <h5>Informacion Funcionario</h5>
                 </div>
                 <div class="card-body">
-                    {{--@if (session('status'))
+                    @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
-                    @endif--}}
+                    @endif
                     <div class="row">
                         <div class="col-6">
                             Nombre: {{ ucfirst($usuario->name) }} {{ ucfirst($usuario->apellido_paterno) }}
