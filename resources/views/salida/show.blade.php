@@ -5,20 +5,17 @@
 
     <div class="container-fluid" xmlns:float="http://www.w3.org/1999/xhtml" xmlns:bottom="http://www.w3.org/1999/xhtml">
         <div class="row">
-            <div class="col-2">
-                <img src="" alt="">
+            <div class="col-sm-4 clearfix">
+                <img style="height: 150px; width: 150px" src="{{ asset('img/logo.png') }}" alt="logo">
             </div>
-        </div>
-        <div class="row">
-            <div class="py-5 text-center">
-                <h2 class="title">PERMISO DE SALIDA ESPECIAL Nº {{ $salida->id }}</h2>
+            <div class="col-sm-8 float-right">
+                <h2>PERMISO SALIDA ESPECIAL Nº {{ $salida->id }}</h2>
             </div>
         </div>
         <div class="row">
         <div class="col">
 
-
-            {{--<table class="table-striped">
+<table class="table-striped py-5">
                 <thead>
                     <tr><th>FECHA SOLICITUD: </th> <td>{{ Carbon\Carbon::parse($salida->created_at)->format("d-m-Y") }}</td><th>SERVICIO: </th> <td>{{ $salida->user->unidad->nombre }}</td></tr>
                     <tr><th>NOMBRES Y APELLIDOS: </th><td>{{  strtoupper($salida->user->name) }} {{ strtoupper($salida->user->apellido_paterno) }} {{ strtoupper($salida->user->apellido_materno) }}</td></tr>
@@ -26,7 +23,7 @@
                     <tr><th>MOTIVO DE SALIDA: </th><td>{{ strtoupper($salida->descripcion) }}</td></tr>
                     <tr><th>HORA DE SALIDA: </th><td>{{ $salida->hora_salida }}</td><th>HORA LLEGADA: </th><td>{{ $salida->hora_llegada }}</td></tr>
                 </thead>
-            </table>--}}
+            </table>
             </div>
         </div>
 
@@ -38,5 +35,11 @@
             </div>
         </div>
     </div>
+
+    <style>
+        body{
+            background: #ffffff;
+        }
+    </style>
 
     @stop
