@@ -15,7 +15,7 @@
                             <label for="rut" class="col-sm-4 col-form-label text-md-right">{{ __('Rut') }}</label>
 
                             <div class="col-md-6">
-                                <input id="rut" type="text" class="form-control{{ $errors->has('rut') ? ' is-invalid' : '' }}" name="rut" placeholder="sin puntos, con guion, ejemplo: 19999999-9" value="{{ old('rut') }}" required autofocus>
+                                <input id="rut" type="text" class="form-control{{ $errors->has('rut') ? ' is-invalid' : '' }}" name="rut" placeholder="19999999-9" value="{{ old('rut') }}" required autofocus>
 
                                 @if ($errors->has('rut'))
                                     <span class="invalid-feedback" role="alert">

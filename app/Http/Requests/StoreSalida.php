@@ -25,6 +25,7 @@ class StoreSalida extends FormRequest
     {
         return [
 
+            'dia_salida' => 'required|after_or_equal:'.date(now('America/Santiago')),
             'hora_salida' => 'required',
             'hora_llegada' => 'required|after:hora_salida',
             'descripcion' => 'required|min:5',

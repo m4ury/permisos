@@ -21,7 +21,7 @@ class SalidaController extends Controller
     {
         $user = User::find(Auth::id());
 
-        $salidas = $user->salidas()->latest()->whereMonth('dia_salida', '=', date('m'))->paginate(10);
+        $salidas = $user->salidas()->latest('dia_salida')->whereMonth('dia_salida', '=', date('m'))->paginate(10);
 
             return view('salida.index', compact('salidas'));
     }
@@ -47,16 +47,26 @@ class SalidaController extends Controller
      */
     public function store(StoreSalida $request)
     {
-        if ($salida = Salida::updateOrCreate($request->except('_token'))){
+        $user = User::find(Auth::id());
+        $dif = Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida));
+        $ocupadoMes = $user->salidas()->latest()->whereMonth('dia_salida', '=', date('m'))->sum('horas_ocupado');
 
-            $diferencia = Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida));
-            $salida->horas_ocupado = $diferencia;
-            $salida->save();
+        if (($ocupadoMes + $dif) <= 120 ) {
 
-            return redirect()->route('salidas.index')->with('info', 'Nueva Salida creada!');
-        }else
-            return redirect(route('salidas.create'));
-    }
+            if ($salida = Salida::updateOrCreate($request->except('_token'))) {
+
+                $diferencia = Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida));
+                $salida->horas_ocupado = $diferencia;
+                /*$salida->estado = 'impreso';*/
+                $salida->save();
+
+                return redirect()->route('salidas.index', $salida->id)->with('info', 'Nueva Salida creada!');
+                }else
+                    return redirect()->route('salidas.index')->with('info', 'Algo paso...!');
+            } else
+                return redirect()->route('salidas.index')->with('danger', 'Sobrepasa Limite de 2 horas!');
+        }
+
 
     /**
      * Display the specified resource.

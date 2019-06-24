@@ -5,11 +5,12 @@
     <?php use Freshwork\ChileanBundle\Rut; ?>
     <div class="container-fluid py-4" xmlns:float="http://www.w3.org/1999/xhtml" xmlns:bottom="http://www.w3.org/1999/xhtml">
         <div class="row">
-            <div class="col-sm-4 clearfix">
+            <div class="col-sm-4 clearfix text-center">
                 <img style="height: 150px; width: 150px" src="{{ asset('img/logo.png') }}" alt="logo">
+                {{--<p class="font-weight-bold">Oficina de Recursos Humanos</p>--}}
             </div>
             <div class="col-sm-8 float-right">
-                <h2>ORDEN DE COMETIDO FUNCIONARIO Nº {{ $permisos->id }}</h2>
+                <h5>ORDEN DE COMETIDO FUNCIONARIO Nº {{ $permisos->id }}</h5>
             </div>
         </div>
         <div class="row">

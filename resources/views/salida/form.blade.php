@@ -5,7 +5,12 @@
 {!! Form::hidden('user_id', Auth::user()->id) !!}
 
 <div class="form-group">
-    {!! Form::label('dia_salida', 'Fecha del Permiso') !!} {!! Form::date('dia_salida', $salida->dia_salida, ['class' => 'form-control']) !!}
+    {!! Form::label('dia_salida', 'Fecha del Permiso') !!} {!! Form::date('dia_salida', $salida->dia_salida, ['class' => 'form-control'.($errors->has('dia_salida') ? ' is-invalid' : '')]) !!}
+    @if ($errors->has('dia_salida'))
+        <span class="invalid-feedback">
+        <strong>{{ $errors->first('dia_salida') }}</strong>
+    </span>
+    @endif
 </div>
 
 <div class="form-group">

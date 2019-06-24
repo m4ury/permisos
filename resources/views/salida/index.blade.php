@@ -19,7 +19,7 @@
             <strong>{{ session('info') }}</strong>
         </div>
         @elseif(session('danger'))
-            <div id="alert" class="alert alert-danger text-center">
+            <div class="alert alert-danger text-center">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>{{ session('danger') }}</strong>
             </div>
