@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Permiso;
 use App\User;
 
 class StorePermiso extends FormRequest
@@ -27,8 +26,7 @@ class StorePermiso extends FormRequest
     public function rules()
     {
        return [
-          'dia_inicio' => 'required|unique:permisos',
-          /*'dia_fin' => 'required|after_or_equal:dia_inicio',*/
+          'dia_inicio' => 'required',
           'hora_inicio' => 'required',
           'hora_fin' => 'required|after_or_equal:hora_inicio',
           'descripcion' => 'required|min:5',

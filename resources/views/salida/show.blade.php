@@ -1,3 +1,5 @@
+<?php $s = new App\Salida; ?>
+
 @extends('layouts.app')
 @section('nav')
     @stop
@@ -7,8 +9,9 @@
         <div class="row">
             <div class="col-sm-4 clearfix text-center">
                 <img style="height: 150px; width: 150px" src="{{ asset('img/logo.png') }}" alt="logo">
-
             </div>
+        </div>
+        <div class="row py-3">
             <div class="col-sm-8 float-right">
                 <h5>PERMISO DE SALIDA ESPECIAL Nº {{ $salida->id }}</h5>
             </div>
@@ -25,6 +28,11 @@
                     <tr><th>HORA DE SALIDA: </th><td>{{ Carbon\Carbon::parse($salida->hora_salida)->format("H:i") }}</td><th>HORA LLEGADA: </th><td>{{ Carbon\Carbon::parse($salida->hora_llegada)->format("H:i") }}</td></tr>
                 </thead>
             </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span class="badge badge-pill badge-success rounded">Minutos Ocupados: {{ $s->totalHorasMes(Auth::id()) }} de 120</span>
             </div>
         </div>
 

@@ -20,7 +20,7 @@ class PermisoController extends Controller
     public function index()
     {
         $user = User::find(Auth::id());
-        $permisos = $user->permisos()->latest()->whereMonth('dia_inicio', '=', date('m'))->paginate(10);
+        $permisos = $user->permisos()->latest('dia_inicio')->whereMonth('dia_inicio', '=', date('m'))->paginate(7);
 
        return view('permiso.index', compact('permisos'));
 
@@ -67,7 +67,7 @@ class PermisoController extends Controller
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
-        return $pdf->stream('permiso');
+        return $pdf->stream('permiso_'.$permisos->id.'.pdf');
     }
 
     /**

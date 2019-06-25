@@ -21,7 +21,7 @@ class SalidaController extends Controller
     {
         $user = User::find(Auth::id());
 
-        $salidas = $user->salidas()->latest('dia_salida')->whereMonth('dia_salida', '=', date('m'))->paginate(10);
+        $salidas = $user->salidas()->latest('dia_salida')->whereMonth('dia_salida', '=', date('m'))->paginate(7);
 
             return view('salida.index', compact('salidas'));
     }
@@ -80,9 +80,9 @@ class SalidaController extends Controller
 
         $view = view('salida.show', compact('salida'));
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
+        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(true);
 
-        return $pdf->stream('salida');
+        return $pdf->stream('salida_'.$salida->id.'.pdf');
     }
 
     /**
