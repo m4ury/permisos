@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSalida extends FormRequest
@@ -25,7 +26,7 @@ class StoreSalida extends FormRequest
     {
         return [
 
-            'dia_salida' => 'required|after_or_equal:'.date(now('America/Santiago')),
+            'dia_salida' => 'required|after_or_equal:'.Carbon::now()->format('d-m-Y'),
             'hora_salida' => 'required',
             'hora_llegada' => 'required|after:hora_salida',
             'descripcion' => 'required|min:5',
