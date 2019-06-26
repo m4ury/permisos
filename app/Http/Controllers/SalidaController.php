@@ -80,7 +80,7 @@ class SalidaController extends Controller
 
         $view = view('salida.show', compact('salida'));
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(true);
+        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
         return $pdf->stream('salida_'.$salida->id.'.pdf');
     }

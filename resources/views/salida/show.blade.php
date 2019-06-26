@@ -5,29 +5,29 @@
     @stop
 @section('content')
 
-    <div class="container-fluid" xmlns:float="http://www.w3.org/1999/xhtml" xmlns:bottom="http://www.w3.org/1999/xhtml">
+    <div class="container">
         <div class="row">
             <div class="col-sm-4 clearfix text-center">
-                <img style="height: 150px; width: 150px" src="{{ asset('img/logo.png') }}" alt="logo">
-            </div>
-        </div>
-        <div class="row py-3">
-            <div class="col-sm-8 float-right">
-                <h5>PERMISO DE SALIDA ESPECIAL Nº {{ $salida->id }}</h5>
+                <img style="height: 120px; width: 120px" src="{{ asset('img/logo.png') }}" alt="logo">
+                <p class="font-weight-bold">Oficina de Recursos Humanos</p>
             </div>
         </div>
         <div class="row">
-        <div class="col">
-
-<table class="table-striped py-5">
-                <thead>
-                    <tr><th>FECHA SOLICITUD: </th> <td>{{ Carbon\Carbon::parse($salida->created_at)->format("d-m-Y") }}</td><th>SERVICIO: </th> <td>{{ $salida->user->unidad->nombre }}</td></tr>
-                    <tr><th>NOMBRES Y APELLIDOS: </th><td>{{  strtoupper($salida->user->name) }} {{ strtoupper($salida->user->apellido_paterno) }} {{ strtoupper($salida->user->apellido_materno) }}</td></tr>
-                    <tr><th>FECHA DE PERMISO: </th><td>{{ Carbon\Carbon::parse($salida->dia_salida)->format("d-m-Y") }}</td></tr>
-                    <tr><th>MOTIVO DE SALIDA: </th><td>{{ strtoupper($salida->descripcion) }}</td></tr>
-                    <tr><th>HORA DE SALIDA: </th><td>{{ Carbon\Carbon::parse($salida->hora_salida)->format("H:i") }}</td><th>HORA LLEGADA: </th><td>{{ Carbon\Carbon::parse($salida->hora_llegada)->format("H:i") }}</td></tr>
-                </thead>
-            </table>
+            <div class="col-sm-8 float-right py-3">
+                <h5><u>PERMISO DE SALIDA ESPECIAL Nº {{ $salida->id }}</u></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col pt-5">
+                <table class="table-striped py-5">
+                    <thead>
+                        <tr><th>FECHA SOLICITUD: </th> <td><u>{{ Carbon\Carbon::parse($salida->created_at)->format("d-m-Y") }}</u></td><th>SERVICIO: </th> <td><u>{{ strtoupper($salida->user->unidad->nombre) }}</u></td></tr>
+                        <tr><th>NOMBRES Y APELLIDOS: </th><td><u>{{  strtoupper($salida->user->name) }} {{ strtoupper($salida->user->apellido_paterno) }} {{ strtoupper($salida->user->apellido_materno) }}</u></td></tr>
+                        <tr><th>FECHA DE PERMISO: </th><td><u>{{ Carbon\Carbon::parse($salida->dia_salida)->format("d-m-Y") }}</u></td></tr>
+                        <tr><th>MOTIVO DE SALIDA: </th><td><u>{{ strtoupper($salida->descripcion) }}</u></td></tr>
+                        <tr><th>HORA DE SALIDA: </th><td><u>{{ Carbon\Carbon::parse($salida->hora_salida)->format("H:i") }}</u></td><th>HORA LLEGADA: </th><td><u>{{ Carbon\Carbon::parse($salida->hora_llegada)->format("H:i") }}</u></td></tr>
+                    </thead>
+                </table>
             </div>
         </div>
         <div class="row">
