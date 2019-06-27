@@ -44,8 +44,7 @@
 
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_inicio)->format("H:i") }}</td>
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_fin)->format("H:i") }}</td>
-                                {{--<td>{{ Carbon\Carbon::parse($permiso->dia_fin)->diffInMinutes(Carbon\Carbon::parse($permiso->dia_inicio)) }}</td>--}}
-                                <td>{{ $permiso->correlativo }}</td>
+                                <td>{{ $permiso->id }}</td>
 
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                                 <td>{{ $permiso->descripcion }}</td>
