@@ -20,7 +20,7 @@
 
             <div class="row">
                 <div class="col">
-                    <table class="table table-striped table">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Dia</th>

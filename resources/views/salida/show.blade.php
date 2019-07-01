@@ -5,7 +5,7 @@
     @stop
 @section('content')
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4 clearfix text-center">
                 <img style="height: 120px; width: 120px" src="{{ asset('img/logo.png') }}" alt="logo">

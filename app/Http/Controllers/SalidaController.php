@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \Carbon;
 use Illuminate\Support\Facades\App;
+use App\Events\SalidaFueCreada;
 
 class SalidaController extends Controller
 {
@@ -19,6 +20,7 @@ class SalidaController extends Controller
      */
     public function index()
     {
+
         $user = User::find(Auth::id());
 
         $salidas = $user->salidas()->latest('dia_salida')->whereMonth('dia_salida', '=', date('m'))->paginate(7);
@@ -59,6 +61,9 @@ class SalidaController extends Controller
                 $salida->horas_ocupado = $diferencia;
                 /*$salida->estado = 'impreso';*/
                 $salida->save();
+
+                event(new SalidaFueCreada($salida));
+
 
                 return redirect()->route('salidas.index', $salida->id)->with('info', 'Nueva Salida creada!');
                 }else

@@ -3,7 +3,7 @@
 @stop
 @section('content')
     <?php use Freshwork\ChileanBundle\Rut; ?>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4 clearfix text-center">
                 <img style="height: 120px; width: 120px" src="{{ asset('img/logo.png') }}" alt="logo">
@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <p>La Dirección del Hospital de Licantén autoriza a don(ña) <u>{{ strtoupper($permisos->user->name) }} {{ strtoupper($permisos->user->apellido_paterno) }} {{ strtoupper($permisos->user->apellido_materno) }}</u>, C. Identidad Nº <u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u>, quien ostenta el cargo de <u>{{ strtoupper($permisos->user->cargo->nombre) }}</u>, </p>
+                <p>La Dirección del Hospital de Licantén autoriza a don(ña) <u>{{ strtoupper($permisos->user->name).' '.strtoupper($permisos->user->apellido_paterno).' '.strtoupper($permisos->user->apellido_materno) }}</u>, C. Identidad Nº <u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u>, quien ostenta el cargo de <u>{{ strtoupper($permisos->user->cargo->nombre) }}</u>, </p>
                 <p>para ausentarse de las dependencias del Servicio desde las <u>{{ Carbon\Carbon::parse($permisos->hora_inicio)->format("H:i") }}</u> hasta las <u>{{ Carbon\Carbon::parse($permisos->hora_fin)->format("H:i") }}</u> horas del dia <u>{{ Carbon\Carbon::parse($permisos->dia_inicio)->format("d") }} de {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("M") }} del {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("Y") }}</u>, con el objeto de realizar
                     <p>el siguiente cometido: <u>{{ strtoupper($permisos->descripcion) }}</u></p>
                 <p>en (lugar) <u>{{ strtoupper($permisos->lugar) }}</u></p>
