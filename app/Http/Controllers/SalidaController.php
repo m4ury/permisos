@@ -64,7 +64,6 @@ class SalidaController extends Controller
 
                 event(new SalidaFueCreada($salida));
 
-
                 return redirect()->route('salidas.index', $salida->id)->with('info', 'Nueva Salida creada!');
                 }else
                     return redirect()->route('salidas.index')->with('info', 'Algo paso...!');

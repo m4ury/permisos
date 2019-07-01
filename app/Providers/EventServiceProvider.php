@@ -19,7 +19,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         'App\Events\SalidaFueCreada' => [
-            'App\Listeners\NotificarDireccion'
+            'App\Listeners\NotificarDireccion',
+            'App\Listeners\NotificarSolicitante'
         ]
     ];
 

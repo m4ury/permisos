@@ -29,8 +29,10 @@ class NotificarDireccion
     {
         $salida = $event->salida;
 
-        Mail::send('emails.salidas', ['msg' => $salida], function($m) use($salida){
-            $m->to('mauriciomorales0410@gmail.com')->subject('Se ha generado una nueva Salida Especial N° '.$salida->id);
+        Mail::send('emails.salidas', ['salida' => $salida], function($m) use($salida){
+            $m
+            ->to('mmoraless@ssmaule.cl')
+            ->subject('Solicitud Salida Especial N° '.$salida->id);
         });
     }
 }
