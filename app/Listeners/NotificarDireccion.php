@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\SalidaFueCreada;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
+use Mail;
 
 class NotificarDireccion
 {
@@ -29,7 +29,7 @@ class NotificarDireccion
     {
         $salida = $event->salida;
 
-        Mail::send('emails.salidas', ['salida' => $salida], function($m) use($salida){
+        Mail::send('emails.salidas.direccion', ['salida' => $salida], function($m) use($salida){
             $m
             ->to('mmoraless@ssmaule.cl')
             ->subject('Solicitud Salida Especial N° '.$salida->id);

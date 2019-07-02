@@ -23,7 +23,7 @@ class SalidaController extends Controller
 
         $user = User::find(Auth::id());
 
-        $salidas = $user->salidas()->latest('dia_salida')->whereMonth('dia_salida', '=', date('m'))->paginate(7);
+        $salidas = $user->salidas()->latest('dia_salida')->whereMonth('dia_salida', '=', date('m'))->paginate(5);
 
             return view('salida.index', compact('salidas'));
     }
