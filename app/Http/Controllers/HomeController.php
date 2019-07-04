@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -27,9 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $usuario = User::findOrFail(Auth::id());
-        $cargoUsuario = $usuario->cargo;
-        $unidadUsuario = $usuario->unidad;
 
-        return view('home', compact('usuario', 'cargoUsuario', 'unidadUsuario'));
+        return view('home', compact('usuario'));
     }
 }

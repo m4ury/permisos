@@ -27,12 +27,12 @@
                             Calidad Contr.: {{ $usuario->contrato }}
                         </div>
                         <div class="col-6">
-                            Cargo: {{ $cargoUsuario->nombre }}
+                            Cargo: {{ $usuario->cargo->nombre }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            Unidad: {{ $unidadUsuario->nombre }}
+                            Unidad: {{ $usuario->unidad->nombre }}
                         </div>
                     </div>
                 </div>
