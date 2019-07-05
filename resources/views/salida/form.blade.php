@@ -12,8 +12,8 @@
     </span>
     @endif
 </div>
-
-<div class="form-group">
+<div class="row">
+<div class="col form-group">
     {!! Form::label('hora_salida', 'Hora Salida') !!} {!! Form::time('hora_salida', $salida->hora_salida, ['class' => 'form-control'.($errors->has('hora_salida') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_salida'))
     <span class="invalid-feedback">
@@ -21,7 +21,8 @@
     </span>
     @endif
 </div>
-<div class="form-group">
+
+<div class="col form-group">
     {!! Form::label('hora_llegada', 'Hora llegada') !!} {!! Form::time('hora_llegada', $salida->hora_llegada, ['class' => 'form-control'.($errors->has('hora_llegada') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_llegada'))
     <span class="invalid-feedback">
@@ -29,7 +30,7 @@
     </span>
     @endif
 </div>
-
+</div>
 <div class="form-group">
     {!! Form::label('descripcion', 'Motivo') !!} {!! Form::textarea('descripcion', $salida->descripcion, ['class' => 'form-control'.($errors->has('descripcion') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('descripcion'))

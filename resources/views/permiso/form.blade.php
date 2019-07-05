@@ -21,21 +21,23 @@
     @endif
 </div>--}}
 
-<div class="form-group">
+<div class="row">
+    <div class="col form-group">
     {!! Form::label('hora_inicio', 'Desde') !!} {!! Form::time('hora_inicio', $permiso->hora_inicio, ['class' => 'form-control'.($errors->has('hora_inicio') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('hora_inicio'))
         <span class="invalid-feedback">
         <strong>{{ $errors->first('hora_inicio') }}</strong>
     </span>
     @endif
-</div>
-<div class="form-group">
-    {!! Form::label('hora_fin', 'Desde') !!} {!! Form::time('hora_fin', $permiso->hora_fin, ['class' => 'form-control'.($errors->has('hora_fin') ? ' is-invalid' : '')]) !!}
-    @if ($errors->has('hora_fin'))
-        <span class="invalid-feedback">
-        <strong>{{ $errors->first('hora_fin') }}</strong>
-    </span>
-    @endif
+    </div>
+    <div class="col form-group">
+        {!! Form::label('hora_fin', 'Hasta') !!} {!! Form::time('hora_fin', $permiso->hora_fin, ['class' => 'form-control'.($errors->has('hora_fin') ? ' is-invalid' : '')]) !!}
+        @if ($errors->has('hora_fin'))
+            <span class="invalid-feedback">
+            <strong>{{ $errors->first('hora_fin') }}</strong>
+        </span>
+        @endif
+    </div>
 </div>
 
 <div class="form-group">
