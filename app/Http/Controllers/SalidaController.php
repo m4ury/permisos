@@ -13,6 +13,10 @@ use App\Events\SalidaFueCreada;
 
 class SalidaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,15 +24,9 @@ class SalidaController extends Controller
      */
     public function index()
     {
-        if (Auth::check()){
-
-        $user = User::find(Auth::id());
-
+        $user = User::findOrFail(Auth::id());
         $salidas = $user->salidas()->latest('dia_salida')->whereMonth('dia_salida', '=', date('m'))->paginate(5);
-
             return view('salida.index', compact('salidas'));
-        }else
-            return redirect()->route('login')->with('danger', 'Sesion expirada!!');
     }
 
     /**

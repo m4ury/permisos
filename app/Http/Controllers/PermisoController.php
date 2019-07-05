@@ -12,6 +12,10 @@ use App\Http\Requests\StorePermiso;
 
 class PermisoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,14 +23,10 @@ class PermisoController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::id());
-        $permisos = $user->permisos()->latest('dia_inicio')->whereMonth('dia_inicio', '=', date('m'))->paginate(7);
-
-       return view('permiso.index', compact('permisos'));
-
-
+        $user = User::findOrFail(Auth::id());
+        $permisos = $user->permisos()->latest('dia_inicio')->whereMonth('dia_inicio', '=', date('m'))->paginate(5);
+            return view('permiso.index', compact('permisos'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,10 +35,8 @@ class PermisoController extends Controller
     public function create()
     {
         $permiso = new Permiso;
-
-        return view('permiso.create', compact('permiso'));
+            return view('permiso.create', compact('permiso'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -52,7 +50,6 @@ class PermisoController extends Controller
         }else
             return redirect()->route('permisos.create');
     }
-
     /**
      * Display the specified resource.
      *
