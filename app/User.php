@@ -43,4 +43,8 @@ class User extends \TCG\Voyager\Models\User
     public function unidad(){
         return $this->belongsTo(Unidad::class);
     }
+
+    public function grupo(){
+        return $this->belongsTo(Unidad::class);
+    }
 }
