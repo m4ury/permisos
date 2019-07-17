@@ -50,6 +50,7 @@
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
                                 <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
+                                <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-file-invoice"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -47,4 +47,8 @@ class User extends \TCG\Voyager\Models\User
     public function grupo(){
         return $this->belongsTo(Unidad::class);
     }
+
+    public function profesion(){
+        return $this->belongsTo(Profesion::class);
+    }
 }

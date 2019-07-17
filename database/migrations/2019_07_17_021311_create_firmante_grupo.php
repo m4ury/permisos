@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
 
-class AddForeignKeyToUsers extends Migration
+class CreateFirmanteGrupo extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +13,14 @@ class AddForeignKeyToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+        Schema::create('firmante_grupo', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('firmante_id');
+            $table->unsignedInteger('grupo_id');
+
+            $table->foreign('firmante_id')->references('id')->on('firmantes');
             $table->foreign('grupo_id')->references('id')->on('grupos');
+            $table->timestamps();
         });
     }
 
@@ -27,8 +31,6 @@ class AddForeignKeyToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('firmante_grupo');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddGrupoToUsers extends Migration
+class CreateFirmantesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddGrupoToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('grupo_id')->after('role_id');
+        Schema::create('firmantes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->date('vigencia')->nullable();
+            $table->timestamps();
+
+            //$table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -25,8 +29,6 @@ class AddGrupoToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('firmantes');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddGrupoToUsers extends Migration
+class AddProfesionToUser extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddGrupoToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('grupo_id')->after('role_id');
+            $table->unsignedBigInteger('profesion_id')->after('grupo_id')->nullable();
+            $table->foreign('profesion_id')->references('id')->on('profesions');
         });
     }
 

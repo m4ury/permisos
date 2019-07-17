@@ -73,9 +73,15 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function showCap($id)
     {
-        //
+        $permisos = Permiso::findOrFail($id);
+
+        $view = view('capacitacion.show', compact('permisos'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
+
+        return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
     }
 
     /**

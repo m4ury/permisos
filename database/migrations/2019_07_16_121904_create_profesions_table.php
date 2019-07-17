@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddGrupoToUsers extends Migration
+class CreateProfesionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddGrupoToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('grupo_id')->after('role_id');
+        Schema::create('profesions', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('profesion_nombre');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddGrupoToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('profesions');
     }
 }

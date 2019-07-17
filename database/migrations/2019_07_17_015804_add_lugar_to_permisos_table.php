@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddGrupoToUsers extends Migration
+class AddLugarToPermisosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddGrupoToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('grupo_id')->after('role_id');
+        Schema::table('permisos', function (Blueprint $table) {
+            $table->string('lugar')->after('movilizacion')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddGrupoToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('permisos', function (Blueprint $table) {
             //
         });
     }
