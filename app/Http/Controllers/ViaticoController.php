@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Grupo;
-use App\User;
 use Illuminate\Http\Request;
 
-class GrupoController extends Controller
+class ViaticoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class GrupoController extends Controller
      */
     public function index()
     {
-        $grupos = Grupo::with('usuarios')->get();
-
-        return view('grupo.index', compact('grupos'));
+        //
     }
 
     /**
@@ -44,21 +40,27 @@ class GrupoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Grupo  $grupo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Grupo $grupo)
+    public function show($id)
     {
-        //
+        $permisos = Permiso::findOrFail($id);
+
+        $view = view('capacitacion.show', compact('permisos'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
+
+        return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Grupo  $grupo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grupo $grupo)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +69,10 @@ class GrupoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Grupo  $grupo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grupo $grupo)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,10 +80,10 @@ class GrupoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Grupo  $grupo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Grupo $grupo)
+    public function destroy($id)
     {
         //
     }

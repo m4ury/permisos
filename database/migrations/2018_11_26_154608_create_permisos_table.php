@@ -15,14 +15,12 @@ class CreatePermisosTable extends Migration
     {
         Schema::create('permisos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('correlativo');
             $table->dateTime('hora_inicio')->nullable();
             $table->dateTime('hora_fin')->nullable();
             $table->date('dia_inicio')->nullable();
-            $table->date('dia_fin')->nullable();
             $table->text('descripcion');
             $table->string('estado')->default('pendiente');
-            $table->boolean('viatico')->dafault(0);
+            $table->boolean('incluye_viatico')->dafault(0);
             $table->string('movilizacion')->nullable();
             $table->string('lugar')->nullable();
             $table->string('tipo');

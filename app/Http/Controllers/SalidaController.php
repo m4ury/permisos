@@ -39,7 +39,6 @@ class SalidaController extends Controller
         $salida = new Salida();
 
         return view('salida.create', compact('salida'));
-
     }
 
     /**
@@ -55,7 +54,6 @@ class SalidaController extends Controller
         $ocupadoMes = $user->salidas()->latest()->whereMonth('dia_salida', '=', date('m'))->sum('horas_ocupado');
 
         if (($ocupadoMes + $dif) <= 120 ) {
-
             if ($salida = Salida::updateOrCreate($request->except('_token'))) {
 
                 $diferencia = Carbon\Carbon::parse($request->hora_llegada)->diffInMinutes(Carbon\Carbon::parse($request->hora_salida));

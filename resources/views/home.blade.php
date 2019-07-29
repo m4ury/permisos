@@ -34,6 +34,9 @@
                         <div class="col">
                             Unidad: {{ $usuario->unidad->nombre }}
                         </div>
+                        <div class="col">
+                            Grado: {{ $usuario->grado }}
+                        </div>
                     </div>
                 </div>
             </div>

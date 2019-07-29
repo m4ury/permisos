@@ -14,6 +14,8 @@
 Route::resource('permisos', 'PermisoController');
 Route::resource('salidas', 'SalidaController');
 Route::get('capacitacion/{capacitacion}', 'PermisoController@showCap');
+Route::get('viatico/{viatico}', 'PermisoController@showViatico');
+Route::resource('grupos', 'GrupoController');
 
 Route::get('/', function () {
     return view('welcome');

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permiso extends Model
 {
-    protected $fillable = ['user_id', 'descripcion', 'viatico', 'lugar', 'dia_inicio', 'dia_fin', 'hora_inicio', 'hora_fin', 'viatico', 'movilizacion'];
+    protected $fillable = ['user_id', 'descripcion', 'incluye_viatico', 'lugar', 'dia_inicio', 'hora_inicio', 'hora_fin', 'comuna', 'movilizacion'];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -14,5 +14,12 @@ class Permiso extends Model
 
     public function viatico(){
         return $this->hasOne(Viatico::class);
+    }
+
+    public function crearConViatico($permiso_id){
+        $viatico = new Viatico;
+        $viatico->save([
+            $viatico->permiso_id = $permiso_id
+        ]);
     }
 }

@@ -11,6 +11,6 @@ class Grupo extends Model
     }
 
     public function firmantes(){
-        return $this->belongsToMany(Firmante::class);
+        return $this->hasMany(Firmante::class);
     }
 }

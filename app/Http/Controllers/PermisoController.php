@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Permiso;
 use App\User;
+use App\Viatico;
+use http\QueryString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
@@ -45,10 +47,15 @@ class PermisoController extends Controller
      */
     public function store(StorePermiso $request)
     {
-        if ($permiso = Permiso::create($request->except('_token'))){
-            return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!');
-        }else
-            return redirect()->route('permisos.create');
+        if ($request->incluye_viatico) {
+            $permiso = Permiso::updateOrCreate($request->except('_token'));
+            $permiso->crearConViatico($permiso->id);
+                return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado con Viatico!');
+        } else
+            if ($permiso = Permiso::updateOrCreate($request->except('_token'))){
+                return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!');
+            }else
+                return redirect()->route('permisos.create');
     }
     /**
      * Display the specified resource.
@@ -80,6 +87,17 @@ class PermisoController extends Controller
         $view = view('capacitacion.show', compact('permisos'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
+
+        return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
+    }
+
+    public function showViatico($id)
+    {
+        $permisos = Permiso::findOrFail($id);
+
+        $view = view('viatico.show', compact('permisos'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
         return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
     }

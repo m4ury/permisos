@@ -12,14 +12,6 @@
     </span>
     @endif
 </div>
-{{--<div class="form-group">
-    {!! Form::label('dia_fin', 'Dia fin') !!} {!! Form::date('dia_fin', $permiso->dia_fin, ['class' => 'form-control'.($errors->has('dia_fin') ? ' is-invalid' : '')]) !!}
-    @if ($errors->has('dia_fin'))
-        <span class="invalid-feedback">
-        <strong>{{ $errors->first('dia_fin') }}</strong>
-    </span>
-    @endif
-</div>--}}
 
 <div class="row">
     <div class="col form-group">
@@ -41,7 +33,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('descripcion', 'Motivo') !!} {!! Form::textarea('descripcion', $permiso->descripcion, ['class' => 'form-control'.($errors->has('descripcion') ? ' is-invalid' : '')]) !!}
+    {!! Form::label('descripcion', 'Descripción de la actividad') !!} {!! Form::textarea('descripcion', $permiso->descripcion, ['class' => 'form-control'.($errors->has('descripcion') ? ' is-invalid' : ''), 'rows' => "2"]) !!}
     @if ($errors->has('descripcion'))
     <span class="invalid-feedback">
         <strong>{{ $errors->first('descripcion') }}</strong>
@@ -49,18 +41,22 @@
     @endif
 </div>
 
-<div class="form-group">
-    {!! Form::label('lugar', 'Lugar') !!} {!! Form::select('lugar', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion', 'Curepto' => 'Curepto', 'Licanten' => 'Licanten', 'Hualañe' => 'Hualañe' ], $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'Indique lugar ']) !!}
-</div>
+<div class="row">
+    <div class="col form-group">
+        {!! Form::label('lugar', 'Lugar') !!} {!! Form::text('lugar', $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'lugar de realización']) !!}
+    </div>
 
+    <div class="col form-group">
+        {!! Form::label('comuna', 'Comuna') !!} {!! Form::select('comuna', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion', 'Curepto' => 'Curepto', 'Licanten' => 'Licanten', 'Hualañe' => 'Hualañe' ], $permiso->comuna, ['class' => 'form-control', 'placeholder' => 'Comuna']) !!}
+    </div>
+</div>
 <div class="form-group">
-    {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' =>
-    'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
+    {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
 </div>
 
 <hr>
 <div class="form-group btn btn-outline-success btn-block">
-    {!! Form::label('viatico', 'Viatico', ['class' => '' ]) !!} {!! Form::checkbox('viatico', 1, $permiso->viatico, ['class' => 'form-control']) !!}
+    {!! Form::label('viatico', 'Viatico', ['class' => '' ]) !!} {!! Form::checkbox('incluye_viatico', 1, $permiso->incluye_viatico, ['class' => 'form-control']) !!}
 </div>
 <hr>
 

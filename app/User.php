@@ -16,7 +16,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'rut', 'apellido_paterno', 'apellido_materno',
+        'name', 'email', 'password', 'rut', 'apellido_paterno', 'apellido_materno', 'grupo_id'
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends \TCG\Voyager\Models\User
     }
 
     public function grupo(){
-        return $this->belongsTo(Unidad::class);
+        return $this->belongsTo(Grupo::class);
     }
 
     public function profesion(){

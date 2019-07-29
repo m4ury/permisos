@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('rut')->unique();
             $table->string('apellido_paterno');
-            $table->string('apellido_amterno');
+            $table->string('apellido_materno');
             $table->boolean('activo')->default(1);
             $table->string('contrato')->nullable();
 

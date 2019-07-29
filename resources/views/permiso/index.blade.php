@@ -24,14 +24,13 @@
                         <thead>
                             <tr>
                                 <th>Dia</th>
-                                {{--<th>Dia fin</th>--}}
                                 <th>Hora Inicio</th>
                                 <th>Hora Fin</th>
                                 <th>Nº Resolucion</th>
                                 <th>Fecha Resolucion</th>
                                 <th>Motivo</th>
                                 <th>Lugar</th>
-                                <th>Acciones</th>
+                                <th colspan="3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +39,6 @@
 
                             <tr>
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
-                                {{--<td>{{ $fin = Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>--}}
 
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_inicio)->format("H:i") }}</td>
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_fin)->format("H:i") }}</td>
@@ -51,6 +49,9 @@
                                 <td>{{ $permiso->lugar }}</td>
                                 <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
                                 <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-file-invoice"></i></a></td>
+                                @if($permiso->incluye_viatico)
+                                <td><a class="btn btn-outline-secondary" href="{{ url('viatico/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-file-invoice"></i></a></td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
@@ -63,7 +64,7 @@
 
                     </div>
                     <div>
-                        {{ $permisos->links() }}
+{{--                        {{ $permisos->links() }}--}}
                     </div>
                 </div>
             </div>
