@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Permiso;
 use App\User;
-use App\Viatico;
-use http\QueryString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
@@ -26,7 +24,8 @@ class PermisoController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::id());
-        $permisos = $user->permisos()->latest('dia_inicio')->whereMonth('dia_inicio', '=', date('m'))->paginate(5);
+        $permisos = $user->permisos()->latest('dia_inicio')->whereMonth('created_at', '=', date('m'))->paginate(5);
+
             return view('permiso.index', compact('permisos'));
     }
     /**
@@ -43,19 +42,25 @@ class PermisoController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|string
      */
     public function store(StorePermiso $request)
     {
-        if ($request->incluye_viatico) {
-            $permiso = Permiso::updateOrCreate($request->except('_token'));
-            $permiso->crearConViatico($permiso->id);
+        try{
+            if ($request->incluye_viatico) {
+                $permiso = Permiso::updateOrCreate($request->except('_token'));
+                $permiso->crearConViatico($permiso->id);
                 return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado con Viatico!');
-        } else
-            if ($permiso = Permiso::updateOrCreate($request->except('_token'))){
-                return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!');
-            }else
-                return redirect()->route('permisos.create');
+            } else
+                return $permiso = Permiso::updateOrCreate($request->except('_token')) ? redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!') : redirect()->route('permisos.create');
+        }
+        catch (\PDOException $exception){
+            return back()
+                ->with('danger', 'Fecha Duplicada')
+                ->withInput()
+                ->withException($exception);
+        }
+
     }
     /**
      * Display the specified resource.

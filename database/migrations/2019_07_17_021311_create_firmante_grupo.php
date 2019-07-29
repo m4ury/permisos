@@ -16,7 +16,7 @@ class CreateFirmanteGrupo extends Migration
         Schema::create('firmante_grupo', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('firmante_id');
-            $table->unsignedInteger('grupo_id');
+            $table->unsignedBigInteger('grupo_id');
 
             $table->foreign('firmante_id')->references('id')->on('firmantes');
             $table->foreign('grupo_id')->references('id')->on('grupos');

@@ -8,6 +8,11 @@
                     <div class="card-header">Nuevo Cometido</div>
                     @if(session()->has('info'))
                         <div class="alert alert-success">{{ session('info') }}</div>
+                    @elseif(session()->has('danger'))
+                        <div id="alert" class="alert alert-danger text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{ session('danger') }}</strong>
+                        </div>
                     @endif
                     <div class="card-body">
                         @include('permiso.form', [ 'url' => 'permisos', 'method' => 'POST', 'action' => route('permisos.store')])

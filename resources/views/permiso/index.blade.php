@@ -64,7 +64,7 @@
 
                     </div>
                     <div>
-{{--                        {{ $permisos->links() }}--}}
+                       {{ $permisos->links() }}
                     </div>
                 </div>
             </div>

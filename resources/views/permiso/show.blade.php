@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-                <div class="col text-center pb-3">
+                <div class="col text-center pb-2">
                     <h6 class="font-weight-bold">ORDEN DE COMETIDO FUNCIONARIO Nº {{ $permisos->id }}</h6>
                 </div>
         </div>
@@ -60,6 +60,9 @@
             </div>
         </div>
     <style>
+        html{
+            font-size: small;
+        }
         body{
             background: #ffffff;
         }

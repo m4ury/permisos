@@ -3,11 +3,11 @@
 @stop
 @section('content')
     <?php use Freshwork\ChileanBundle\Rut; ?>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col">
                 <h6 class="font-weight-bold">I. DATOS PERSONALES</h6>
-                <table class="table table-striped table-bordered table-sm">
+                <table class="table-sm table-striped table-bordered">
                     <tr>
                         <th>Nombres</th>
                         <td colspan="4">{{ $permisos->user->name }}</td>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col">
                 <h6 class="font-weight-bold">II. ANTECEDENTES ACTIVIDAD</h6>
-                <table class="table table-striped table-bordered">
+                <table class="table-sm table-striped table-bordered">
                     <tr>
                         <th>Nombre de la Actividad</th>
                         <td colspan="4">{{ $permisos->descripcion }}</td>
@@ -77,27 +77,14 @@
         <div class="row">
             <div class="col">
                 <h6 class="font-weight-bold">III. ANTECEDENTES FINANCIAMIENTO</h6>
-                <table class="table table-striped table-bordered text-nowrap">
+                <table class="table-sm table-striped table-bordered">
                     <tr>
                         <th>Concepto</th>
                         <th>Monto</th>
-                        <th>Item</th>
                     </tr>
                     <tr>
                         <th>Viatico</th>
-                        <td colspan="2">{{ $permisos->viatico()->get('pasajes') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Lugar de realización</th>
-                        <td colspan="4">{{ $permisos->descripcion }}</td>
-                    </tr>
-                    <tr>
-                        <th>Fecha de realización</th>
-                        <td colspan="4">{{ $permisos->dia_inicio }}</td>
-                    </tr>
-                    <tr>
-                        <th>Documento con el cual se informó</th>
-                        <td colspan="4">{{ $permisos->descripcion }}</td>
+                        <td>{{ $permisos->viatico->valor ?? ''}}</td>
                     </tr>
                 </table>
             </div>
@@ -119,6 +106,10 @@
         </div>
     </div>
     <style>
+
+        html{
+            font-size: xx-small;
+        }
         body{
             background: #ffffff;
         }
