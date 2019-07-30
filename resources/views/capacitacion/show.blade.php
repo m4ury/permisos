@@ -3,11 +3,35 @@
 @stop
 @section('content')
     <?php use Freshwork\ChileanBundle\Rut; ?>
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 clearfix text-center">
+                <img style="height: 100px; width: 130px" src="{{ asset('img/logo-minsal.png') }}" alt="logo">
+                <ul class="list-unstyled font-weight-bold">
+                    <li>SUBDIRECCIÓN DE GESTION DE LAS PERSONAS</li>
+                    <li>DEPTO. DESARROLLO DE LAS PERSONAS</li>
+                    <li>CAPACITACION Y PERFECCIONAMIENTO</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="border border-dark float-right p-2">
+                    <h4><u>USO EXCLUSIVO DE CAPACITACIÓN:</u></h4>
+                    <ul class="list-unstyled">
+                        <li>Capacitación de Perfeccionaminto</li>
+                        <li>Capacitación Voluntaria</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <h5 class="font-weight-bold py-3"><u>FORMULARIO DE POSTULACIÓN A CAPACITACIÓN</u></h5>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
-                <h6 class="font-weight-bold">I. DATOS PERSONALES</h6>
-                <table class="table-sm table-striped table-bordered">
+                <h6 class="pt-3 font-weight-bold">I. DATOS PERSONALES</h6>
+                <table class="table table-striped table-bordered table-responsive-sm">
                     <tr>
                         <th>Nombres</th>
                         <td colspan="4">{{ $permisos->user->name }}</td>
@@ -49,7 +73,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <h6 class="font-weight-bold">II. ANTECEDENTES ACTIVIDAD</h6>
+                <h6 class="pt-3 font-weight-bold">II. ANTECEDENTES ACTIVIDAD</h6>
                 <table class="table-sm table-striped table-bordered">
                     <tr>
                         <th>Nombre de la Actividad</th>
@@ -76,7 +100,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <h6 class="font-weight-bold">III. ANTECEDENTES FINANCIAMIENTO</h6>
+                <h6 class="pt-3 font-weight-bold">III. ANTECEDENTES FINANCIAMIENTO</h6>
                 <table class="table-sm table-striped table-bordered">
                     <tr>
                         <th>Concepto</th>

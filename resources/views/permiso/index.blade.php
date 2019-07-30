@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
-    <div class="py-5 text-center">
+<div class="container-fluid">
+    <div class="pb-4 text-center">
         <h2 class="title">Cometidos</h2>
     </div>
 
@@ -19,8 +19,8 @@
             @endif
 
             <div class="row">
-                <div class="col">
-                    <table class="table table-striped">
+                <div class="col table-responsive">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Dia</th>
@@ -30,7 +30,7 @@
                                 <th>Fecha Resolucion</th>
                                 <th>Motivo</th>
                                 <th>Lugar</th>
-                                <th colspan="3">Acciones</th>
+                                <th class="text-center" colspan="3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,10 +47,10 @@
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
-                                <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
-                                <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-file-invoice"></i></a></td>
+                                <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="fas fa-print"></i></a></td>
+                                <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Capacit <i class="fas fa-file-invoice"></i></a></td>
                                 @if($permiso->incluye_viatico)
-                                <td><a class="btn btn-outline-secondary" href="{{ url('viatico/'.$permiso->id) }}" target="_blank">Print <i class="fas fa-file-invoice"></i></a></td>
+                                <td><a class="btn btn-outline-secondary" href="{{ url('viatico/'.$permiso->id) }}" target="_blank">Viatico <i class="fas fa-file-invoice"></i></a></td>
                                 @endif
                             </tr>
                             @endforeach
