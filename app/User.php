@@ -51,4 +51,8 @@ class User extends \TCG\Voyager\Models\User
     public function profesion(){
         return $this->belongsTo(Profesion::class);
     }
+
+    public function nombreCompleto($user_id){
+        return strtoupper($this->name.' '.$this->apellido_paterno.' '.$this->apellido_materno);
+    }
 }

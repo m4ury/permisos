@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col-sm-3 clearfix text-center">
                 <img style="height: 100px; width: 100px" src="{{ asset('img/logo.png') }}" alt="logo">
-                <p class="font-weight-bold">Hospital De Licanten</p>
-                <p class="font-weight-bold">Oficina de Recursos Humanos</p>
+                <h6 class="font-weight-bold">Hospital De Licanten</h6>
+                <h6 class="font-weight-bold">Oficina de Recursos Humanos</h6>
             </div>
             <div class="col text-center py-3">
                 <h5 class="font-weight-bold">ORDEN DE COMETIDO FUNCIONARIO Nº {{ $permisos->id }}</h5>
@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <p>La Dirección del Hospital de Licantén autoriza a don(ña) <u class="text-uppercase">{{ $permisos->user->name.' '.$permisos->user->apellido_paterno.' '.$permisos->user->apellido_materno }}</u>, C. Identidad Nº <u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u>, quien ostenta el cargo de <u class="text-uppercase">{{ $permisos->user->cargo->nombre }}</u>, </p>
+                <p>La Dirección del Hospital de Licantén autoriza a don(ña) <u class="text-uppercase">{{ $permisos->user->nombreCompleto(Auth::id()) }}</u>, C. Identidad Nº <u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u>, quien ostenta el cargo de <u class="text-uppercase">{{ $permisos->user->cargo->nombre }}</u>, </p>
                 <p>para ausentarse de las dependencias del Servicio desde las <u>{{ Carbon\Carbon::parse($permisos->hora_inicio)->format("H:i") }}</u> hasta las <u>{{ Carbon\Carbon::parse($permisos->hora_fin)->format("H:i") }}</u> horas del dia <u>{{ Carbon\Carbon::parse($permisos->dia_inicio)->format("d") }} de {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("M") }} del {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("Y") }}</u>, con el objeto de realizar
                     <p>el siguiente cometido: <u class="text-uppercase">{{ $permisos->descripcion }}</u></p>
                 <p>en (lugar) <u class="text-uppercase">{{ $permisos->lugar.", ".$permisos->comuna }}</u></p>

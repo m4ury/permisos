@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
     <div class="pb-4 text-center">
         <h2 class="title">Cometidos</h2>
     </div>

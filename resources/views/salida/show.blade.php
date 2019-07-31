@@ -6,11 +6,10 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4 clearfix text-center">
-                <img style="height: 120px; width: 120px" src="{{ asset('img/logo.png') }}" alt="logo">
-                <p class="font-weight-bold">Oficina de Recursos Humanos</p>
-            </div>
+        <div class="col-sm-3 clearfix text-center">
+            <img style="height: 100px; width: 100px" src="{{ asset('img/logo.png') }}" alt="logo">
+            <h6 class="font-weight-bold">Hospital De Licanten</h6>
+            <h6 class="font-weight-bold">Oficina de Recursos Humanos</h6>
         </div>
         <div class="row">
             <div class="col-sm-8 float-right py-3">

@@ -17,8 +17,8 @@
                 <div class="border border-dark float-right p-2">
                     <h4><u>USO EXCLUSIVO DE CAPACITACIÓN:</u></h4>
                     <ul class="list-unstyled">
-                        <li>Capacitación de Perfeccionaminto</li>
-                        <li>Capacitación Voluntaria</li>
+                        <li><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>Capacitación de Perfeccionamiento</li>
+                        <li><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>Capacitación Voluntaria</li>
                     </ul>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                     </tr>
                     <tr>
                         <th>Lugar de realización</th>
-                        <td colspan="4">{{ $permisos->lugar." ".$permisos->comuna }}</td>
+                        <td colspan="4" class="text-uppercase">{{ $permisos->lugar." ".$permisos->comuna }}</td>
                     </tr>
                     <tr>
                         <th>Fecha de realización</th>
@@ -93,7 +93,7 @@
                     </tr>
                     <tr>
                         <th>Documento con el cual se informó</th>
-                        <td colspan="4">{{ $permisos->doc_informacion }}</td>
+                        <td colspan="4" class="text-uppercase">{{ $permisos->doc_informacion }}</td>
                     </tr>
                 </table>
             </div>
@@ -101,7 +101,7 @@
         <div class="row">
             <div class="col">
                 <h6 class="pt-3 font-weight-bold">III. ANTECEDENTES FINANCIAMIENTO</h6>
-                <table class="table-sm table-striped table-bordered">
+                <table class="table table-striped table-bordered">
                     <tr>
                         <th>Concepto</th>
                         <th>Monto</th>
@@ -109,6 +109,10 @@
                     <tr>
                         <th>Viatico</th>
                         <td>{{ $permisos->viatico->valor ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th>Pasajes</th>
+                        <td>{{ $permisos->viatico->pasajes ?? ''}}</td>
                     </tr>
                 </table>
             </div>
