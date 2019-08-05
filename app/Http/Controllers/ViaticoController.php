@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Viatico;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ViaticoController extends Controller
 {
@@ -45,13 +47,13 @@ class ViaticoController extends Controller
      */
     public function show($id)
     {
-        $permisos = Permiso::findOrFail($id);
+        $viatico = Viatico::findOrFail($id);
 
-        $view = view('capacitacion.show', compact('permisos'));
+        $view = view('viatico.show', compact('viatico'));
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
+        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
-        return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
+        return $pdf->stream('viatico_'.$viatico->id.'_'.$viatico->created_at.'pdf');
     }
 
     /**
@@ -62,7 +64,9 @@ class ViaticoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $viatico = Viatico::findOrfail($id);
+
+            return view('viatico.edit', compact('viatico'));
     }
 
     /**
@@ -74,7 +78,13 @@ class ViaticoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $viatico = Viatico::findOrFail($id);
+
+        if($viatico->update($request->all())){
+            return redirect('permisos')->with('info', 'El valor del viatico ha sido modificado!');
+        }else{
+            return view('viatico.edit', compact('viatico'));
+        }
     }
 
     /**

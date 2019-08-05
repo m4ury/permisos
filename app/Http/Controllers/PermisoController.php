@@ -97,7 +97,7 @@ class PermisoController extends Controller
         return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
     }
 
-    public function showViatico($id)
+    /*public function showViatico($id)
     {
         $permisos = Permiso::findOrFail($id);
 
@@ -106,7 +106,7 @@ class PermisoController extends Controller
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
         return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
-    }
+    }*/
 
     /**
      * Update the specified resource in storage.

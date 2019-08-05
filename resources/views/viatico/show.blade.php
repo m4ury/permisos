@@ -18,9 +18,9 @@
             <div class="col pt-5">
                 <table class="py-5">
 
-                    <tr><th>NOMBRES COMPLETO DEL FUNCIONARIO: </th><td><u>{{$permisos->user->nombreCompleto(Auth::id())}}</u></td></tr>
-                    <tr><th>CALIDAD FUNCIONARIA: </th><td><u>{{ $permisos->user->contrato }}</u></td></tr>
-                    <tr><th>RUT.: </th><td><u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u></td><th>CARGO: </th><td><u>{{ $permisos->user->cargo->nombre }}</u></td></tr>
+                    <tr><th>NOMBRES COMPLETO DEL FUNCIONARIO: </th><td><u>{{$viatico->permiso->user->nombreCompleto(Auth::id())}}</u></td></tr>
+                    <tr><th>CALIDAD FUNCIONARIA: </th><td><u>{{ $viatico->permiso->user->contrato }}</u></td></tr>
+                    <tr><th>RUT.: </th><td><u>{{ Rut::parse($viatico->permiso->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u></td><th>CARGO: </th><td><u>{{ $viatico->permiso->user->cargo->nombre }}</u></td></tr>
 
                 </table>
             </div>

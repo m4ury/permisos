@@ -30,6 +30,7 @@
                                 <th>Fecha Resolucion</th>
                                 <th>Motivo</th>
                                 <th>Lugar</th>
+                                <th>Editar Viatico</th>
                                 <th class="text-center" colspan="3">Acciones</th>
                             </tr>
                         </thead>
@@ -47,6 +48,10 @@
                                 <td>{{ $inicio = Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
+                                @if($permiso->incluye_viatico)
+                                    <td><a class="" href="{{ url('viaticos/'.$permiso->viatico->id).'/edit' }}" target="_blank">Ver</a></td>
+                                @endif
+
                                 <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="fas fa-print"></i></a></td>
 
                                 @if($permiso->es_capacitacion)
@@ -54,7 +59,7 @@
                                 @endif
 
                                 @if($permiso->incluye_viatico)
-                                <td><a class="btn btn-outline-secondary" href="{{ url('viatico/'.$permiso->id) }}" target="_blank">Viatico <i class="fas fa-file-invoice"></i></a></td>
+                                <td><a class="btn btn-outline-secondary" href="{{ url('viaticos/'.$permiso->viatico->id) }}" target="_blank">Viatico <i class="fas fa-file-invoice"></i></a></td>
                                 @endif
                             </tr>
                             @endforeach
