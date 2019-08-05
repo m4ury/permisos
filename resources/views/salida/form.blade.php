@@ -32,7 +32,7 @@
 </div>
 </div>
 <div class="form-group">
-    {!! Form::label('descripcion', 'Motivo') !!} {!! Form::textarea('descripcion', $salida->descripcion, ['class' => 'form-control'.($errors->has('descripcion') ? ' is-invalid' : '')]) !!}
+    {!! Form::label('descripcion', 'Motivo') !!} {!! Form::textarea('descripcion', $salida->descripcion, ['class' => 'form-control'.($errors->has('descripcion') ? ' is-invalid' : ''),'rows' => "2"]) !!}
     @if ($errors->has('descripcion'))
     <span class="invalid-feedback">
         <strong>{{ $errors->first('descripcion') }}</strong>

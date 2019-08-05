@@ -50,6 +50,7 @@ class PermisoController extends Controller
             if ($request->incluye_viatico) {
                 $permiso = Permiso::updateOrCreate($request->except('_token'));
                 $permiso->crearConViatico($permiso->id);
+
                 return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado con Viatico!');
             } else
                 return $permiso = Permiso::updateOrCreate($request->except('_token')) ? redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!') : redirect()->route('permisos.create');

@@ -43,6 +43,16 @@
 
 <div class="row">
     <div class="col form-group">
+        {!! Form::label('organizador', 'Organizador') !!} {!! Form::text('organizador', $permiso->organizador, ['class' => 'form-control', 'placeholder' => 'Quien Organiza']) !!}
+    </div>
+
+    <div class="col form-group">
+        {!! Form::label('dcto_info', 'Doc Info') !!} {!! Form::select('doc_informacion', ['Correo' => 'correo', 'Telefono' => 'telefono', 'Web' => 'web'], $permiso->doc_informacion, ['class' => 'form-control', 'placeholder' => 'Documento informacion']) !!}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col form-group">
         {!! Form::label('lugar', 'Lugar') !!} {!! Form::text('lugar', $permiso->lugar, ['class' => 'form-control', 'placeholder' => 'lugar de realización']) !!}
     </div>
 
@@ -55,8 +65,13 @@
 </div>
 
 <hr>
-<div class="form-group btn btn-outline-success btn-block">
+<div class="row text-center">
+<div class="col form-group btn btn-outline-success mx-3">
     {!! Form::label('viatico', 'Viatico', ['class' => '' ]) !!} {!! Form::checkbox('incluye_viatico', 1, $permiso->incluye_viatico, ['class' => 'form-control']) !!}
+</div>
+<div class="col form-group btn btn-outline-primary mx-3">
+    {!! Form::label('es_capacitacion', 'Capacitación', ['class' => '' ]) !!} {!! Form::checkbox('es_capacitacion', 1, $permiso->es_capacitacion, ['class' => 'form-control']) !!}
+</div>
 </div>
 <hr>
 

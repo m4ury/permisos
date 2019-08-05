@@ -17,15 +17,11 @@
         <div class="row">
             <div class="col pt-5">
                 <table class="py-5">
-                    <tr>
-                        <th>NOMBRES COMPLETO DEL FUNCIONARIO:</th>
-                        <td>{{ $permisos->user->name }}</td>
-                    </tr>
-                    <tr><th> </th><td><u>{{$permisos->user->nombreCompleto(Auth::id())}}</u></td></tr>
+
+                    <tr><th>NOMBRES COMPLETO DEL FUNCIONARIO: </th><td><u>{{$permisos->user->nombreCompleto(Auth::id())}}</u></td></tr>
                     <tr><th>CALIDAD FUNCIONARIA: </th><td><u>{{ $permisos->user->contrato }}</u></td></tr>
                     <tr><th>RUT.: </th><td><u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u></td><th>CARGO: </th><td><u>{{ $permisos->user->cargo->nombre }}</u></td></tr>
 
-                    </thead>
                 </table>
             </div>
         </div>

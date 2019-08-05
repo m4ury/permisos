@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permiso extends Model
 {
-    protected $fillable = ['user_id', 'descripcion', 'incluye_viatico', 'lugar', 'dia_inicio', 'hora_inicio', 'hora_fin', 'comuna', 'movilizacion', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'descripcion', 'incluye_viatico', 'es_capacitacion', 'lugar', 'dia_inicio', 'hora_inicio', 'hora_fin', 'comuna', 'movilizacion', 'created_at', 'updated_at', 'organizador', 'doc_informacion'];
 
     public function user(){
         return $this->belongsTo(User::class);

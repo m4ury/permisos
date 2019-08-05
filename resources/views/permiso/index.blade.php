@@ -48,7 +48,11 @@
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
                                 <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="fas fa-print"></i></a></td>
+
+                                @if($permiso->es_capacitacion)
                                 <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Capacit <i class="fas fa-file-invoice"></i></a></td>
+                                @endif
+
                                 @if($permiso->incluye_viatico)
                                 <td><a class="btn btn-outline-secondary" href="{{ url('viatico/'.$permiso->id) }}" target="_blank">Viatico <i class="fas fa-file-invoice"></i></a></td>
                                 @endif
