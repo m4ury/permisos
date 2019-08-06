@@ -26,7 +26,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Editando Viatico Nº {{ $viatico->id }}</div>
+                    <div class="card-header">Editando Viatico Nº {{ $permiso->viatico->id }}</div>
                     @if(session()->has('info'))
                         <div class="alert alert-success">{{ session('info') }}</div>
                     @elseif(session()->has('danger'))
@@ -37,7 +37,7 @@
                     @endif
                     <div class="card-body">
                         {{--@include('viatico.form', ['viatico' => $viatico, 'route' => [ 'viatico.update', $viatico->id ], 'method' => 'PATCH']);--}}
-                        @include('viatico.form', ['viaticos' => $viatico, 'route' => [ 'viaticos.update', $viatico->id ], 'method' => 'PATCH'])
+                        @include('viatico.form', ['viatico' => $permiso->viatico, 'route' => [ 'viaticos.update', $permiso->viatico->id ], 'method' => 'PATCH'])
                     </div>
                 </div>
             </div>

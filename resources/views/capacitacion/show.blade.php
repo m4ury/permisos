@@ -44,7 +44,7 @@
                         <th>R.U.N.</th>
                         <td colspan="2">{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</td>
                         <th>Profesion</th>
-                        <td>{{ $permisos->user->profesion->profesion_nombre }}</td>
+                        <td>{{ $permisos->user->profesion->profesion_nombre ?? '--' }}</td>
                     </tr>
                     <tr>
                         <th>Cargo</th>
@@ -56,13 +56,13 @@
                         <th>Calidad Juridica</th>
                         <td colspan="2">{{ $permisos->user->contrato }}</td>
                         <th>Grado</th>
-                        <td>{{ $permisos->user->grado }}</td>
+                        <td>{{ $permisos->user->grado ?? '--' }}</td>
                     </tr>
                     <tr>
                         <th>Anexo</th>
-                        <td colspan="2">{{ $permisos->user->anexo }}</td>
+                        <td colspan="2">{{ $permisos->user->anexo ?? '--' }}</td>
                         <th>Celular</th>
-                        <td>{{ $permisos->user->celular }}</td>
+                        <td>{{ $permisos->user->celular ?? '--'}}</td>
                     </tr>
                     <tr>
                         <th>E-mail</th>
@@ -74,22 +74,22 @@
         <div class="row">
             <div class="col">
                 <h6 class="pt-3 font-weight-bold">II. ANTECEDENTES ACTIVIDAD</h6>
-                <table class="table-sm table-striped table-bordered">
+                <table class="table table-striped table-bordered">
                     <tr>
                         <th>Nombre de la Actividad</th>
                         <td colspan="4">{{ $permisos->descripcion }}</td>
                     </tr>
                     <tr>
                         <th>Organizado por</th>
-                        <td colspan="4">{{ $permisos->organizador }}</td>
+                        <td colspan="4" class="text-uppercase">{{ $permisos->organizador }}</td>
                     </tr>
                     <tr>
                         <th>Lugar de realización</th>
-                        <td colspan="4" class="text-uppercase">{{ $permisos->lugar." ".$permisos->comuna }}</td>
+                        <td colspan="4" class="text-uppercase">{{ $permisos->lugar.", ".$permisos->comuna }}</td>
                     </tr>
                     <tr>
                         <th>Fecha de realización</th>
-                        <td colspan="4">{{ Carbon\Carbon::parse($permisos->dia_inicio)->format("d-m-Y") }}</td>
+                        <td colspan="4">Desde {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("d-m-Y") }} {{ 'Hasta'.Carbon\Carbon::parse($permisos->dia_fin)->format("d-m-Y") ?? '' }}</td>
                     </tr>
                     <tr>
                         <th>Documento con el cual se informó</th>
@@ -108,11 +108,11 @@
                     </tr>
                     <tr>
                         <th>Viatico</th>
-                        <td>{{ $permisos->viatico->valor ?? ''}}</td>
+                        <td>{{ number_format($permisos->viatico->valor, 0) ?? ''}}</td>
                     </tr>
                     <tr>
                         <th>Pasajes</th>
-                        <td>{{ $permisos->viatico->pasajes ?? ''}}</td>
+                        <td>{{ number_format($permisos->viatico->pasajes, 0) ?? ''}}</td>
                     </tr>
                 </table>
             </div>

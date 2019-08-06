@@ -62,12 +62,12 @@ class ViaticoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    /*public function edit($id)
     {
         $viatico = Viatico::findOrfail($id);
 
-            return view('viatico.edit', compact('viatico'));
-    }
+            return view('permiso.edit', compact('viatico'));
+    }*/
 
     /**
      * Update the specified resource in storage.
@@ -83,7 +83,7 @@ class ViaticoController extends Controller
         if($viatico->update($request->all())){
             return redirect('permisos')->with('info', 'El valor del viatico ha sido modificado!');
         }else{
-            return view('viatico.edit', compact('viatico'));
+            return view('viatico.form', compact('viatico'));
         }
     }
 

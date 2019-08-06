@@ -27,6 +27,7 @@ class StorePermiso extends FormRequest
     {
        return [
           'dia_inicio' => 'required',
+           'dia_fin' => 'required|after_or_equal:dia_inicio',
           'hora_inicio' => 'required',
           'hora_fin' => 'required|after_or_equal:hora_inicio',
           'descripcion' => 'required|min:5',

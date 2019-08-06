@@ -4,13 +4,23 @@
 
 {!! Form::hidden('user_id', Auth::user()->id) !!}
 
-<div class="form-group">
-    {!! Form::label('dia_inicio', 'Dia') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control'.($errors->has('dia_inicio') ? ' is-invalid' : '')]) !!}
+<div class="row">
+<div class="col form-group">
+    {!! Form::label('dia_inicio', 'Dia inicio') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control'.($errors->has('dia_inicio') ? ' is-invalid' : '')]) !!}
     @if ($errors->has('dia_inicio'))
         <span class="invalid-feedback">
         <strong>{{ $errors->first('dia_inicio') }}</strong>
     </span>
     @endif
+</div>
+<div class="col form-group">
+    {!! Form::label('dia_fin', 'Dia fin') !!} {!! Form::date('dia_fin', $permiso->dia_fin, ['class' => 'form-control'.($errors->has('dia_fin') ? ' is-invalid' : '')]) !!}
+    @if ($errors->has('dia_fin'))
+        <span class="invalid-feedback">
+        <strong>{{ $errors->first('dia_fin') }}</strong>
+    </span>
+    @endif
+</div>
 </div>
 
 <div class="row">

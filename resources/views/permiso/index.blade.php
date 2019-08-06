@@ -49,7 +49,7 @@
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
                                 @if($permiso->incluye_viatico)
-                                    <td><a class="" href="{{ url('viaticos/'.$permiso->viatico->id).'/edit' }}" target="_blank">Ver</a></td>
+                                    <td><button class="btn btn-success" data-toggle="modal" data-target="#editModal" href="{{ url('viaticos/'.$permiso->viatico->id).'/edit' }}">Edit</button></td>
                                 @endif
 
                                 <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="fas fa-print"></i></a></td>
@@ -77,6 +77,9 @@
                     </div>
                 </div>
             </div>
+            @if($permisos->has('viatico'))
+            @include('viatico.form',[ 'url' => 'permisos', 'method' => 'PATCH', 'action' => route('viaticos.update', $permiso->viatico->id)])
+                @endif
 </div>
 <script>
     $(document).ready(function(){
