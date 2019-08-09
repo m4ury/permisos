@@ -88,9 +88,14 @@ class PermisoController extends Controller
      */
     public function showCap($id)
     {
+
         $permisos = Permiso::findOrFail($id);
 
-        $view = view('capacitacion.show', compact('permisos'));
+
+        if($permisos->dia_fin) {
+            $rangos = $permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin);
+        }
+        $view = view('capacitacion.show', compact('permisos', 'rangos'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
 

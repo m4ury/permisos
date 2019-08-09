@@ -2,7 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;use Illuminate\Database\Eloquent\Model;
 
 class Permiso extends Model
 {
@@ -22,4 +23,15 @@ class Permiso extends Model
             $viatico->permiso_id = $permiso_id,
         ]);
     }
-}
+
+    public function fechasDesdeRango($diaInicio, $diaFin){
+        $periodo = CarbonPeriod::create($diaInicio, $diaFin);
+        $p = array();
+
+        foreach ($periodo as $date){
+            $p[] = Carbon::parse($date)->format('d-m-Y');
+        }
+
+        return $p;
+        }
+    }

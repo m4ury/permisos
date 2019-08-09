@@ -2,7 +2,7 @@
 @section('nav')
 @stop
 @section('content')
-    <?php use Freshwork\ChileanBundle\Rut; ?>
+    <?php use Freshwork\ChileanBundle\Rut;?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4 clearfix text-center">
@@ -89,7 +89,10 @@
                     </tr>
                     <tr>
                         <th>Fecha de realización</th>
-                        <td colspan="4">Desde {{ Carbon\Carbon::parse($permisos->dia_inicio)->format("d-m-Y") }} {{ 'Hasta'.Carbon\Carbon::parse($permisos->dia_fin)->format("d-m-Y") ?? '' }}</td>
+                            @foreach($rangos as $rango)
+
+                        <td colspan="4">{{ print_r($rango) }}</td>
+                                    @endforeach
                     </tr>
                     <tr>
                         <th>Documento con el cual se informó</th>
