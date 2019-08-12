@@ -73,7 +73,13 @@ class PermisoController extends Controller
     {
         $permisos = Permiso::findOrFail($id);
 
-        $view = view('permiso.show', compact('permisos'));
+        if($permisos->dia_fin) {
+            $rangos = $permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin);
+            $rango = implode( substr_replace($rangos,' - '.PHP_EOL,10,0));
+
+        }
+
+        $view = view('permiso.show', compact('permisos', 'rango'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
@@ -94,8 +100,10 @@ class PermisoController extends Controller
 
         if($permisos->dia_fin) {
             $rangos = $permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin);
-        }
-        $view = view('capacitacion.show', compact('permisos', 'rangos'));
+                $rango = implode( substr_replace($rangos,' - '.PHP_EOL,10,0));
+
+            }
+        $view = view('capacitacion.show', compact('permisos', 'rango'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
 

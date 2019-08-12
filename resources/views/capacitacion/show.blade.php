@@ -89,10 +89,8 @@
                     </tr>
                     <tr>
                         <th>Fecha de realización</th>
-                            @foreach($rangos as $rango)
 
-                        <td colspan="4">{{ print_r($rango) }}</td>
-                                    @endforeach
+                        <td colspan="4">{{ $rango ?? $permisos->dia_inicio }}</td>
                     </tr>
                     <tr>
                         <th>Documento con el cual se informó</th>

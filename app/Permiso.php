@@ -32,6 +32,6 @@ class Permiso extends Model
             $p[] = Carbon::parse($date)->format('d-m-Y');
         }
 
-        return $p;
+        return preg_replace("!([\b\t\n\r\f\"\\'])!", "\\\\\\1", $p);
         }
     }

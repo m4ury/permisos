@@ -23,7 +23,8 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Dia</th>
+                                <th>Dia Inicio</th>
+                                <th>Dia Fin</th>
                                 <th>Hora Inicio</th>
                                 <th>Hora Fin</th>
                                 <th>Nº Resolucion</th>
@@ -39,19 +40,16 @@
                             @foreach($permisos as $permiso)
 
                             <tr>
-                                <td>{{ $inicio = Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
-
+                                <td>{{ Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
+                                <td>{{ Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_inicio)->format("H:i") }}</td>
                                 <td>{{ Carbon\Carbon::parse($permiso->hora_fin)->format("H:i") }}</td>
                                 <td>{{ $permiso->id }}</td>
 
-                                <td>{{ $inicio = Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
+                                <td>{{ Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
-                                @if($permiso->incluye_viatico)
-                                    <td><button class="btn btn-success" data-toggle="modal" data-target="#editModal" href="{{ url('viaticos/'.$permiso->viatico->id).'/edit' }}">Edit</button></td>
-                                @endif
-
+                                <td><button class="btn btn-success" data-toggle="modal" data-target="#editModal" href="{{ url('viaticos/'.$permiso->viatico->id) }}">Edit</button></td>
                                 <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="fas fa-print"></i></a></td>
 
                                 @if($permiso->es_capacitacion)
@@ -77,9 +75,7 @@
                     </div>
                 </div>
             </div>
-            @if($permisos->has('viatico'))
             @include('viatico.form',[ 'url' => 'permisos', 'method' => 'PATCH', 'action' => route('viaticos.update', $permiso->viatico->id)])
-                @endif
 </div>
 <script>
     $(document).ready(function(){
