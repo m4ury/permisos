@@ -57,7 +57,7 @@
     </div>
 
     <div class="col form-group">
-        {!! Form::label('dcto_info', 'Doc Info') !!} {!! Form::select('doc_informacion', ['Mail' => 'mail', 'Telefono' => 'telefono', 'Web' => 'web'], $permiso->doc_informacion, ['class' => 'form-control', 'placeholder' => 'Documento informacion']) !!}
+        {!! Form::label('dcto_info', 'Doc Info') !!} {!! Form::select('doc_informacion', ['Correo' => 'correo', 'Telefono' => 'telefono', 'Web' => 'web'], $permiso->doc_informacion, ['class' => 'form-control', 'placeholder' => 'Documento informacion']) !!}
     </div>
 </div>
 
