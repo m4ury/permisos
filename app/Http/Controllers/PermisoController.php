@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Permiso;
 use App\User;
+use Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
 use App\Http\Requests\StorePermiso;
+use PDOException;
 
 
 class PermisoController extends Controller
@@ -16,37 +19,40 @@ class PermisoController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
         $user = User::findOrFail(Auth::id());
         $permisos = $user->permisos()->latest('dia_inicio')->whereMonth('created_at', '=', date('m'))->paginate(5);
 
-            return view('permiso.index', compact('permisos'));
+        return view('permiso.index', compact('permisos'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
         $permiso = new Permiso;
-            return view('permiso.create', compact('permiso'));
+        return view('permiso.create', compact('permiso'));
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response|string
+     * @param Request $request
+     * @return Response|string
      */
     public function store(StorePermiso $request)
     {
-        try{
+        try {
             if ($request->incluye_viatico) {
                 $permiso = Permiso::updateOrCreate($request->except('_token'));
                 $permiso->crearConViatico($permiso->id);
@@ -54,8 +60,7 @@ class PermisoController extends Controller
                 return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado con Viatico!');
             } else
                 return $permiso = Permiso::updateOrCreate($request->except('_token')) ? redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!') : redirect()->route('permisos.create');
-        }
-        catch (\PDOException $exception){
+        } catch (PDOException $exception) {
             return back()
                 ->with('danger', 'Fecha Duplicada')
                 ->withInput()
@@ -63,51 +68,43 @@ class PermisoController extends Controller
         }
 
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show($id)
     {
         $permisos = Permiso::findOrFail($id);
 
-        if($permisos->dia_fin) {
-            $rangos = $permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin);
-            $rango = implode( substr_replace($rangos,' - '.PHP_EOL,10,0));
-
-        }
+        $rango = $permisos->dia_fin > $permisos->dia_inicio ? implode(substr_replace($permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin), ' - ', 10, 0)) : Carbon\Carbon::parse($permisos->dia_inicio)->toFormattedDateString();
 
         $view = view('permiso.show', compact('permisos', 'rango'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
-        return $pdf->stream('permiso_'.$permisos->id.'.pdf');
+        return $pdf->stream('permiso_' . $permisos->id . '.pdf');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function showCap($id)
     {
-
         $permisos = Permiso::findOrFail($id);
 
+        $rango = $permisos->dia_fin > $permisos->dia_inicio ? implode(substr_replace($permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin), ' - ', 10, 0)) : Carbon\Carbon::parse($permisos->dia_inicio)->toFormattedDateString();
 
-        if($permisos->dia_fin) {
-            $rangos = $permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin);
-                $rango = implode( substr_replace($rangos,' - '.PHP_EOL,10,0));
-
-            }
         $view = view('capacitacion.show', compact('permisos', 'rango'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
 
-        return $pdf->stream('cap_'.$permisos->id.'_'.$permisos->created_at.'pdf');
+        return $pdf->stream('cap_' . $permisos->id . '_' . $permisos->created_at . 'pdf');
     }
 
     /*public function showViatico($id)
@@ -124,9 +121,9 @@ class PermisoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -136,8 +133,8 @@ class PermisoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy($id)
     {

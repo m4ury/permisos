@@ -31,7 +31,7 @@
                                 <th>Fecha Resolucion</th>
                                 <th>Motivo</th>
                                 <th>Lugar</th>
-                                <th>Editar Viatico</th>
+                                <th colspan="2">Editar Viatico</th>
                                 <th class="text-center" colspan="3">Acciones</th>
                             </tr>
                         </thead>
@@ -49,7 +49,11 @@
                                 <td>{{ Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                                 <td>{{ $permiso->descripcion }}</td>
                                 <td>{{ $permiso->lugar }}</td>
+                                @if($permiso->viatico)
                                 <td><button class="btn btn-success" data-toggle="modal" data-target="#editModal" href="{{ url('viaticos/'.$permiso->viatico->id) }}">Edit</button></td>
+                                    @else
+                                    <td><button class="btn btn-success" disabled>Edit</button></td>
+                                @endif
                                 <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="fas fa-print"></i></a></td>
 
                                 @if($permiso->es_capacitacion)
