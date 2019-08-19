@@ -40,6 +40,8 @@
                     </div>
                 </div>
             </div>
+
+            <user-component></user-component>
         </div>
     </div>
 
