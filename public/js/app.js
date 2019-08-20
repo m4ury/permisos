@@ -14167,7 +14167,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(39);
+module.exports = __webpack_require__(43);
 
 
 /***/ }),
@@ -14178,7 +14178,7 @@ __webpack_require__(13);
 
 window.Vue = __webpack_require__(35);
 
-Vue.component('user-component', __webpack_require__(44), { name: 'user-component' }).default;
+Vue.component('user-component', __webpack_require__(39), { name: 'user-component' }).default;
 
 var app = new Vue({
     el: '#app'
@@ -48886,24 +48886,14 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 /* 39 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(49)
+var normalizeComponent = __webpack_require__(40)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(41)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(42)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48942,11 +48932,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -49055,7 +49041,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 50 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49076,85 +49062,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    data: function data() {
+        return {
+            datos: []
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get('home').then(function (response) {
+            _this.datos = response.data;
+        });
     }
 });
 
 /***/ }),
-/* 51 */,
-/* 52 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "card" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c(
+        "ul",
+        { staticClass: "list-group" },
+        _vm._l(_vm.datos, function(item, index) {
+          return _c("li", { key: index, staticClass: "list-group-item" }, [
+            _vm._v("\n                " + _vm._s(item.name) + "\n            ")
+          ])
+        }),
+        0
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _c("h5", [_vm._v("Informacion Funcionario")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _vm._v("\n                        Nombre:\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _vm._v("\n                        Rut: \n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _vm._v(
-              "\n                        Calidad Contr.: \n                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _vm._v("\n                        Cargo: \n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col" }, [
-            _vm._v("\n                        Unidad: \n                    ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _vm._v("\n                        Grado: \n                    ")
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", [_vm._v("Informacion Funcionario")])
     ])
   }
 ]
@@ -49166,6 +49121,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-7f050fd2", module.exports)
   }
 }
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

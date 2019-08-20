@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -23,10 +24,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuario = User::findOrFail(Auth::id());
+        /*return User::findOrFail(Auth::id());*/
 
-        return view('home', compact('usuario'));
+        if($request->ajax()){
+            return User::findOrFail(auth()->user()->id);
+        }else{
+            return view('home');
+        }
     }
 }

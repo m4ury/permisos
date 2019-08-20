@@ -1,41 +1,30 @@
 <template>
+
     <div class="card">
-                <div class="card-header">
-                    <h5>Informacion Funcionario</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            Nombre:
-                        </div>
-                        <div class="col-6">
-                            Rut: 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            Calidad Contr.: 
-                        </div>
-                        <div class="col-6">
-                            Cargo: 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Unidad: 
-                        </div>
-                        <div class="col">
-                            Grado: 
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="card-header">
+            <h5>Informacion Funcionario</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item" v-for="(item, index) in datos" :key="index">
+                    {{ item.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        data(){
+            return{
+                datos : [],
+            }
+        },
+        created(){
+            axios.get('home').then(response =>{
+                this.datos = response.data;
+            })
         }
     }
 </script>
