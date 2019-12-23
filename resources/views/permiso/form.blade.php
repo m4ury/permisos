@@ -67,12 +67,13 @@
     </div>
 
     <div class="col form-group">
-        {!! Form::label('comuna', 'Comuna') !!} {!! Form::select('comuna', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion', 'Curepto' => 'Curepto', 'Licanten' => 'Licanten', 'Hualañe' => 'Hualañe' ], $permiso->comuna, ['class' => 'form-control', 'placeholder' => 'Comuna']) !!}
+        {!! Form::label('comuna', 'Comuna') !!} {!! Form::select('comuna', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion', 'Curepto' => 'Curepto', 'Licanten' => 'Licanten', 'Hualañe' => 'Hualañe', 'Santiago' => 'Santiago' ], $permiso->comuna, ['class' => 'form-control', 'placeholder' => 'Comuna']) !!}
     </div>
 </div>
-<div class="form-group">
-    {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
-</div>
+
+    <div class="form-group">
+        {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
+    </div>
 
 <hr>
 <div class="row text-center">

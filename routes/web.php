@@ -18,7 +18,7 @@ Route::get('viatico/{viatico}', 'PermisoController@showViatico');
 Route::resource('viaticos', 'ViaticoController');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Auth/login');
 });
 
 Auth::routes();

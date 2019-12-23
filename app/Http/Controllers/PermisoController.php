@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Permiso;
 use App\User;
+use App\Viatico;
 use Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,7 +29,9 @@ class PermisoController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::id());
-        $permisos = $user->permisos()->latest('dia_inicio')->whereMonth('created_at', '=', date('m'))->paginate(5);
+        $permisos = $user->permisos()
+            ->latest('dia_inicio')
+            ->whereMonth('created_at', '=', date('m'))->paginate(5);
 
         return view('permiso.index', compact('permisos'));
     }
@@ -52,6 +55,7 @@ class PermisoController extends Controller
      */
     public function store(StorePermiso $request)
     {
+        //return $request;
         try {
             if ($request->incluye_viatico) {
                 $permiso = Permiso::updateOrCreate($request->except('_token'));
@@ -66,7 +70,6 @@ class PermisoController extends Controller
                 ->withInput()
                 ->withException($exception);
         }
-
     }
 
     /**
@@ -140,5 +143,4 @@ class PermisoController extends Controller
     {
         //
     }
-
 }

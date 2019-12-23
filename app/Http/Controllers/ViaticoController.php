@@ -6,6 +6,7 @@ use App\Viatico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
+
 class ViaticoController extends Controller
 {
     /**
@@ -48,12 +49,13 @@ class ViaticoController extends Controller
     public function show($id)
     {
         $viatico = Viatico::findOrFail($id);
+        $diasCometido = $viatico->countDias($viatico->permiso->dia_inicio, $viatico->permiso->dia_fin);
 
-        $view = view('viatico.show', compact('viatico'));
+        $view = view('viatico.show', compact('viatico', 'diasCometido'));
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
+        $pdf->loadHTML($view)->setPaper('a5', 'portrait')->setWarnings(false);
 
-        return $pdf->stream('viatico_'.$viatico->id.'_'.$viatico->created_at.'pdf');
+        return $pdf->stream('viatico_' . $viatico->id . '_' . $viatico->created_at . 'pdf');
     }
 
     /**
@@ -80,9 +82,9 @@ class ViaticoController extends Controller
     {
         $viatico = Viatico::findOrFail($id);
 
-        if($viatico->update($request->all())){
+        if ($viatico->update($request->all())) {
             return redirect('permisos')->with('info', 'El valor del viatico ha sido modificado!');
-        }else{
+        } else {
             return view('viatico.form', compact('viatico'));
         }
     }

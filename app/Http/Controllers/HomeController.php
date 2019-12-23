@@ -26,12 +26,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        /*return User::findOrFail(Auth::id());*/
-
-        if($request->ajax()){
-            return User::findOrFail(auth()->user()->id);
-        }else{
-            return view('home');
-        }
+        $usuario = User::findOrFail(Auth::id());
+        return view('home', compact('usuario'));
     }
 }

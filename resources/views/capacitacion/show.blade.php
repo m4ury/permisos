@@ -115,6 +115,10 @@
                         <th>Pasajes</th>
                         <td>{{ number_format($permisos->viatico->pasajes ?? 0) }}</td>
                     </tr>
+                    <tr>
+                        <th>Observacion</th>
+                        <td>{{ $permisos->viatico->observacion ?? '--'}}</td>
+                    </tr>
                 </table>
             </div>
         </div>
