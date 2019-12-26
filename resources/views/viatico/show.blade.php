@@ -9,7 +9,7 @@ use Freshwork\ChileanBundle\Rut; ?>
     <div class="row">
         <div class="col-sm-3 clearfix text-center">
             <img style="height: 100px; width: 100px" src="{{ asset('img/logo.png') }}" alt="logo">
-            <h6 class="font-weight-bold">Hospital De Licanten</h6>
+            <h6 class="font-weight-bold">{{ Config::get('app.name') }}</h6>
             <h6 class="font-weight-bold">Oficina de Recursos Humanos</h6>
         </div>
         <div class="col text-center py-3">
@@ -51,6 +51,12 @@ use Freshwork\ChileanBundle\Rut; ?>
                     <td><b>{{ $diasCometido }}</b></td>
                     <td><b>{{ $viatico->permiso->descripcion }}</b></td>
 
+                </tr>
+                <tr>
+                    <td>SECCION V</td>
+                    <td>PERNOCTA FUERA DE RESIDENCIA</td>
+                    <td>SI</td>
+                    <td>NO</td>
                 </tr>
                 <!-- <tr>
                     <th>CALIDAD FUNCIONARIA: </th>
