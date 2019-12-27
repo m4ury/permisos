@@ -80,4 +80,7 @@
   'nunito' => array(
     'normal' => $fontDir . '\2ee5a7797d02fe4d560048b698835802',
   ),
+  'material icons' => array(
+    'normal' => $fontDir . '\a83785ccbfc5713b63b97bbf71e6fa23',
+  ),
 ) ?>

@@ -3,9 +3,8 @@
 @stop
 @section('content')
 <?php
-
 use Freshwork\ChileanBundle\Rut; ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 clearfix text-center">
             <img style="height: 100px; width: 100px" src="{{ asset('img/logo.png') }}" alt="logo">
@@ -19,17 +18,18 @@ use Freshwork\ChileanBundle\Rut; ?>
     <div class="row">
         <div class="col pt-3">
             <table class="table table-bordered">
-                <tr class="py-0">
-                    <td rowspan="2">SECCION I</td>
-                    <td><b>{{$viatico->permiso->user->nombreCompleto(Auth::id())}}</b></td>
-                    <td><b>{{ $viatico->permiso->user->contrato }}</b></td>
-                    <td><b>{{ Rut::parse($viatico->permiso->user->rut)->format(Rut::FORMAT_COMPLETE) }}</b></td>
-                </tr>
                 <tr>
+                    <td rowspan="2">SECCION I</td>
                     <td>APELLIDOS Y NOMBRES</td>
                     <td>CALIDAD</td>
                     <td>RUN Nº</td>
                 </tr>
+                <tr class="py-0">
+                    <td><b>{{$viatico->permiso->user->nombreCompleto(Auth::id())}}</b></td>
+                    <td><b>{{ $viatico->permiso->user->contrato }}</b></td>
+                    <td><b>{{ Rut::parse($viatico->permiso->user->rut)->format(Rut::FORMAT_COMPLETE) }}</b></td>
+                </tr>
+                
                 <tr>
                     <td>SECCION II</td>
                     <td>CARGO: <b>{{ $viatico->permiso->user->cargo->nombre }}</b></td>
@@ -54,9 +54,17 @@ use Freshwork\ChileanBundle\Rut; ?>
                 </tr>
                 <tr>
                     <td>SECCION V</td>
-                    <td>PERNOCTA FUERA DE RESIDENCIA</td>
-                    <td>SI</td>
-                    <td>NO</td>
+                    <td colspan="2">PERNOCTA FUERA DE RESIDENCIA</td>
+                    @if ($viatico->pernoctacion)
+                    <td><span class="badge badge-pill badge-success" style="border-radius: 6px">Pernoctación: SI</span></td>
+                        @else
+                    <td><span class="badge badge-pill badge-danger" style="border-radius: 6px">Pernoctación: NO</span></td>
+                    @endif
+                </tr>
+                <tr>
+                    <td>SECCION VI</td>
+                    <td>DERECHO A PASAJES: </td>
+                    <td><i  class="material-icons">face</i></td>
                 </tr>
                 <!-- <tr>
                     <th>CALIDAD FUNCIONARIA: </th>

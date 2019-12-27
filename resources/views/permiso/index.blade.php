@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
+<div class="container-fluid px-5">
     <div class="pb-4 text-center">
         <h2 class="title">Cometidos</h2>
     </div>
@@ -19,9 +19,9 @@
             @endif
 
             <div class="row">
-                <div class="col table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Dia Inicio</th>
                                 <th>Dia Fin</th>
@@ -31,7 +31,6 @@
                                 <th>Fecha Resolucion</th>
                                 <th>Motivo</th>
                                 <th>Lugar</th>
-                                {{--<th colspan="2">Editar Viatico</th>--}}
                                 <th class="text-center" colspan="3">Acciones</th>
                             </tr>
                         </thead>
@@ -54,7 +53,7 @@
                                     @else
                                     <td><button class="btn btn-success" disabled>Edit</button></td>
                                 @endif -->--}}
-                                <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="fas fa-print"></i></a></td>
+                                <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="material-icons">assignment_turned_in</i></a></td>
 
                                 @if($permiso->es_capacitacion)
                                 <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Capacit <i class="fas fa-file-invoice"></i></a></td>
@@ -69,7 +68,7 @@
                     </table>
                     <div class="form-group">
                         <a id="new" class="btn btn-success" href="{{ route('permisos.create') }}">
-                            Nuevo <i class="fas fa-plus"></i>
+                            Nuevo <i class="material-icons">add_circle</i>
                         </a>
                         <a href="{{ route('home') }}" class="btn btn-secondary">Atras</a>
 

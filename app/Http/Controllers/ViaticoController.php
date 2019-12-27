@@ -53,7 +53,7 @@ class ViaticoController extends Controller
 
         $view = view('viatico.show', compact('viatico', 'diasCometido'));
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('a5', 'portrait')->setWarnings(false);
+        $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
 
         return $pdf->stream('viatico_' . $viatico->id . '_' . $viatico->created_at . 'pdf');
     }

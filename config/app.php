@@ -2,6 +2,8 @@
 
 return [
 
+    'devel' => env('APP_DEVEL', 'Mauricio Morales'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

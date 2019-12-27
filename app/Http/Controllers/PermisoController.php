@@ -30,8 +30,8 @@ class PermisoController extends Controller
     {
         $user = User::findOrFail(Auth::id());
         $permisos = $user->permisos()
-            ->latest('dia_inicio')
-            ->whereMonth('created_at', '=', date('m'))->paginate(5);
+            ->latest('dia_inicio')->paginate(5);
+            //->whereMonth('created_at', '=', date('m'))->paginate(5);
 
         return view('permiso.index', compact('permisos'));
     }
