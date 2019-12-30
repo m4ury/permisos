@@ -16,7 +16,7 @@ use Freshwork\ChileanBundle\Rut; ?>
         </div>
     </div>
     <div class="row">
-        <div class="col pt-3">
+        <div class="col pt-2">
             <table class="table table-bordered">
                 <tr>
                     <td rowspan="2">SECCION I</td>
@@ -64,43 +64,20 @@ use Freshwork\ChileanBundle\Rut; ?>
                 <tr>
                     <td>SECCION VI</td>
                     <td>DERECHO A PASAJES: </td>
-                    <td><i  class="material-icons">face</i></td>
+                    <td colspan="2"><b>{{ $viatico->permiso->movilizacion }}</b></td>
                 </tr>
-                <!-- <tr>
-                    <th>CALIDAD FUNCIONARIA: </th>
-                    <td><u>{{ $viatico->permiso->user->contrato }}</u></td>
-                    </tr>
-                    <tr>
-                        <th>RUT.: </th>
-                        <td><b>{{ Rut::parse($viatico->permiso->user->rut)->format(Rut::FORMAT_COMPLETE) }}</b></td>
-                        <th>CARGO: </th>
-                        <td><u>{{ $viatico->permiso->user->cargo->nombre }}</u></td>
-                    </tr>
-                    <tr>
-                        <th>GRADO: </th>
-                        <td><u>{{ $viatico->permiso->grado ?? '--' }}</u></td>
-                        <th>SERVICIO/UNIDAD: </th>
-                        <td><u>{{ $viatico->permiso->user->unidad->nombre }}</u></td>
-                    </tr>
-                    <tr>
-                        <th>LUGAR DEL COMETIDO.: </th>
-                        <td><u>{{ $viatico->permiso->lugar.', '.$viatico->permiso->comuna }}</u></td>
-                        <th>FECHA COMETIDO: </th>
-                        <td><u>{{ Carbon\Carbon::parse($viatico->permiso->dia_inicio)->format("d") }} de {{ Carbon\Carbon::parse($viatico->permiso->dia_inicio)->format("M") }} del {{ Carbon\Carbon::parse($viatico->permiso->dia_inicio)->format("Y") }}</u></td>
-                    </tr>
-                    <tr>
-                        <th>MOTIVO DEL COMETIDO: </th>
-                        <td><u>{{ $viatico->permiso->descripcion }}</u></td>
-                    </tr>
-                    <tr>
-                        <th>HORA SALIDA: </th>
-                        <td><u>{{ Carbon\Carbon::parse($viatico->permiso->hora_inicio)->format("H:i") }}</u></td>
-                        <th>HORA LLEGADA: </th>
-                        <td><u>{{ Carbon\Carbon::parse($viatico->permiso->hora_fin)->format("H:i") }}</u></td>
-                    </tr>
-                    @if ($viatico->pasajes)
-                    <span class="badge badge-pill badge-success" style="border-radius: 6px">CON PASAJES</span>
-                    @endif -->
+                <tr>
+                    <td rowspan="2">SECCION VII</td>
+                    <td>DETALLE DE PASAJES: </td>
+                    <td>DESDE: </td>
+                    <td>HASTA: </td>
+                </tr>
+                <tr class="py-0">
+                    <td class="align-text-right">TOTAL DIAS DEL COMETIDO FUNCIONAL: <b>{{$diasCometido}}</b></td>
+                    <td><b>{{ Carbon\Carbon::parse($viatico->permiso->dia_inicio)->format("d-m-Y") }}</b></td>
+                    <td><b>{{ Carbon\Carbon::parse($viatico->permiso->dia_fin)->format("d-m-Y") }}</b></td>
+                </tr>
+                
             </table>
         </div>
     </div>

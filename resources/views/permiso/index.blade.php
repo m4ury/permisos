@@ -53,22 +53,22 @@
                                     @else
                                     <td><button class="btn btn-success" disabled>Edit</button></td>
                                 @endif -->--}}
-                                <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="material-icons">assignment_turned_in</i></a></td>
+                                <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}" target="_blank">Cometido <i class="material-icons">event</i></a></td>
 
                                 @if($permiso->es_capacitacion)
-                                <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Capacit <i class="fas fa-file-invoice"></i></a></td>
+                                <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}" target="_blank">Capacit <i class="material-icons">school</i></a></td>
                                 @endif
 
                                 @if($permiso->incluye_viatico)
-                                <td><a class="btn btn-outline-secondary" href="{{ url('viaticos/'.$permiso->viatico->id) }}" target="_blank">Viatico <i class="fas fa-file-invoice"></i></a></td>
+                                <td><a class="btn btn-outline-success" href="{{ url('viaticos/'.$permiso->viatico->id) }}" target="_blank">Viatico <i class="material-icons">business_center</i></a></td>
                                 @endif
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="form-group">
-                        <a id="new" class="btn btn-success" href="{{ route('permisos.create') }}">
-                            Nuevo <i class="material-icons">add_circle</i>
+                    <div class="form-group d-inline-flex align-self-stretch">
+                        <a id="new" class="btn btn-success mx-2" href="{{ route('permisos.create') }}">
+                            <i class="material-icons">add_circle</i>
                         </a>
                         <a href="{{ route('home') }}" class="btn btn-secondary">Atras</a>
 
