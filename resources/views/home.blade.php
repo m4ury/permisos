@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center pb-3">
+    <!-- <div class="row justify-content-center pb-3">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -85,6 +85,7 @@
                 </div>
                 @endif--}}
                 <a class="btn btn-outline-primary" href="{{ route('permisos.index') }}" role="button">Cometidos</a>
+                <a class="btn btn-outline-secondary" href="#" role="button">Reuniones</a>
                 <a class="btn btn-outline-success" href="{{ route('salidas.index') }}" role="button">Permiso Salida Especial</a>
             </div>
         </div>

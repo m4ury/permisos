@@ -1,9 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container-fluid px-5">
-    <div class="pb-4 text-center">
-        <h2 class="title">Cometidos</h2>
+<div class="container">
+    <div class="row pb-4">
+        <div class="col">
+            <h2 class="title">Cometidos</h2>
+        </div>
+        <div class="col">
+            <h2 class="title">Cometidos</h2>
+        </div>
     </div>
 
     @if(session()->has('info'))
@@ -19,7 +24,7 @@
             @endif
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sx-12 col-md-12">
                     <table class="table table-hover">
                         <thead class="thead-dark">
                             <tr>

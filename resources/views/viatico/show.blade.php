@@ -77,7 +77,6 @@ use Freshwork\ChileanBundle\Rut; ?>
                     <td><b>{{ Carbon\Carbon::parse($viatico->permiso->dia_inicio)->format("d-m-Y") }}</b></td>
                     <td><b>{{ Carbon\Carbon::parse($viatico->permiso->dia_fin)->format("d-m-Y") }}</b></td>
                 </tr>
-                
             </table>
         </div>
     </div>

@@ -10,22 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//routes 
 Route::resource('permisos', 'PermisoController');
 Route::resource('salidas', 'SalidaController');
+Route::resource('viaticos', 'ViaticoController');
 Route::get('capacitacion/{capacitacion}', 'PermisoController@showCap');
 Route::get('viatico/{viatico}', 'PermisoController@showViatico');
-Route::resource('viaticos', 'ViaticoController');
+
+//routes para reuniones-acta
+Route::resource('reuniones', 'ReunionController');
+Route::resource('categorias', 'CategoriasController');
 
 Route::get('/', function () {
-    return view('Auth/login');
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function () {//routes 
     Voyager::routes();
 });

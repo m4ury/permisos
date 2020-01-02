@@ -109,7 +109,7 @@
                     </tr>
                     <tr>
                         <th>Viatico</th>
-                        <td>{{ number_format($permisos->viatico->valor ?? 0) }}</td>
+                        <td>{{ number_format($permisos->viatico->valor_parcial ?? 0) }}</td>
                     </tr>
                     <tr>
                         <th>Pasajes</th>
