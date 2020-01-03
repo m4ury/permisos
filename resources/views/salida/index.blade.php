@@ -25,9 +25,6 @@
             </div>
     @endif
             <div class="row">
-
-                {{--{{ $mes_actual }}--}}
-
                 <div class="col">
                     <table class="table table-striped table">
                         <thead>

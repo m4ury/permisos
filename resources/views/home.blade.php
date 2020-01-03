@@ -42,7 +42,6 @@
             </div>
         </div>
     </div>
-
     <!-- <div class="row justify-content-center pb-3">
         <div class="col-md-8">
             <div class="card">
@@ -78,15 +77,15 @@
                     <h5>Permisos</h5>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body d-flex justify-content-around">
                     {{--@if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                 </div>
                 @endif--}}
-                <a class="btn btn-outline-primary" href="{{ route('permisos.index') }}" role="button">Cometidos</a>
-                <a class="btn btn-outline-secondary" href="#" role="button">Reuniones</a>
-                <a class="btn btn-outline-success" href="{{ route('salidas.index') }}" role="button">Permiso Salida Especial</a>
+                <a class="btn btn-outline-primary" href="{{ route('permisos.index') }}" role="button">Cometidos</a> 
+                <a class="btn btn-outline-secondary" href="{{ route('categorias.index') }}" role="button">Reuniones</a>
+                <a class="btn btn-outline-success" href="{{ route('salidas.index') }}" role="button">P. Salida Especial</a>
             </div>
         </div>
     </div>

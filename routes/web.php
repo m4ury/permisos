@@ -19,7 +19,7 @@ Route::get('viatico/{viatico}', 'PermisoController@showViatico');
 
 //routes para reuniones-acta
 Route::resource('reuniones', 'ReunionController');
-Route::resource('categorias', 'CategoriasController');
+Route::resource('categorias', 'CategoriaController');
 
 Route::get('/', function () {
     return view('welcome');
