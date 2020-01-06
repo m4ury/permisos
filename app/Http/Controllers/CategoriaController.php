@@ -38,7 +38,9 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = Categoria::updateOrCreate($request->except('_token'));
+
+        return back()->with('success', 'Categoria creada con exito!');
     }
 
     /**
@@ -83,6 +85,6 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        
     }
 }

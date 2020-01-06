@@ -6,9 +6,6 @@
         <div class="col">
             <h2 class="title">Cometidos</h2>
         </div>
-        <div class="col">
-            <h2 class="title">Cometidos</h2>
-        </div>
     </div>
 
     @if(session()->has('info'))

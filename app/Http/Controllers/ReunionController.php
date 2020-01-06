@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Reunion;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreReunion;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
+
 
 class ReunionController extends Controller
 {
@@ -14,7 +18,9 @@ class ReunionController extends Controller
      */
     public function index()
     {
-        //
+        $reuniones = Reunion::latest('created_at')->paginate(5);
+        return view('reuniones.index', compact('reuniones'));
+
     }
 
     /**
@@ -24,18 +30,20 @@ class ReunionController extends Controller
      */
     public function create()
     {
-        //
+        $reunion = new Reunion;
+        return view('reuniones.create', compact('reunion'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response|string
      */
-    public function store(Request $request)
+    public function store(StoreReunion $request)
     {
-        //
+
+        return $permiso = Reunion::updateOrCreate($request->except('_token')) ? redirect()->route('reuniones.index')->with('success', 'Nueva reunion creada!') : redirect()->route('reunion.index')->with('danger', 'Algo salió Mal :(');
     }
 
     /**
