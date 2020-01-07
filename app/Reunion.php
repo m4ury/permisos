@@ -13,4 +13,9 @@ class Reunion extends Model
         return $this->belongsTo(Categoria::class);
     }
 
+    public function acuerdos()
+    {
+        return $this->hasMany(Acuerdo::class);
+    }
+
 }

@@ -16,7 +16,7 @@ class ReunionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $reuniones = Reunion::latest('created_at')->paginate(5);
         return view('reuniones.index', compact('reuniones'));
