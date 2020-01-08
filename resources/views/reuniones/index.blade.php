@@ -8,10 +8,10 @@
                 <h2 class="title">Reuniones
                     {!! Form::open(['route' => 'reuniones.index', 'method' => 'GET', 'class' => 'form-inline float-right']) !!}
                         <div class="form-group">
-                            {!! Form::text('creatd_at', null, ['class' => 'form-control', 'placeholder' => 'Titulo reunión']) !!}
+                            {{ Form::text('creatd_at', null, ['class' => 'form-control', 'placeholder' => 'Titulo reunión']) }}
                         </div>
                         <div class="form-group">
-                            {!! Form::date('creatd_at', null, ['class' => 'form-control']) !!}
+                            {{ Form::date('creatd_at', null, ['class' => 'form-control']) }}
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-secondary form-control"><span><i class="material-icons">search</i></span></button>

@@ -99,7 +99,6 @@ class User extends \TCG\Voyager\Models\User
     public function salidas(){
         return $this->hasMany(Salida::class);
     }
-
     public function permisos(){
         return $this->hasMany(Permiso::class);
     }
@@ -114,10 +113,15 @@ class User extends \TCG\Voyager\Models\User
 
     public function grupo(){
         return $this->belongsTo(Grupo::class);
-    }
+    }   
 
     public function profesion(){
         return $this->belongsTo(Profesion::class);
+    }
+
+    public function reuniones()
+    {
+        return $this->belongsToMany(Reunion::class);
     }
 
     public function nombreCompleto($user_id){
