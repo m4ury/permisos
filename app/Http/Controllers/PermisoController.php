@@ -26,12 +26,17 @@ class PermisoController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $mes = $request->get('mes');
+        $descripcion = $request->get('descripcion');
+
         $user = User::findOrFail(Auth::id());
         $permisos = $user->permisos()
+            ->mes($mes)
+            ->descripcion($descripcion)
             ->latest('dia_inicio')->paginate(5);
-            //->whereMonth('created_at', '=', date('m'))->paginate(5);
+
 
         return view('permiso.index', compact('permisos'));
     }

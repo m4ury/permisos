@@ -1,6 +1,10 @@
 {{ Form::open([ 'url' => $url, 'method' => $method, 'action' => $action,]) }}
 
 @csrf
+<div class="form-group">
+    {!! Form::label('dia_reunion', 'Dia reunion') !!} {!! Form::date('dia_reunion', $reunion->dia_reunion, ['class' => 'form-control'.($errors->has('dia_reunion') ? ' is-invalid' : '')]) !!}
+</div>
+
 <div class="row">
     <div class="col form-group">
     {!! Form::label('inicio_reunion', 'Desde') !!} {!! Form::time('inicio_reunion', $reunion->inicio_reunion, ['class' => 'form-control'.($errors->has('inicio_reunion') ? ' is-invalid' : '')]) !!}

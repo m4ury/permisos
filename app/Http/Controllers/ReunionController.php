@@ -18,7 +18,13 @@ class ReunionController extends Controller
      */
     public function index(Request $request)
     {
-        $reuniones = Reunion::latest('created_at')->paginate(5);
+        $titulo_reunion = $request->get('titulo_reunion');
+        $dia_reunion = $request->get('dia_reunion');
+
+        $reuniones = Reunion::latest('created_at')
+            ->tituloreunion($titulo_reunion)
+            ->diareunion($dia_reunion)
+            ->paginate(5);
         return view('reuniones.index', compact('reuniones'));
 
     }

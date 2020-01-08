@@ -7,17 +7,17 @@
             <div class="page-header mb-3">
                 <h2 class="title">Reuniones
                     {!! Form::open(['route' => 'reuniones.index', 'method' => 'GET', 'class' => 'form-inline float-right']) !!}
-                        <div class="form-group">
-                            {{ Form::text('creatd_at', null, ['class' => 'form-control', 'placeholder' => 'Titulo reunión']) }}
+                        <div class="form-group mx-1">
+                            {{ Form::text('titulo_reunion', null, ['class' => 'form-control', 'placeholder' => 'Titulo reunión']) }}
                         </div>
-                        <div class="form-group">
-                            {{ Form::date('creatd_at', null, ['class' => 'form-control']) }}
+                        <div class="form-group mx-1">
+                            {{ Form::date('dia_reunion', null, ['class' => 'form-control']) }}
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mx-1">
                             <button type="submit" class="btn btn-secondary form-control"><span><i class="material-icons">search</i></span></button>
                         </div>
                     {!! Form::close() !!}
-                
+                </h2>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                         <th>Dia</th>
                         <th>Hora Inicio</th>
                         <th>Hora Fin</th>
-                        <th>Nombre Reunión</th>
+                        <th>Titulo Reunión</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                 </thead>
@@ -51,12 +51,12 @@
                     @foreach($reuniones as $reunion)
 
                     <tr>
-                        <td>{{ Carbon\Carbon::parse($reunion->created_at)->format("d-m-Y") }}</td>
+                        <td>{{ Carbon\Carbon::parse($reunion->dia_reunion)->format("d-m-Y") }}</td>
                         <td>{{ Carbon\Carbon::parse($reunion->inicio_reunion)->format("H:i") }}</td>
                         <td>{{ Carbon\Carbon::parse($reunion->fin_reunion)->format("H:i") }}</td>
                         <td>{{ $reunion->titulo_reunion }}</td>
 
-                        <td><a class="btn btn-outline-primary" href="{{ url('reuniones/'.$reunion->id) }}" target="_blank">Ver detalle <i class="material-icons">event</i></a></td>
+                        <td><a class="btn btn-outline-primary" href="{{ url('reuniones/'.$reunion->id) }}" target="_blank">Detalle <i class="material-icons">description</i></a></td>
 
                         <td><a class="btn btn-outline-primary" href="{{ url('reuniones/'.$reunion->id.'/edit') }}" ><i class="material-icons">edit</i></a></td>
                     </tr>

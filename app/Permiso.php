@@ -90,4 +90,18 @@ class Permiso extends Model
 
         return preg_replace("!([\b\t\n\r\f\"\\'])!", "\\\\\\1", $p);
     }
+
+    //Query Scope
+
+    public function scopeMes($query, $mes)
+    {
+        if($mes)
+            return $query->whereMonth('dia_inicio', '=', date('m'));
+    }
+
+    public function scopeDescripcion($query, $descripcion)
+    {
+        if($descripcion)
+            return $query->where('descripcion', 'LIKE', "%$descripcion%");
+    }
 }

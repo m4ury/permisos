@@ -2,9 +2,23 @@
 @section('content')
 
 <div class="container">
-    <div class="row pb-4">
-        <div class="col">
-            <h2 class="title">Cometidos</h2>
+<div class="row">
+        <div class="col-md-12">
+            <div class="page-header mb-3">
+                <h2 class="title">Permisos
+                    {!! Form::open(['route' => 'permisos.index', 'method' => 'GET', 'class' => 'form-inline float-right']) !!}
+                        <div class="form-group mx-1">
+                            {{ Form::text('descripcion', null, ['class' => 'form-control', 'placeholder' => 'motivo']) }}
+                        </div>
+                        <div class="form-group mx-1">
+                        {{ Form::select('mes', ['01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', '04' => 'Abril', '05' => 'Mayo', '06' => 'Junio', '07' => 'Julio', '08' => 'Agosto', '09' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre' ], null, ['class' => 'form-control', 'placeholder' => 'Mes ...']) }}
+                        </div>
+                        <div class="form-group mx-1">
+                            <button type="submit" class="btn btn-secondary form-control"><span><i class="material-icons">search</i></span></button>
+                        </div>
+                    {!! Form::close() !!}
+                </h2>
+            </div>
         </div>
     </div>
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reunion extends Model
 {
-    protected $fillable = ['inicio_reunion', 'fin_reunion', 'titulo_reunion', 'cuerpo_reunion', 'observaciones_reunion', 'categoria_id'] ;
+    protected $fillable = ['dia_reunion', 'inicio_reunion', 'fin_reunion', 'titulo_reunion', 'cuerpo_reunion', 'observaciones_reunion', 'categoria_id'] ;
 
     public function categoria()
     {
@@ -22,4 +22,18 @@ class Reunion extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    //Scope
+    public function scopeTituloReunion($query, $titulo_reunion)
+    {
+        if($titulo_reunion)
+            return $query->where('titulo_reunion', 'LIKE', "%$titulo_reunion%");
+    }
+
+    public function scopeDiaReunion($query, $dia_reunion)
+    {
+        if($dia_reunion)
+            return $query->where('dia_reunion', 'LIKE', "%$dia_reunion%");
+    }
+
 }
