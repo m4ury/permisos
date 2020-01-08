@@ -55,12 +55,18 @@ class ReunionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reunion  $reunion
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
-    public function show(Reunion $reunion)
+    public function show($id)
     {
-        //
+        $reunion = Reunion::findOrFail($id);
+
+        $view = view('reuniones.show', compact('reuniones'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
+
+        return $pdf->stream('reuniones_' . $reunion->id . '.pdf');
     }
 
     /**

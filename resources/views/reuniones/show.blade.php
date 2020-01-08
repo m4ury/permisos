@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-sm-8 float-right py-3">
-                <h5><u>PERMISO DE SALIDA ESPECIAL Nº {{ $salida->id }}</u></h5>
+                <h5><u>ACTA REUNION Nº {{ $reunion->id }}</u></h5>
             </div>
         </div>
         <div class="row">
