@@ -18,7 +18,7 @@ class Reunion extends Model
         return $this->hasMany(Acuerdo::class);
     }
 
-    public function usuarios()
+    public function users()
     {
         return $this->belongsToMany(User::class);
     }

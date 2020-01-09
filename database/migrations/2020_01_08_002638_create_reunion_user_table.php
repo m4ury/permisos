@@ -15,7 +15,14 @@ class CreateReunionUserTable extends Migration
     {
         Schema::create('reunion_user', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('reunion_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('reunion_user', function (Blueprint $table) {
+            $table->foreign('reunion_id')->references('id')->on('reunions');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

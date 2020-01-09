@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreReunion;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
+use App\User;
 
 
 class ReunionController extends Controller
@@ -37,7 +38,9 @@ class ReunionController extends Controller
     public function create()
     {
         $reunion = new Reunion;
-        return view('reuniones.create', compact('reunion'));
+        $data =  User::all();
+
+        return view('reuniones.create', compact('reunion', 'data'));
     }
 
     /**
@@ -72,7 +75,7 @@ class ReunionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reunion  $reunion
+     * @param  \App\Reunion $reunion
      * @return \Illuminate\Http\Response
      */
     public function edit(Reunion $reunion)
@@ -83,8 +86,8 @@ class ReunionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reunion  $reunion
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Reunion $reunion
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Reunion $reunion)
@@ -95,7 +98,7 @@ class ReunionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reunion  $reunion
+     * @param  \App\Reunion $reunion
      * @return \Illuminate\Http\Response
      */
     public function destroy(Reunion $reunion)
