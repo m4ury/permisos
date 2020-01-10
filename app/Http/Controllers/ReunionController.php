@@ -8,6 +8,7 @@ use App\Http\Requests\StoreReunion;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use App\User;
+use App\Categoria;
 
 
 class ReunionController extends Controller
@@ -52,6 +53,8 @@ class ReunionController extends Controller
     public function store(StoreReunion $request)
     {
 
+        dd($request->data->id);
+
         return $permiso = Reunion::updateOrCreate($request->except('_token')) ? redirect()->route('reuniones.index')->with('success', 'Nueva reunion creada!') : redirect()->route('reunion.index')->with('danger', 'Algo salió Mal :(');
     }
 
@@ -65,7 +68,7 @@ class ReunionController extends Controller
     {
         $reunion = Reunion::findOrFail($id);
 
-        $view = view('reuniones.show', compact('reuniones'));
+        $view = view('reuniones.show', compact('reunion'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
 

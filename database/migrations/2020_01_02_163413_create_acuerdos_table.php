@@ -20,11 +20,14 @@ class CreateAcuerdosTable extends Migration
             $table->date('expiracion_acuerdo')->nullable();
             $table->timestamps();
 
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('reunion_id')->nullable();
+
         });
 
         Schema::table('acuerdos', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('reunion_id')->references('id')->on('reunions')->onUpdate('cascade')->onDelete('set null');
         });
     }
 

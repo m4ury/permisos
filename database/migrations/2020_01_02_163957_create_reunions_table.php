@@ -32,7 +32,6 @@ class CreateReunionsTable extends Migration
         Schema::table('reunions', function (Blueprint $table) {
             //$table->foreign('user_id')->references('id')->on('users');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onUpdate('cascade')->onDelete('set null');
-            $table->foreign('acuerdo_id')->references('id')->on('acuerdos')->onUpdate('cascade')->onDelete('set null');
           });
     }
 

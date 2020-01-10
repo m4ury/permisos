@@ -10,6 +10,6 @@ class Acuerdo extends Model
 
     public function reunion()
     {
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo(Reunion::class);
     }
 }

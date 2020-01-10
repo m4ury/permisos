@@ -1,51 +1,64 @@
 @extends('layouts.app')
 @section('nav')
-    @stop
+@stop
 @section('content')
+    <?php
+    use Freshwork\ChileanBundle\Rut; ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 clearfix text-center">
+                <img style="height: 100px; width: 100px" src="{{ asset('img/logo.png') }}" alt="logo">
+                <h6 class="font-weight-bold">{{ Config::get('app.name') }}</h6>
+                <h6 class="font-weight-bold">Oficina de Recursos Humanos</h6>
+            </div>
+            <div class="col text-center">
+                <h4 class="font-weight-bold">REUNION Nº {{ $reunion->id }}</h4>
+                <h5 class="text-uppercase font-weight-bold">{{ $reunion->titulo_reunion }}
+                    - {{$reunion->categoria ? $reunion->categoria->nombre_categoria : 'Sin Categoria Asignada' }}</h5>
 
-    <div class="container">
-        <div class="col-sm-3 clearfix text-center">
-            <img style="height: 100px; width: 100px" src="{{ asset('img/logo.png') }}" alt="logo">
-            <h6 class="font-weight-bold">Hospital De Licanten</h6>
-            <h6 class="font-weight-bold">Oficina de Recursos Humanos</h6>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 float-right py-3">
-                <h5><u>ACTA REUNION Nº {{ $reunion->id }}</u></h5>
             </div>
-        </div>
-        <div class="row">
-            <div class="col pt-5">
-                <table class="table-striped py-5">
-                    <thead>
-                        <tr><th>FECHA SOLICITUD: </th> <td><u>{{ Carbon\Carbon::parse($salida->created_at)->format("d-m-Y") }}</u></td><th>SERVICIO: </th> <td><u>{{ strtoupper($salida->user->unidad->nombre) }}</u></td></tr>
-                        <tr><th>NOMBRES Y APELLIDOS: </th><td><u>{{  strtoupper($salida->user->name) }} {{ strtoupper($salida->user->apellido_paterno) }} {{ strtoupper($salida->user->apellido_materno) }}</u></td></tr>
-                        <tr><th>FECHA DE PERMISO: </th><td><u>{{ Carbon\Carbon::parse($salida->dia_salida)->format("d-m-Y") }}</u></td></tr>
-                        <tr><th>MOTIVO DE SALIDA: </th><td><u>{{ strtoupper($salida->descripcion) }}</u></td></tr>
-                        <tr><th>HORA DE SALIDA: </th><td><u>{{ Carbon\Carbon::parse($salida->hora_salida)->format("H:i") }}</u></td><th>HORA LLEGADA: </th><td><u>{{ Carbon\Carbon::parse($salida->hora_llegada)->format("H:i") }}</u></td></tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span class="badge badge-pill badge-success rounded">Minutos Ocupados: {{ $s->totalHorasMes(Auth::id()) }} de 120</span>
+            <div class="border border-dark float-right rounded p-3">
+                <h6 class="font-weight-bold">FECHA / HORA</h6>
+                <ul class="list-unstyled">
+                    <li>Dia: {{ Carbon\Carbon::parse($reunion->dia_reunion)->format("d-m-Y") }}</li>
+                    <li>Inicio: {{ Carbon\Carbon::parse($reunion->inicio_reunion)->format("H:i") }}</li>
+                    <li>Fin: {{  Carbon\Carbon::parse($reunion->fin_reunion)->format("H:i") }}</li>
+                </ul>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col clearfix fixed-bottom">
-                <span class="float-left font-weight-bold">Firma Funcionario(a) Solicitante</span>
+        <h5 class="font-weight-bold p-3">Asistentes: </h5>
 
-                <span class="float-right font-weight-bold">VºBº Jefe Directo</span>
+        <div class="row m-3">
+            <div class="border border-grey rounded">
+                <ul class="mt-3">
+                    <li>Juanito Perez</li>
+                    <li>Panchito Lucho</li>
+                    <li>Luchito de las Peras</li>
+                </ul>
             </div>
         </div>
+
+        <h5 class="font-weight-bold p-3">Cuerpo Reunión: </h5>
+
+        <div class="row m-3">
+            <p class="text-wrap">{{ $reunion->cuerpo_reunion }}</p>
+        </div>
+
+        <h5 class="font-weight-bold p-3">Observaciones: </h5>
+
+        <div class="row m-3">
+            <p class="text-wrap">{{ $reunion->observaciones_reunion ?? 'Sin Observaciones' }}</p>
+        </div>
+
     </div>
-
     <style>
-        body{
+        html {
+            font-size: x-small;
+        }
+
+        body {
             background: #ffffff;
         }
     </style>
-
-    @stop
+@stop
