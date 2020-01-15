@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use App\User;
 use App\Categoria;
+use Illuminate\Support\Facades\Auth;
 
 
 class ReunionController extends Controller
@@ -38,10 +39,12 @@ class ReunionController extends Controller
      */
     public function create()
     {
+        //$reunion = Reunion::orderBy('id', 'ASC')->pluck('titulo_reunion', 'id');
         $reunion = new Reunion;
-        $data =  User::all();
+        $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
+        $users =  User::orderBy('name', 'ASC')->pluck('name', 'id');
 
-        return view('reuniones.create', compact('reunion', 'data'));
+        return view('reuniones.create', compact('reunion', 'users', 'categorias'));
     }
 
     /**
@@ -52,10 +55,13 @@ class ReunionController extends Controller
      */
     public function store(StoreReunion $request)
     {
+    $reunion = new Reunion($request->except('_token'));
+    $reunion->creador_reunion = Auth::user()->name;
+    $reunion->categoria_id = $request->categoria_id;
+    $reunion->save();
 
-        dd($request->data->id);
-
-        return $permiso = Reunion::updateOrCreate($request->except('_token')) ? redirect()->route('reuniones.index')->with('success', 'Nueva reunion creada!') : redirect()->route('reunion.index')->with('danger', 'Algo salió Mal :(');
+    $reunion->users()->sync($request->users);
+        return redirect()->route('reuniones.index')->with('success', 'Nueva Reunion ha sido creada con exito');
     }
 
     /**
@@ -67,8 +73,10 @@ class ReunionController extends Controller
     public function show($id)
     {
         $reunion = Reunion::findOrFail($id);
+        $usuarios = $reunion->users()->get();
 
-        $view = view('reuniones.show', compact('reunion'));
+        //dd($usuarios);
+        $view = view('reuniones.show', compact('reunion', 'usuarios'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
 

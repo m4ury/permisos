@@ -83,8 +83,10 @@
                         {{ session('status') }}
                 </div>
                 @endif--}}
-                <a class="btn btn-outline-primary" href="{{ route('permisos.index') }}" role="button">Cometidos</a> 
-                <a class="btn btn-outline-secondary" href="{{ route('reuniones.index') }}" role="button">Reuniones</a>
+                <a class="btn btn-outline-primary" href="{{ route('permisos.index') }}" role="button">Cometidos</a>
+                    @if(auth()->user()->role_id == 1)
+                    <a class="btn btn-outline-secondary" href="{{ route('reuniones.index') }}" role="button">Reuniones</a>
+                @endif
                 <a class="btn btn-outline-success" href="{{ route('salidas.index') }}" role="button">P. Salida Especial</a>
             </div>
         </div>

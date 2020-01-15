@@ -2,6 +2,11 @@
 
 @csrf
 <div class="form-group">
+    {!! Form::label('categoria_id', 'Categorias') !!} 
+    {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Seleccione categoria']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('dia_reunion', 'Dia reunion') !!} {!! Form::date('dia_reunion', $reunion->dia_reunion, ['class' => 'form-control'.($errors->has('dia_reunion') ? ' is-invalid' : '')]) !!}
 </div>
 
@@ -30,7 +35,7 @@
     <div class="row">
         <div class="col form-group">
             {{ Form::label('name', 'Nombre') }}
-            {!! Form::select('data[]', $data->pluck('name'), null, ['data' => 'id', 'class' => 'form-control', 'multiple', 'required']) !!}
+            {!! Form::select('users[]', $users, null, ['users' => 'id', 'class' => 'form-control select-users', 'multiple', 'required']) !!}
         </div>
     </div>
 </section>
@@ -70,3 +75,10 @@
     </div>
 </div>
 {{ Form::close() }}
+@section('js')
+    <script>
+        $('.select-users').chosen({
+
+        });
+    </script>
+@endsection

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Acuerdo extends Model
 {
-    protected $fillable = ['descripcion_acuerdo', 'estado_acuerdo', 'expiracion_acuerdo', 'user_id'];
+    protected $fillable = ['descripcion_acuerdo', 'estado_acuerdo', 'expiracion_acuerdo', 'user_id', 'reunion_id'];
 
     public function reunion()
     {

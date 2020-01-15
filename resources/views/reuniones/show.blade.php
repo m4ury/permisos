@@ -12,9 +12,9 @@
                 <h6 class="font-weight-bold">Oficina de Recursos Humanos</h6>
             </div>
             <div class="col text-center">
-                <h4 class="font-weight-bold">REUNION Nº {{ $reunion->id }}</h4>
-                <h5 class="text-uppercase font-weight-bold">{{ $reunion->titulo_reunion }}
-                    - {{$reunion->categoria ? $reunion->categoria->nombre_categoria : 'Sin Categoria Asignada' }}</h5>
+                <h5 class="font-weight-bold">REUNION Nº {{ $reunion->id }}</h5>
+                <h6 class="text-uppercase font-weight-bold">{{ $reunion->titulo_reunion }}
+                    - {{$reunion->categoria ? $reunion->categoria->nombre_categoria : 'Sin Categoria Asignada' }}</h6>
 
             </div>
             <div class="border border-dark float-right rounded p-3">
@@ -26,15 +26,16 @@
                 </ul>
             </div>
         </div>
-
+@php
+    $usuario = new \App\User();
+@endphp
         <h5 class="font-weight-bold p-3">Asistentes: </h5>
-
         <div class="row m-3">
             <div class="border border-grey rounded">
                 <ul class="mt-3">
-                    <li>Juanito Perez</li>
-                    <li>Panchito Lucho</li>
-                    <li>Luchito de las Peras</li>
+                    @foreach($usuarios as $user)
+                    <li>{{ $user->name }} {{ $user->apellido_paterno }} {{ $user->apellido_materno }}</li>
+                        @endforeach
                 </ul>
             </div>
         </div>
