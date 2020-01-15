@@ -49,7 +49,7 @@
                             <h5>Asistentes</h5>
                             <div class="row">
                                 <div class="col form-group">
-                                    {{ Form::label('name', 'Nombre') }}
+                                    {{ Form::label('name', 'Rut') }}
                                     {!! Form::select('users[]', $users, null, ['users' => 'id', 'class' => 'form-control select-users', 'multiple', 'required']) !!}
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
 
 
                         <div class="form-group">
-                            {!! Form::label('cuerpo_reunion', 'Descripción de la reunión') !!} {!! Form::textarea('cuerpo_reunion', $reunion->cuerpo_reunion, ['class' => 'form-control'.($errors->has('cuerpo_reunion') ? ' is-invalid' : ''), 'placeholder' => 'Acta Reunión', 'rows' => "2"]) !!}
+                            {!! Form::label('cuerpo_reunion', 'Descripción de la reunión') !!} {!! Form::textarea('cuerpo_reunion', $reunion->cuerpo_reunion, ['class' => 'form-control cuerpo_reunion'.($errors->has('cuerpo_reunion') ? ' is-invalid' : ''), 'placeholder' => 'Acta Reunión', 'rows' => "2"]) !!}
                             @if ($errors->has('cuerpo_reunion'))
                                 <span class="invalid-feedback">
         <strong>{{ $errors->first('cuerpo_reunion') }}</strong>
@@ -69,7 +69,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            {!! Form::label('observaciones_reunion', 'Observaciones') !!} {!! Form::textarea('observaciones_reunion', $reunion->observaciones_reunion, ['class' => 'form-control'.($errors->has('observaciones_reunion') ? ' is-invalid' : ''), 'rows' => "2"]) !!}
+                            {!! Form::label('observaciones_reunion', 'Observaciones') !!} {!! Form::textarea('observaciones_reunion', $reunion->observaciones_reunion, ['class' => 'form-control obs_reunion'.($errors->has('observaciones_reunion') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese observaciones', 'rows' => "2"]) !!}
                             @if ($errors->has('observaciones_reunion'))
                                 <span class="invalid-feedback">
         <strong>{{ $errors->first('observaciones_reunion') }}</strong>
@@ -106,5 +106,7 @@
             placeholder_text_single: "Seleccione una categoria",
             no_results_text: "Oops, se encontraron resultados!",
         });
+        $('.cuerpo_reunion').trumbowyg();
+        /*$('.obs_reunion').trumbowyg();*/
     </script>
 @endsection

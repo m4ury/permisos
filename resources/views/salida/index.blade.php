@@ -3,12 +3,11 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
-    <div class=" row py-5">
-        <div class="col-4">
+    <div class="row">
+        <div class="col-md-8">
             <h2 class="title">Permiso Salida Especial</h2>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <span class="badge badge-pill badge-primary"> Total ocupado: {{ $salida->totalHorasMes(Auth::id()) }}</span>
         </div>
     </div>
@@ -26,8 +25,8 @@
     @endif
             <div class="row">
                 <div class="col">
-                    <table class="table table-striped table">
-                        <thead>
+                    <table class="table table-hover table-sm-responsive">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Fecha Solicitud</th>
                                 <th>Hora Salida</th>
@@ -70,7 +69,6 @@
                     </div>
                 </div>
             </div>
-</div>
 <script>
     $(document).ready(function(){
         $('#alert').delay(2000).slideUp(200, function(){

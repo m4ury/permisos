@@ -27,8 +27,12 @@ class ReunionController extends Controller
         $reuniones = Reunion::latest('created_at')
             ->tituloreunion($titulo_reunion)
             ->diareunion($dia_reunion)
+            ->where('creador_reunion', Auth::user()->rut)
             ->paginate(5);
-        return view('reuniones.index', compact('reuniones'));
+
+        //$categoria = Reunion::with('categoria')->get();
+        //dd($categoria);
+        return view('reuniones.index', compact('reuniones', 'categoria'));
 
     }
 
@@ -42,7 +46,7 @@ class ReunionController extends Controller
         //$reunion = Reunion::orderBy('id', 'ASC')->pluck('titulo_reunion', 'id');
         $reunion = new Reunion;
         $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
-        $users =  User::orderBy('name', 'ASC')->pluck('name', 'id');
+        $users = User::orderBy('name', 'ASC')->pluck('rut', 'id');
 
         return view('reuniones.create', compact('reunion', 'users', 'categorias'));
     }
@@ -55,12 +59,12 @@ class ReunionController extends Controller
      */
     public function store(StoreReunion $request)
     {
-    $reunion = new Reunion($request->except('_token'));
-    $reunion->creador_reunion = Auth::user()->name;
-    $reunion->categoria_id = $request->categoria_id;
-    $reunion->save();
+        $reunion = new Reunion($request->except('_token'));
+        $reunion->creador_reunion = Auth::user()->rut;
+        $reunion->categoria_id = $request->categoria_id;
+        $reunion->save();
 
-    $reunion->users()->sync($request->users);
+        $reunion->users()->sync($request->users);
         return redirect()->route('reuniones.index')->with('success', 'Nueva Reunion ha sido creada con exito');
     }
 
@@ -86,12 +90,12 @@ class ReunionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reunion $reunion
+     * @param  \App\Reunion $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reunion $reunion)
+    public function edit(Reunion $id)
     {
-        //
+        $reunion = Reunion::findOrFail($id);
     }
 
     /**

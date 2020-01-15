@@ -28,13 +28,16 @@ class PermisoController extends Controller
      */
     public function index(Request $request)
     {
-        $mes = $request->get('mes');
+        /*$mes = $request->get('mes');*/
         $descripcion = $request->get('descripcion');
+        //$dia = $request->get('dia_inicio');
+
 
         $user = User::findOrFail(Auth::id());
         $permisos = $user->permisos()
-            ->mes($mes)
+            /*->mes($mes)*/
             ->descripcion($descripcion)
+            /*->dia($dia)*/
             ->latest('dia_inicio')->paginate(5);
 
 

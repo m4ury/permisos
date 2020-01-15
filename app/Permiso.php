@@ -93,11 +93,11 @@ class Permiso extends Model
 
     //Query Scope
 
-    public function scopeMes($query, $mes)
+    /*public function scopeDia($query, $dia)
     {
-        if($mes)
-            return $query->whereMonth('dia_inicio', '=', date('m'));
-    }
+        if($dia)
+            return $query->where('dia_inicio', 'LIKE', "%$dia%");
+    }*/
 
     public function scopeDescripcion($query, $descripcion)
     {

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use TCG\Voyager\Models\Role;
 
 /**
  * App\User
@@ -122,6 +123,11 @@ class User extends \TCG\Voyager\Models\User
     public function reuniones()
     {
         return $this->belongsToMany(Reunion::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles');
     }
 
     public function nombreCompleto($user_id){
