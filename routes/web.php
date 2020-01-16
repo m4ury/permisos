@@ -18,8 +18,8 @@ Route::get('capacitacion/{capacitacion}', 'PermisoController@showCap');
 Route::get('viatico/{viatico}', 'PermisoController@showViatico');
 
 //routes para reuniones-acta
-Route::resource('reuniones', 'ReunionController')->middleware('auth');
-Route::resource('categorias', 'CategoriaController')->middleware('auth');;
+Route::resource('reuniones', 'ReunionController')->middleware(['auth', 'admin']);
+Route::resource('categorias', 'CategoriaController')->middleware(['auth', 'admin']);;
 
 Route::get('/', function () {
     return view('welcome');

@@ -32,7 +32,7 @@ class ReunionController extends Controller
 
         //$categoria = Reunion::with('categoria')->get();
         //dd($categoria);
-        return view('reuniones.index', compact('reuniones', 'categoria'));
+        return view('reuniones.index', compact('reuniones'));
 
     }
 
@@ -45,8 +45,8 @@ class ReunionController extends Controller
     {
         //$reunion = Reunion::orderBy('id', 'ASC')->pluck('titulo_reunion', 'id');
         $reunion = new Reunion;
-        $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
-        $users = User::orderBy('name', 'ASC')->pluck('rut', 'id');
+        $categorias =  Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
+        $users =       User::orderBy('name', 'ASC')->pluck('rut', 'id');
 
         return view('reuniones.create', compact('reunion', 'users', 'categorias'));
     }
@@ -95,7 +95,7 @@ class ReunionController extends Controller
      */
     public function edit(Reunion $id)
     {
-        $reunion = Reunion::findOrFail($id);
+        //$reunion = Reunion::findOrFail($id);
     }
 
     /**

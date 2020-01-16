@@ -130,6 +130,11 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsToMany(Role::class, 'user_roles');
     }
 
+    function isAdmin(){
+        return $this->type === 'admin';
+
+    }
+
     public function nombreCompleto($user_id){
         return strtoupper($this->name.' '.$this->apellido_paterno.' '.$this->apellido_materno);
     }

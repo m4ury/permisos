@@ -45,22 +45,22 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar nav">
                     @if(auth()->check())
-                        <li class="nav-item {{ request()->is('reuniones') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('reuniones.index') }}">Reuniones</a>
-                        </li>
-
+                        @if(auth()->user()->isAdmin())
+                            <li class="nav-item {{ request()->is('reuniones') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('reuniones.index') }}">Reuniones</a>
+                            </li>
+                            <li class="nav-item {{ request()->is('categorias') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a>
+                            </li>
+                        @endif
                         <li class="nav-item {{ request()->is('permisos') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('permisos.index') }}">Cometidos</a>
                         </li>
                         <li class="nav-item {{ request()->is('salidas') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('salidas.index') }}">Salidas</a>
                         </li>
-                        <li class="nav-item {{ request()->is('categorias') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a>
-                        </li>
 
                     @endif
-                    {{--{{ request()->path() }}--}}
                 </ul>
 
                 <!-- Right Side Of Navbar -->
