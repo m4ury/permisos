@@ -59,9 +59,14 @@
                         <li class="nav-item {{ request()->is('salidas') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('salidas.index') }}">Salidas</a>
                         </li>
-
+                        <li class="nav-item">
+                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target=".perfilModal{{ auth()->id() }}">
+                            Mi Perfil
+                        </a>
+                        </li>
                     @endif
                 </ul>
+                    @include('usuario.perfilModal')
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
