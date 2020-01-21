@@ -31,17 +31,17 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="anexo"
-                               class="col-md-4 col-form-label text-md-right">Anexo: </label>
+                        <label for="celular"
+                               class="col-md-4 col-form-label text-md-right">Celular: </label>
 
                         <div class="col-md-6">
-                            <input id="anexo" type="text" placeholder="Anexo Minsal"
-                                   class="form-control{{ $errors->has('anexo') ? ' is-invalid' : '' }}" name="anexo"
-                                   value="{{ old('anexo') }}">
+                            <input id="celular" type="text"
+                                   class="form-control{{ $errors->has('celular') ? ' is-invalid' : '' }}" name="celular"
+                                   value="{{ old('celular') }}">
 
-                            @if ($errors->has('anexo'))
+                            @if ($errors->has('celular'))
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('anexo') }}</strong>
+                                        <strong>{{ $errors->first('celular') }}</strong>
                                     </span>
                             @endif
                         </div>
