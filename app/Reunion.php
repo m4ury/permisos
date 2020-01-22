@@ -23,7 +23,7 @@ class Reunion extends Model
         return $this->belongsToMany(User::class);
     }
 
-    //Scope
+    //Scopes
     public function scopeTituloReunion($query, $titulo_reunion)
     {
         if($titulo_reunion)
@@ -35,5 +35,12 @@ class Reunion extends Model
         if($dia_reunion)
             return $query->where('dia_reunion', 'LIKE', "%$dia_reunion%");
     }
+
+    /*public function scopeCategoria($query, $nombre_categoria)
+    {
+
+        if($nombre_categoria)
+            return $query->where('titulo_reunion', 'LIKE', "%$nombre_categoria%");
+    }*/
 
 }

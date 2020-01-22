@@ -22,8 +22,6 @@ Route::resource('reuniones', 'ReunionController')->middleware(['auth', 'admin'])
 Route::resource('categorias', 'CategoriaController')->middleware(['auth', 'admin']);
 
 //routes para edicion de perfil de usuarios
-//Route::put('/user/{user}/update', 'Usercontroller@update')->name('user.update');
-Route::put('/user/{user}', 'Usercontroller@profile')->name('profile')->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');

@@ -83,4 +83,10 @@
   'material icons' => array(
     'normal' => $fontDir . '\a83785ccbfc5713b63b97bbf71e6fa23',
   ),
+  'font awesome 5 brands' => array(
+    'normal' => $fontDir . '\934deffeb50f9e7a377cd8fe495e45ac',
+  ),
+  'font awesome 5 free' => array(
+    'normal' => $fontDir . '\78ca8cb360c4583034ad0d451402f9e6',
+  ),
 ) ?>

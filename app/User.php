@@ -125,10 +125,10 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsToMany(Reunion::class);
     }
 
-    public function roles()
+    /*public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles');
-    }
+    }*/
 
     function isAdmin(){
         return $this->type === 'admin';
