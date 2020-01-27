@@ -51,40 +51,48 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categoria)
+    public function edit($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+
+        return view('categorias.edit', compact('categoria'));
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param  int  $id
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id)
+            ->update($request->except('_token'));
+
+        return redirect()->route('categorias.index')->with('success', 'Cambios relizados');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        
+        $categoria = Categoria::findOrFail($id)->delete();
+
+        return redirect()->route('categorias.index')->with('danger', 'Eliminado exitosamente');
+
     }
 }

@@ -19,11 +19,13 @@
                         <td>{{ Carbon\Carbon::parse($categoria->created_at)->format("d-m-Y") }}</td>
                         <td>{{ $categoria->nombre_categoria }}</td>
                         <td>{{ $categoria->descripcion_categoria }}</td>
+
+                        {!! Form::open(['route' => ['categorias.destroy', $categoria->id], 'method' => 'DELETE']) !!}
                         <td><a class="btn btn-outline-primary" href="{{ url('categorias/'.$categoria->id.'/edit') }}"><i
                                         class="material-icons">edit</i></a></td>
-                        <td><a class="btn btn-outline-danger"
-                               href="{{ route('categorias.destroy', $categoria->id) }}"><i
-                                        class="material-icons">delete</i></a></td>
+                        <td>{!! Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-simple btn-xs', 'id' => 'delete'] ) !!}
+                            {!! Form::close() !!}
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
