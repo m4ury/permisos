@@ -23,7 +23,7 @@
                         {!! Form::open(['route' => ['categorias.destroy', $categoria->id], 'method' => 'DELETE']) !!}
                         <td><a class="btn btn-outline-primary" href="{{ url('categorias/'.$categoria->id.'/edit') }}"><i
                                         class="material-icons">edit</i></a></td>
-                        <td>{!! Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-simple btn-xs', 'id' => 'delete'] ) !!}
+                        <td>{!! Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-simple btn-xs', 'onclick'=>'return confirm("seguro?")'] ) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>

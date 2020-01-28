@@ -15,9 +15,9 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        {{ Form::open([ 'url' => 'categorias', 'method' => 'POST', 'action' => route('categorias.edit', $categoria->id)]) }}
+                        {{ Form::open([ 'url' => 'categorias/'.$categoria->id, 'method' => 'POST', 'action' => url('categorias/'.$categoria->id.'/edit' )]) }}
                         @csrf
-                        {{ method_field('PATCH') }}
+                        {{ method_field('PUT') }}
 
                         <div class="form-group">
                             {!! Form::label('nombre_categoria', 'Nombre categoria') !!} {!! Form::text('nombre_categoria', $categoria->nombre_categoria, ['class' => 'form-control'.($errors->has('nombre_categoria') ? ' is-invalid' : '')]) !!}
