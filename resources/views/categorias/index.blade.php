@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-7">
+    <div class="row" id="app">
+        <categoria></categoria>
+        {{--<div class="col-md-7">
             <table class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
@@ -33,10 +34,10 @@
             <div>
                 {{ $categorias->links() }}
             </div>
-        </div>
+        </div>--}}
         <div class="col-md-5">
             <h3 class="text-center mb-4"> Agregar Categorias</h3>
-            <form action="{{ route('categorias.store') }}" method="POST">
+            {{--<form action="{{ route('categorias.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <input type="text" name="nombre_categoria" class="form-control" placeholder="Nombre de la Categoria"
@@ -48,18 +49,9 @@
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Guardar Categoria</button>
                 <a href="{{ route('reuniones.index') }}" class="btn btn-secondary btn-block">Volver</a>
-            </form>
-            @if(session('success'))
-                <div id="alert" class="alert alert-success mt-3">{{ session('success') }}</div>
-            @endif
+            </form>--}}
+            <form-categoria></form-categoria>
         </div>
 
     </div>
-    <script>
-        $(document).ready(function () {
-            $('#alert').delay(2000).slideUp(200, function () {
-                $(this).remove();
-            });
-        }, 5000);
-    </script>
 @stop

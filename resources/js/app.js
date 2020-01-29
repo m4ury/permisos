@@ -2,7 +2,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.component('user-component', require('./components/UserComponent.vue'), {name: 'user-component'}).default;
+Vue.component('categoria', require('./components/categoria/Categoria'));
+Vue.component('form-categoria', require('./components/categoria/FormCategoria'));
+
 
 const app = new Vue({
     el: '#app',
