@@ -26,14 +26,14 @@
                 </ul>
             </div>
         </div>
-@php
+{{--@php
     $usuario = new \App\User();
-@endphp
+@endphp--}}
         <h5 class="font-weight-bold p-3">Asistentes: </h5>
         <div class="row m-3">
             <div class="border border-grey rounded">
                 <ul class="mt-3">
-                    @foreach($usuarios as $user)
+                    @foreach($reunion->users as $user)
                     <li>{{ $user->name }} {{ $user->apellido_paterno }} {{ $user->apellido_materno }}</li>
                         @endforeach
                 </ul>

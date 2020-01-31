@@ -75,7 +75,8 @@ class ReunionController extends Controller
     public function show($id)
     {
         $reunion = Reunion::findOrFail($id);
-
+        //$usuarios = $reunion->users()->get();
+        //dd($usuarios);
 
         $view = view('reuniones.show', compact('reunion', 'usuarios'));
         $pdf = App::make('dompdf.wrapper');
