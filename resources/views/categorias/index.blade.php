@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="row" id="app">
-        <categoria></categoria>
-        {{--<div class="col-md-7">
-            <table class="table table-hover">
+        {{--<categoria></categoria>--}}
+        <div class="col-md-7">
+            <table class="table table-hover table-striped">
                 <thead class="thead-dark">
                 <tr>
                     <th>Fecha creación</th>
@@ -34,10 +34,10 @@
             <div>
                 {{ $categorias->links() }}
             </div>
-        </div>--}}
+        </div>
         <div class="col-md-5">
             <h3 class="text-center mb-4"> Agregar Categorias</h3>
-            {{--<form action="{{ route('categorias.store') }}" method="POST">
+            <form action="{{ route('categorias.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <input type="text" name="nombre_categoria" class="form-control" placeholder="Nombre de la Categoria"
@@ -49,8 +49,8 @@
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Guardar Categoria</button>
                 <a href="{{ route('reuniones.index') }}" class="btn btn-secondary btn-block">Volver</a>
-            </form>--}}
-            <form-categoria></form-categoria>
+            </form>
+            {{--<form-categoria></form-categoria>--}}
         </div>
 
     </div>
