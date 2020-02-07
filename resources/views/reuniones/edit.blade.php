@@ -17,10 +17,10 @@
                     <div class="card-body">
                         {{ Form::open([ 'url' => 'reuniones', 'method' => 'POST', 'action' => route('reuniones.update', $reunion->id)]) }}
                         @csrf
-                        {{ method_field('PUT') }}
+                        @method('PUT')
                         <div class="form-group">
                             {!! Form::label('categoria_id', 'Categorias') !!}
-                            {!! Form::select('categoria_id', $categorias, $reunion->categoria->pluck('nombre_categoria'), ['class' => 'form-control select-categoria', 'placeholder' => 'Seleccione una categoria...']) !!}
+                            {!! Form::select('categoria', $categorias, $reunion->categoria()->pluck('id', 'nombre_categoria'), ['class' => 'form-control select-categoria','value' => old('categoria')]) !!}
                         </div>
 
                         <div class="form-group">
@@ -46,16 +46,16 @@
                             </div>
                         </div>
                         <hr>
-                        <section>
+                        {{--<section>
                             <h5>Asistentes</h5>
                             <div class="row">
                                 <div class="col form-group">
                                     {{ Form::label('name', 'Rut') }}
-                                    {!! Form::select('users[]', $users, $users, [ 'users' => 'id', 'class' => 'form-control select-users', 'multiple', 'required']) !!}
-                                    {{--{!! Form::select('users[]', $users, null, ['users' => 'id', 'class' => 'form-control select-users', 'multiple', 'required']) !!}--}}
+                                    {!! Form::select('usuarios[]', $users, $users, [ 'users' => 'id', 'class' => 'form-control select-users', 'multiple', 'required']) !!}
+                                    --}}{{--{!! Form::select('users[]', $users, null, ['users' => 'id', 'class' => 'form-control select-users', 'multiple', 'required']) !!}--}}{{--
                                 </div>
                             </div>
-                        </section>
+                        </section>--}}
 
                         <div class="form-group">
                             {!! Form::label('titulo_reunion', 'Titulo') !!} {!! Form::text('titulo_reunion', $reunion->titulo_reunion, ['class' => 'form-control'.($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Titulo Reunión']) !!}
