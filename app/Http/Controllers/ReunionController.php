@@ -23,10 +23,13 @@ class ReunionController extends Controller
     {
         $titulo_reunion = $request->get('titulo_reunion');
         $dia_reunion = $request->get('dia_reunion');
+        $cuerpo = $request->get('cuerpo_reunion');
 
-        $reuniones = Reunion::latest('created_at')
+
+        $reuniones = Reunion::latest('dia_reunion')
             ->tituloreunion($titulo_reunion)
             ->diareunion($dia_reunion)
+            ->cuerpo($cuerpo)
             ->where('creador_reunion', Auth::user()->rut)
             ->paginate(5);
 
@@ -94,11 +97,10 @@ class ReunionController extends Controller
     public function edit($id)
     {
         $reunion = Reunion::findOrFail($id);
-        $users = User::orderBy('name', 'ASC')->pluck('name', 'id');
+        $usuarios = User::orderBy('name', 'ASC')->pluck('name', 'id');
         $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
 
-
-        return view('reuniones.edit', compact('reunion', 'users', 'categorias'));
+        return view('reuniones.edit', compact('reunion', 'usuarios', 'categorias'));
     }
 
     /**

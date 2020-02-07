@@ -34,7 +34,7 @@
             <div class="border border-grey rounded">
                 <ul class="mt-3">
                     @foreach($reunion->users as $user)
-                    <li>{{ $user->name }} {{ $user->apellido_paterno }} {{ $user->apellido_materno }}</li>
+                    <li class="text-uppercase">{{ $user->name }} {{ $user->apellido_paterno }} {{ $user->apellido_materno }}</li>
                         @endforeach
                 </ul>
             </div>

@@ -9,6 +9,9 @@
                             {{ Form::text('titulo_reunion', null, ['class' => 'form-control', 'placeholder' => 'Titulo reunión']) }}
                         </div>
                         <div class="form-group mx-1">
+                            {{ Form::text('cuerpo_reunion', null, ['class' => 'form-control', 'placeholder' => 'Cuerpo reunión']) }}
+                        </div>
+                        <div class="form-group mx-1">
                             {{ Form::date('dia_reunion', null, ['class' => 'form-control']) }}
                         </div>
                         <div class="form-group mx-1">
@@ -35,7 +38,7 @@
 
         <div class="row">
             <div class="col-sx-12 col-md-12">
-                <table class="table table-hover table-sm-responsive">
+                <table class="table table-hover table-sm-responsive table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th>Dia</th>
