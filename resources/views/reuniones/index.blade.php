@@ -61,7 +61,7 @@
                             <td><a class="btn btn-outline-primary" href="{{ url('reuniones/'.$reunion->id) }}"
                                    target="_blank">Detalle <i class="fas fa-file-pdf"></i></a></td>
 
-                            <td><a class="btn btn-outline-primary disabled"
+                            <td><a class="btn btn-outline-primary"
                                    href="{{ url('reuniones/'.$reunion->id.'/edit') }}"><i
                                             class="material-icons">edit</i></a></td>
                         </tr>

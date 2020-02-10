@@ -105,15 +105,18 @@ class ReunionController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * @param  int  $id
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
-        dd($request->all());
-        $reunion = Reunion::updateOrCreate($request->except('_token'));
+        //dd($request->all());
+        $reunion = Reunion::find($id)
+            //dd($request->users)
+            ->updateOrCreate($request->except(['_token', '_method']));
+                $reunion->users()->sync($reunion->user_id,['id' => $request->user_array]);
 
         return redirect()->route('reuniones.index')->with('success', 'Cambios relizados');
     }
