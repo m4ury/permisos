@@ -62,8 +62,7 @@
                                    target="_blank">Detalle <i class="fas fa-file-pdf"></i></a></td>
 
                             <td><a class="btn btn-outline-primary"
-                                   href="{{ url('reuniones/'.$reunion->id.'/edit') }}"><i
-                                            class="material-icons">edit</i></a></td>
+                                   href="{{ url('reuniones/'.$reunion->id.'/edit') }}"><i class="fas fa-pen"></i></a></td>
                         </tr>
                     @endforeach
                     </tbody>

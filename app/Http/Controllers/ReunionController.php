@@ -47,7 +47,9 @@ class ReunionController extends Controller
         //$reunion = Reunion::orderBy('id', 'ASC')->pluck('titulo_reunion', 'id');
         $reunion = new Reunion;
         $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
-        $usersByRut = User::orderBy('name', 'ASC')->pluck('rut', 'id');
+        //$users = User::orderBy('name', 'ASC')->pluck('rut', 'id');
+        $users = User::select(\DB::raw('CONCAT(name, " ", apellido_paterno, " - ", rut) AS full_name, id'))->pluck('full_name', 'id');
+
 
         return view('reuniones.create', compact('reunion', 'users', 'categorias'));
     }

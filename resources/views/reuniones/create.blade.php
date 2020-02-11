@@ -49,7 +49,7 @@
                             <h5>Asistentes</h5>
                             <div class="row">
                                 <div class="col form-group">
-                                    {{ Form::label('name', 'Rut') }}
+                                    {{ Form::label('name', 'Nombre/Rut') }}
                                     {!! Form::select('users[]', $users, null, ['users' => 'id', 'class' => 'form-control select-users', 'multiple', 'required']) !!}
                                 </div>
                             </div>
