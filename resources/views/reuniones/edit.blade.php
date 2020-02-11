@@ -52,7 +52,7 @@
                             <div class="row">
                                 <div class="col form-group">
                                     {{ Form::label('name', 'Rut') }}
-                                    {!! Form::select('user_array]', $usuarios, $reunion->users()->pluck('user_id', 'name'), [ 'class' => 'form-control select-users', 'multiple']) !!}
+                                    {!! Form::select('user_id[]', $usuarios, $reunion->users()->pluck('user_id', 'name'), [ 'user_id' => 'id', 'class' => 'form-control select-users', 'multiple']) !!}
                                 </div>
                             </div>
                         </section>

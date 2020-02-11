@@ -47,7 +47,7 @@ class ReunionController extends Controller
         //$reunion = Reunion::orderBy('id', 'ASC')->pluck('titulo_reunion', 'id');
         $reunion = new Reunion;
         $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
-        $users = User::orderBy('name', 'ASC')->pluck('rut', 'id');
+        $usersByRut = User::orderBy('name', 'ASC')->pluck('rut', 'id');
 
         return view('reuniones.create', compact('reunion', 'users', 'categorias'));
     }
@@ -78,8 +78,6 @@ class ReunionController extends Controller
     public function show($id)
     {
         $reunion = Reunion::findOrFail($id);
-        //$usuarios = $reunion->users()->get();
-        //dd($usuarios);
 
         $view = view('reuniones.show', compact('reunion', 'usuarios'));
         $pdf = App::make('dompdf.wrapper');
@@ -105,18 +103,15 @@ class ReunionController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param  int  $id
+     * @param  int $id
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-
-        //dd($request->all());
-        $reunion = Reunion::find($id)
-            //dd($request->users)
-            ->updateOrCreate($request->except(['_token', '_method']));
-                $reunion->users()->sync($reunion->user_id,['id' => $request->user_array]);
+        $reunion = Reunion::find($id);
+        $reunion->users()->sync($request->user_id);
+        $reunion->update($request->except(['_token', '_method', 'user_id']));
 
         return redirect()->route('reuniones.index')->with('success', 'Cambios relizados');
     }
