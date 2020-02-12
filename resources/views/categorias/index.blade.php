@@ -10,7 +10,7 @@
                     <th>Fecha creación</th>
                     <th>Nombre Categoria</th>
                     <th>Descripción</th>
-                    <th class="text-center" colspan="2">Acciones</th>
+                    <th class="text-center" colspan="2">Acciones    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -19,12 +19,11 @@
                     <tr>
                         <td>{{ Carbon\Carbon::parse($categoria->created_at)->format("d-m-Y") }}</td>
                         <td>{{ $categoria->nombre_categoria }}</td>
-                        <td>{{ $categoria->descripcion_categoria }}</td>
+                        <td>{{ $categoria->descripcion_categoria }}</ td>
 
                         {!! Form::open(['route' => ['categorias.destroy', $categoria->id], 'method' => 'DELETE']) !!}
-                        <td><a class="btn btn-outline-primary" href="{{ url('categorias/'.$categoria->id.'/edit') }}"><i
-                                        class="material-icons">edit</i></a></td>
-                        <td>{!! Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-simple btn-xs', 'onclick'=>'return confirm("seguro?")'] ) !!}
+                        <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{ url('categorias/'.$categoria->id.'/edit') }}"><i class="fas fa-pen"></i></a></td>
+                        <td>{!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-simple btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Eliminar','onclick'=>'return confirm("seguro?")'] ) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>
@@ -52,6 +51,10 @@
             </form>
             {{--<form-categoria></form-categoria>--}}
         </div>
-
     </div>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 @stop

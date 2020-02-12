@@ -52,7 +52,7 @@
                                 <td>{{ strtoupper($salida->descripcion) }}</td>
                                 {{--<td>{{ $salida->horas_saldo }}</td>--}}
                                 <td><a class="btn btn-outline-primary" href="{{ url('salidas/'.$salida->id) }}" target="_blank">Print <i class="fas fa-print"></i></a></td>
-                                
+
                             </tr>
                             @endforeach
                         </tbody>
@@ -61,7 +61,7 @@
                         <a id="new" class="btn btn-success" href="{{ route('salidas.create') }}">
                             Nuevo <i class="fas fa-plus"></i>
                         </a>
-                        <a href="{{ route('home') }}" class="btn btn-secondary">Atras</a>
+                        <a href="{{ route('home') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Atras</a>
 
                     </div>
                     <div>

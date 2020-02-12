@@ -81,7 +81,7 @@ class ReunionController extends Controller
     {
         $reunion = Reunion::findOrFail($id);
 
-        $view = view('reuniones.show', compact('reunion', 'usuarios'));
+        $view = view('reuniones.show', compact('reunion'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'portrait')->setWarnings(false);
 
@@ -97,7 +97,7 @@ class ReunionController extends Controller
     public function edit($id)
     {
         $reunion = Reunion::findOrFail($id);
-        $usuarios = User::orderBy('name', 'ASC')->pluck('name', 'id');
+        $usuarios = User::select(\DB::raw('CONCAT(name, " ", apellido_paterno, " - ", rut) AS full_name, id'))->pluck('full_name', 'id');
         $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
 
         return view('reuniones.edit', compact('reunion', 'usuarios', 'categorias'));

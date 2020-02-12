@@ -61,7 +61,7 @@ class SalidaController extends Controller
                 /*$salida->estado = 'impreso';*/
                 $salida->save();
 
-                event(new SalidaFueCreada($salida));
+                //event(new SalidaFueCreada($salida));
 
                 return redirect()->route('salidas.index', $salida->id)->with('info', 'Nueva Salida creada!');
                 }else

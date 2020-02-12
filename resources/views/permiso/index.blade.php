@@ -58,8 +58,8 @@
                 @foreach($permisos as $permiso)
 
                     <tr>
-                        <td>{{ Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
-                        <td>{{ Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>
+                        <td nowrap>{{ Carbon\Carbon::parse($permiso->dia_inicio)->format("d-m-Y") }}</td>
+                        <td nowrap>{{ Carbon\Carbon::parse($permiso->dia_fin)->format("d-m-Y") }}</td>
                         <td>{{ Carbon\Carbon::parse($permiso->hora_inicio)->format("H:i") }}</td>
                         <td>{{ Carbon\Carbon::parse($permiso->hora_fin)->format("H:i") }}</td>
                         <td>{{ $permiso->id }}</td>
@@ -67,27 +67,27 @@
                         <td>{{ Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                         <td>{{ $permiso->descripcion }}</td>
                         <td>{{ $permiso->lugar }}</td>
-                        <td><a class="btn btn-outline-primary" href="{{ url('permisos/'.$permiso->id) }}"
-                               target="_blank">Cometido <i class="material-icons">event</i></a></td>
+                        <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cometido" href="{{ url('permisos/'.$permiso->id) }}"
+                               target="_blank"><i class="fas fa-calendar-day"></i></a></td>
 
                         @if($permiso->es_capacitacion)
-                            <td><a class="btn btn-outline-secondary" href="{{ url('capacitacion/'.$permiso->id) }}"
-                                   target="_blank">Capacit <i class="material-icons">school</i></a></td>
+                            <td><a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Capacitacion" href="{{ url('capacitacion/'.$permiso->id) }}"
+                                   target="_blank"><i class="fas fa-book"></i></a></td>
                         @endif
 
                         @if($permiso->incluye_viatico)
-                            <td><a class="btn btn-outline-success" href="{{ url('viaticos/'.$permiso->viatico->id) }}"
-                                   target="_blank">Viatico <i class="material-icons">business_center</i></a></td>
+                            <td><a class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Viatico" href="{{ url('viaticos/'.$permiso->viatico->id) }}"
+                                   target="_blank"><i class="fas fa-file-invoice-dollar"></i></a></td>
                         @endif
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             <div class="form-group d-inline-flex align-self-stretch">
-                <a id="new" class="btn btn-success mx-2" href="{{ route('permisos.create') }}">
-                    <i class="material-icons">add_circle</i>
+                <a id="new" class="btn btn-success mx-2" href="{{ route('permisos.create') }}">Nuevo
+                    <i class="fas fa-plus"></i>
                 </a>
-                <a href="{{ route('home') }}" class="btn btn-secondary">Atras</a>
+                <a href="{{ route('home') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Atras</a>
 
             </div>
             <div>
@@ -101,5 +101,8 @@
                 $(this).remove();
             });
         }, 5000);
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
 @stop

@@ -107,6 +107,5 @@
             no_results_text: "Oops, se encontraron resultados!",
         });
         $('.cuerpo_reunion').trumbowyg();
-        /*$('.obs_reunion').trumbowyg();*/
     </script>
 @endsection
