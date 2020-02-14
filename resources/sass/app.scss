@@ -4,9 +4,22 @@
 
 // Variables
 @import 'variables';
-
+$fa-font-path: "../webfonts";
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// fontAwesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+
+// chosen-js
+@import '~chosen-js/chosen.min.css';
+
+// trumbowyg
+@import '~trumbowyg/dist/ui/trumbowyg.css';
+
 
 .navbar-laravel {
   background-color: #fff;
