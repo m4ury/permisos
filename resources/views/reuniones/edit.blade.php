@@ -103,10 +103,12 @@
         $(".select-users").chosen({
             placeholder_text_multiple: "Seleccione Participantes",
             no_results_text: "Oops, se encontraron resultados!",
+            width:"100%"
         });
         $(".select-categoria").chosen({
             placeholder_text_single: "Seleccione una categoria",
             no_results_text: "Oops, se encontraron resultados!",
+            width:"100%"
         });
         $('.cuerpo_reunion').trumbowyg();
     </script>

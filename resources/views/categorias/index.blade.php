@@ -39,8 +39,13 @@
             <form action="{{ route('categorias.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <input type="text" name="nombre_categoria" class="form-control" placeholder="Nombre de la Categoria"
+                    <input type="text" name="nombre_categoria" class="form-control {{ ($errors->has('nombre_categoria') ? ' is-invalid' : '') }}" placeholder="Nombre de la Categoria"
                            required autofocus>
+                    @if ($errors->has('nombre_categoria'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('nombre_categoria') }}</strong>
+                        </span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <input type="text" name="descripcion_categoria" class="form-control"

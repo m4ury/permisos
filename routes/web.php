@@ -19,7 +19,7 @@ Route::get('viatico/{viatico}', 'PermisoController@showViatico');
 
 //routes para reuniones-acta
 Route::resource('reuniones', 'ReunionController')->middleware(['auth', 'admin']);
-Route::resource('categorias', 'CategoriaController')->middleware(['auth', 'admin']);
+Route::resource('categorias', 'CategoriaController')->except('show')->middleware(['auth', 'admin']);
 
 //routes para edicion de perfil de usuarios
 
@@ -33,4 +33,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin'], function () {//routes 
     Voyager::routes();
+});
+
+//Vue
+Route::get('categories', function (){
+   return view('category');
 });

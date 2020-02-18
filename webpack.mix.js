@@ -2,8 +2,10 @@ const mix = require('laravel-mix');
 
 mix.js(['resources/js/app.js', 'resources/js/all.min.js', 'resources/js/chosen.jquery.min.js', 'resources/js/trumbowyg.min.js'], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
-mix.options({
-    imgLoaderOptions: {
-        enabled: false
-    },
+mix.autoload({
+    jquery: ['$', 'window.$', 'window.jQuery']
 });
+mix.setPublicPath('../');
+/*mix.copy('node_modules/trumbowyg/dist/ui/icons.svg', 'public/svg');*/
+/*
+mix.copy('node_modules/chosen-js/chosen-sprite.png', '/public/images');*/

@@ -4,7 +4,7 @@
 
 // Variables
 @import 'variables';
-$fa-font-path: "../webfonts";
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -18,8 +18,7 @@ $fa-font-path: "../webfonts";
 @import '~chosen-js/chosen.min.css';
 
 // trumbowyg
-@import '~trumbowyg/dist/ui/trumbowyg.css';
-
+@import '~trumbowyg/dist/ui/sass/trumbowyg';
 
 .navbar-laravel {
   background-color: #fff;
