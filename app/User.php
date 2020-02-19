@@ -125,6 +125,10 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsToMany(Reunion::class);
     }
 
+    public function acuerdos()
+    {
+        return $this->hasMany(Acuerdo::class);
+    }
     /*public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles');

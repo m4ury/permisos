@@ -110,6 +110,6 @@
             no_results_text: "Oops, se encontraron resultados!",
             width:"100%"
         });
-        $('.cuerpo_reunion').trumbowyg();
+        $('.cuerpo_reunion').trumbowyg({'svgPath': "{{ asset('svg/icons.svg') }}"});
     </script>
 @endsection

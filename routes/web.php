@@ -20,6 +20,8 @@ Route::get('viatico/{viatico}', 'PermisoController@showViatico');
 //routes para reuniones-acta
 Route::resource('reuniones', 'ReunionController')->middleware(['auth', 'admin']);
 Route::resource('categorias', 'CategoriaController')->except('show')->middleware(['auth', 'admin']);
+Route::resource('acuerdos', 'AcuerdoController')->middleware(['auth', 'admin']);
+
 
 //routes para edicion de perfil de usuarios
 

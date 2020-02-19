@@ -15,8 +15,9 @@ class CreateAcuerdosTable extends Migration
     {
         Schema::create('acuerdos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descripcion_acuerdo')->nullable();
-            $table->boolean('estado_acuerdo');
+            $table->string('titulo_acuerdo');
+            $table->text('descripcion_acuerdo')->nullable();
+            $table->enum('estado_acuerdo',['expirado', 'sin_asignar', 'en_curso', 'realizado', 'postergado'])->default('sin_asignar');
             $table->date('expiracion_acuerdo')->nullable();
             $table->timestamps();
 

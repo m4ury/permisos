@@ -2,10 +2,14 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.component('categoria', require('./components/categoria/Categoria'));
-Vue.component('form-categoria', require('./components/categoria/FormCategoria'));
-
+Vue.component(
+    'categoria-component',{},
+    require('./components/CategoriaComponent').default
+);
+Vue.component(
+    'acuerdo-component', () => require('./components/AcuerdoComponent').default
+)
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });

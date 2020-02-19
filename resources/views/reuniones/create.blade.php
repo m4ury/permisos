@@ -77,6 +77,9 @@
                                 </span>
                             @endif
                         </div>
+                            <div>
+                                <acuerdo-component></acuerdo-component>
+                            </div>
                         <div class="form-group">
                             {!! Form::label('observaciones_reunion', 'Observaciones') !!} {!! Form::textarea('observaciones_reunion', $reunion->observaciones_reunion, ['class' => 'form-control obs_reunion', 'placeholder' => 'Ingrese observaciones', 'rows' => "2"]) !!}
                         </div>
@@ -111,6 +114,8 @@
             no_results_text: "Oops, se encontraron resultados!",
             width: "100%"
         });
-        $('.cuerpo_reunion').trumbowyg({svgPath: '../svg/icons.svg'});
+        $('.cuerpo_reunion').trumbowyg({
+            'svgPath': "{{ asset('svg/icons.svg') }}",
+        });
     </script>
 @endsection

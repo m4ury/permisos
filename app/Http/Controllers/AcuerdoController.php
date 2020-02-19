@@ -14,7 +14,9 @@ class AcuerdoController extends Controller
      */
     public function index()
     {
-        //
+        $acuerdos = Acuerdo::latest('created_at')->get();
+
+        return $acuerdos;
     }
 
     /**
@@ -30,7 +32,7 @@ class AcuerdoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +43,7 @@ class AcuerdoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Acuerdo  $acuerdo
+     * @param  \App\Acuerdo $acuerdo
      * @return \Illuminate\Http\Response
      */
     public function show(Acuerdo $acuerdo)
@@ -52,7 +54,7 @@ class AcuerdoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Acuerdo  $acuerdo
+     * @param  \App\Acuerdo $acuerdo
      * @return \Illuminate\Http\Response
      */
     public function edit(Acuerdo $acuerdo)
@@ -63,8 +65,8 @@ class AcuerdoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Acuerdo  $acuerdo
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Acuerdo $acuerdo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Acuerdo $acuerdo)
@@ -75,7 +77,7 @@ class AcuerdoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Acuerdo  $acuerdo
+     * @param  \App\Acuerdo $acuerdo
      * @return \Illuminate\Http\Response
      */
     public function destroy(Acuerdo $acuerdo)

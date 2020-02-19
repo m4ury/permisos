@@ -12,4 +12,8 @@ class Acuerdo extends Model
     {
         return $this->belongsTo(Reunion::class);
     }
+    public function usuario()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
