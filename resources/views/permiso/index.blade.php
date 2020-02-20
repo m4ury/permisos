@@ -67,16 +67,20 @@
                         <td>{{ Carbon\Carbon::parse($permiso->created_at)->format("d-m-Y") }}</td>
                         <td>{{ $permiso->descripcion }}</td>
                         <td>{{ $permiso->lugar }}</td>
-                        <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cometido" href="{{ url('permisos/'.$permiso->id) }}"
+                        <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
+                               title="Cometido" href="{{ url('permisos/'.$permiso->id) }}"
                                target="_blank"><i class="fas fa-calendar-day"></i></a></td>
 
                         @if($permiso->es_capacitacion)
-                            <td><a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Capacitacion" href="{{ url('capacitacion/'.$permiso->id) }}"
+                            <td><a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip"
+                                   data-placement="bottom" title="Capacitacion"
+                                   href="{{ url('capacitacion/'.$permiso->id) }}"
                                    target="_blank"><i class="fas fa-book"></i></a></td>
                         @endif
 
                         @if($permiso->incluye_viatico)
-                            <td><a class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Viatico" href="{{ url('viaticos/'.$permiso->viatico->id) }}"
+                            <td><a class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="bottom"
+                                   title="Viatico" href="{{ url('viaticos/'.$permiso->viatico->id) }}"
                                    target="_blank"><i class="fas fa-file-invoice-dollar"></i></a></td>
                         @endif
                     </tr>

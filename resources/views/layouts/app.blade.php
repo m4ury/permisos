@@ -8,7 +8,6 @@
     <title>{{ config('app.name') }} | {{ request()->route()->getName() }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    {{--<script src="{{ asset('plugins/trumbowyg/dist/trumbowyg.min.js') }}"></script>--}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -16,8 +15,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{--<link href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css') }}" rel="stylesheet">--}}
-
 </head>
 
 <body>
@@ -54,14 +51,8 @@
                         <li class="nav-item {{ request()->is('salidas') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('salidas.index') }}">Salidas</a>
                         </li>
-                        {{--<li class="nav-item">
-                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target=".perfilModal{{ auth()->id() }}">
-                            Mi Perfil
-                        </a>
-                        </li>--}}
                     @endif
                 </ul>
-                    {{--@include('usuario.perfilModal')--}}
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -97,9 +88,7 @@
                 </ul>
             </div>
         </nav>
-
         @show
-
         <main id="app" class="py-4">
             @yield('content')
         </main>

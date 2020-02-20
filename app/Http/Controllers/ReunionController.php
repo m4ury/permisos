@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Acuerdo;
 use App\Reunion;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReunion;
@@ -31,7 +32,7 @@ class ReunionController extends Controller
             ->diareunion($dia_reunion)
             ->cuerpo($cuerpo)
             ->where('creador_reunion', Auth::user()->rut)
-            ->paginate(5);
+            ->paginate(9);
 
         return view('reuniones.index', compact('reuniones'));
 
@@ -45,10 +46,11 @@ class ReunionController extends Controller
     public function create()
     {
         $reunion = new Reunion;
+        $acuerdo = new Acuerdo;
         $categorias = Categoria::orderBy('nombre_categoria', 'ASC')->pluck('nombre_categoria', 'id');
         $users = User::select(\DB::raw('CONCAT(name, " ", apellido_paterno, " - ", rut) AS full_name, id'))->pluck('full_name', 'id');
 
-        return view('reuniones.create', compact('reunion', 'users', 'categorias'));
+        return view('reuniones.create', compact('reunion', 'users', 'categorias', 'acuerdo'));
     }
 
     /**

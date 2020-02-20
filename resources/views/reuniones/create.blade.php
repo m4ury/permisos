@@ -77,8 +77,8 @@
                                 </span>
                             @endif
                         </div>
-                            <div>
-                                <acuerdo-component></acuerdo-component>
+                            <div class="form-group">
+                                @include('acuerdo.create')
                             </div>
                         <div class="form-group">
                             {!! Form::label('observaciones_reunion', 'Observaciones') !!} {!! Form::textarea('observaciones_reunion', $reunion->observaciones_reunion, ['class' => 'form-control obs_reunion', 'placeholder' => 'Ingrese observaciones', 'rows' => "2"]) !!}

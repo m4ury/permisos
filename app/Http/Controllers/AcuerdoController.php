@@ -26,7 +26,7 @@ class AcuerdoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
