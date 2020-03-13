@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Nueva Salida</div>
+                    <div class="card-header"><i class="fas fa-route"></i> Nueva Salida</div>
                     @if(session()->has('info'))
                         <div class="alert alert-success">{{ session('info') }}</div>
                     @endif

@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Nuevo Cometido</div>
+                <div class="card">
+                    <div class="card-header"><i class="fas fa-business-time"></i> Nuevo Cometido</div>
                     @if(session()->has('info'))
                         <div class="alert alert-success">{{ session('info') }}</div>
                     @elseif(session()->has('danger'))

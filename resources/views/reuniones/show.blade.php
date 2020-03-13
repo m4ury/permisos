@@ -43,7 +43,7 @@
         <h5 class="font-weight-bold p-3">Cuerpo Reunión: </h5>
 
         <div class="row m-3">
-            <p class="text-wrap">{!! $reunion->cuerpo_reunion !!}</p>
+            <div class="text-wrap">{!! $reunion->cuerpo_reunion !!}</div>
         </div>
 
         <h5 class="font-weight-bold p-3">Observaciones: </h5>

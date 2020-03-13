@@ -35,7 +35,6 @@ class ReunionController extends Controller
             ->paginate(9);
 
         return view('reuniones.index', compact('reuniones'));
-
     }
 
     /**

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Nueva Reunión</div>
+                    <div class="card-header"><i class="fas fa-users"></i> Nueva Reunión</div>
                     @if(session()->has('info'))
                         <div class="alert alert-success">{{ session('info') }}</div>
                     @elseif(session()->has('danger'))
@@ -77,9 +77,9 @@
                                 </span>
                             @endif
                         </div>
-                            <div class="form-group">
+                            {{--<div class="form-group">
                                 @include('acuerdo.create')
-                            </div>
+                            </div>--}}
                         <div class="form-group">
                             {!! Form::label('observaciones_reunion', 'Observaciones') !!} {!! Form::textarea('observaciones_reunion', $reunion->observaciones_reunion, ['class' => 'form-control obs_reunion', 'placeholder' => 'Ingrese observaciones', 'rows' => "2"]) !!}
                         </div>

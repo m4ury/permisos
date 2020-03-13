@@ -22,6 +22,9 @@ Route::resource('reuniones', 'ReunionController')->middleware(['auth', 'admin'])
 Route::resource('categorias', 'CategoriaController')->except('show')->middleware(['auth', 'admin']);
 Route::resource('acuerdos', 'AcuerdoController')->middleware(['auth', 'admin']);
 
+//rutas para vacunas
+Route::resource('vacunas', 'VacunaController')->except('show')->middleware('auth');
+Route::resource('pacientes', 'PacienteController')->middleware('auth');
 
 //routes para edicion de perfil de usuarios
 
