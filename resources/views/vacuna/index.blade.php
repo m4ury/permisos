@@ -22,7 +22,7 @@
                 Nuevo registro
             </a>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 pt-3">
             <table class="table table-hover table-sm table-bordered">
                 <thead class="thead-light">
                 <tr>
@@ -45,7 +45,9 @@
                         <td>
                             <a class="btn bg-gradient-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
                                title="Editar"
-                               href="{{ route('vacuna.edit', $vacuna->id) }}"><i class="fas fa-pen"></i></a></td>
+                               href="{{ route('vacuna.edit', $vacuna->id) }}"><i class="fas fa-pen"></i>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

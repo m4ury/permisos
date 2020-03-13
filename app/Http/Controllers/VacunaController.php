@@ -16,9 +16,10 @@ class VacunaController extends Controller
      */
     public function index()
     {
+
         $vacunas = Vacuna::with('paciente')->latest('fecha_vacuna')->paginate(9);
 
-        return view('vacuna.index', compact(['vacunas', 'tipos', 'vacuna', 'paciente']));
+        return view('vacuna.index', compact('vacunas'));
     }
 
     /**
@@ -28,7 +29,9 @@ class VacunaController extends Controller
      */
     public function create()
     {
-        //
+        $tipos = Tipo::all();
+        $vacuna = new Vacuna;
+        return view('vacuna.create', compact('tipos', 'vacuna'));
     }
 
     /**
@@ -39,7 +42,19 @@ class VacunaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paciente = Paciente::firstOrCreate([
+            'paciente_rut' => $request->paciente_rut
+        ], [
+            'paciente_nombres' => $request->paciente_nombres,
+            'apellido_paterno' => $request->apellido_paterno,
+            'apellido_materno' => $request->apellido_materno,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'paciente_sexo' => $request->paciente_nombres,
+            'tipo_id' => $request->tipo_id
+        ]);
+
+
+        dd($request->all());
     }
 
     /**
