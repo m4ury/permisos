@@ -37,15 +37,16 @@
                 <tbody>
                 @foreach($vacunas as $vacuna)
                     <tr>
-                        <td>{{ $vacuna->paciente->paciente_rut }}</td>
-                        <td>{{ $vacuna->paciente->paciente_nombres }}</td>
-                        <td>{{ $vacuna->paciente->fecha_nacimiento }}</td>
-                        <td>{{ $vacuna->paciente->tipo->tipo_nombre }}</td>
+                        <td>{{ $vacuna->paciente->paciente_rut ?? '' }}</td>
+                        <td>{{ $vacuna->paciente->paciente_nombres ?? '' }}</td>
+                        <td>{{ $vacuna->paciente->fecha_nacimiento ?? '' }}</td>
+                        <td>edad</td>
+                        <td>{{ $vacuna->paciente->tipo->tipo_nombre ?? '' }}</td>
 
                         <td>
                             <a class="btn bg-gradient-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
                                title="Editar"
-                               href="{{ route('vacuna.edit', $vacuna->id) }}"><i class="fas fa-pen"></i>
+                               href="{{ route('vacunas.edit', $vacuna->id) }}"><i class="fas fa-pen"></i>
                             </a>
                         </td>
                     </tr>

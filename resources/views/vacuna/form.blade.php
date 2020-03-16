@@ -1,6 +1,15 @@
 {{ Form::open(['action' => 'VacunaController@store', 'method' => 'POST', 'class' => 'form-horizontal']) }}
+
 <div class="form-group row">
-    {!! Form::label('paciente_rut', 'Rut', ['class' => 'col-sm-2 col-form-label']) !!}
+    {!! Form::label('fecha_vacuna', 'Vacunación.', ['class' => 'col-sm-2 col-form-label']) !!}
+    <div class="col-sm-5">
+        {!! Form::date('vacuna_fecha',null, ['class' => 'form-control form-control-sm']) !!}
+    </div>
+</div>
+<hr>
+
+<div class="form-group row">
+    {!! Form::label('paciente_rut', 'Rut.', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-6">
         {!! Form::text('paciente_rut', null, ['class' => 'form-control form-control-sm'.($errors->has('paciente_rut') ? ' is-invalid' : ''), 'placeholder' =>
         '00000000-X']) !!}
