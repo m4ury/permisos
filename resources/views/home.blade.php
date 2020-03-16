@@ -87,9 +87,9 @@
                            role="button">Cometidos</a>
                         @if(auth()->user()->isAdmin())
                             <a class="btn btn-outline-secondary" href="{{ route('reuniones.index') }}" role="button">Mis Reuniones</a>
+                            <a class="btn btn-outline-secondary" href="{{ route('reuniones.index') }}" role="button">Mis Reuniones</a>
                         @endif
-                        <a class="btn btn-outline-success" href="{{ route('salidas.index') }}" role="button">P. Salida
-                            Especial</a>
+                        <a class="btn btn-outline-success" href="{{ route('vacunas.index') }}" role="button">Vacunas</a>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreVacuna;
 use App\Paciente;
 use App\Tipo;
 use App\Vacuna;
@@ -16,10 +17,15 @@ class VacunaController extends Controller
      */
     public function index()
     {
+        $TotalVacunados = Vacuna::all()->count();
+        $TotalEmbarazadas = Vacuna::with('paciente.tipo');
+dd($TotalEmbarazadas);
 
-        $vacunas = Vacuna::with('paciente')->latest('vacuna_fecha')->paginate(9);
+        $vacunas = Vacuna::with('paciente.tipo')
+            ->latest('vacuna_fecha')
+            ->paginate(9);
 
-        return view('vacuna.index', compact('vacunas'));
+        return view('vacuna.index', compact('vacunas', 'TotalEmbarazadasHoy', 'TotalEmbarazadas'));
     }
 
     /**
@@ -40,22 +46,24 @@ class VacunaController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreVacuna $request)
     {
-       dd($request->all());
-        Vacuna::create([
+        $vacuna = Vacuna::create([
             'vacuna_fecha' => $request->vacuna_fecha,
-            'paciente_id' => (Paciente::firstOrNew([
+            'paciente_id' => (Paciente::firstOrCreate([
                 'paciente_rut' => $request->paciente_rut
             ], [
                 'paciente_nombres' => $request->paciente_nombres,
                 'apellido_paterno' => $request->apellido_paterno,
                 'apellido_materno' => $request->apellido_materno,
                 'fecha_nacimiento' => $request->fecha_nacimiento,
-                'sexo' => $request->paciente_sexo,
+                'paciente_sexo' => $request->paciente_sexo,
                 'tipo_id' => $request->tipo_id,
             ]))->id
         ]);
+
+        return redirect()->route('vacunas.index')->with('success', 'Nueva Registro ha sido creado con exito');
+
     }
 
     /**

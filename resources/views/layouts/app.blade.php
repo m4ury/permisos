@@ -38,17 +38,20 @@
                 <ul class="navbar nav">
                     @if(auth()->check())
                         @if(auth()->user()->isAdmin())
-                            <li class="nav-item {{ request()->is('reuniones') ? 'active' : '' }}">
+                            <li class="nav-item {{ request()->route()->named('reuniones') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('reuniones.index') }}">Reuniones</a>
                             </li>
-                            <li class="nav-item {{ request()->is('categorias') ? 'active' : '' }}">
+                            <li class="nav-item {{ request()->route()->named('categorias') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a>
                             </li>
+                            <li class="nav-item {{ request()->route()->named('vacunas') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('vacunas.index') }}">Vacunas</a>
+                            </li>
                         @endif
-                        <li class="nav-item {{ request()->is('permisos') ? 'active' : '' }}">
+                        <li class="nav-item {{ request()->route()->named('permisos') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('permisos.index') }}">Cometidos</a>
                         </li>
-                        <li class="nav-item {{ request()->is('salidas') ? 'active' : '' }}">
+                        <li class="nav-item {{ request()->route()->named('salidas') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('salidas.index') }}">Salidas</a>
                         </li>
                     @endif

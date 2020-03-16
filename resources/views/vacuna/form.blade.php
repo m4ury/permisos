@@ -3,7 +3,12 @@
 <div class="form-group row">
     {!! Form::label('fecha_vacuna', 'Vacunación.', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-5">
-        {!! Form::date('vacuna_fecha',null, ['class' => 'form-control form-control-sm']) !!}
+        {!! Form::date('vacuna_fecha',null, ['class' => 'form-control form-control-sm'.($errors->has('vacuna_fecha') ? ' is-invalid' : '')]) !!}
+        @if ($errors->has('vacuna_fecha'))
+            <span class="invalid-feedback">
+               <strong>{{ $errors->first('vacuna_fecha') }}</strong>
+            </span>
+        @endif
     </div>
 </div>
 <hr>

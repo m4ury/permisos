@@ -19,4 +19,5 @@ class Paciente extends Model
     {
         return $this->belongsTo(Tipo::class);
     }
+
 }

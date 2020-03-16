@@ -17,14 +17,17 @@ Route::resource('viaticos', 'ViaticoController');
 Route::get('capacitacion/{capacitacion}', 'PermisoController@showCap');
 Route::get('viatico/{viatico}', 'PermisoController@showViatico');
 
-//routes para reuniones-acta
-Route::resource('reuniones', 'ReunionController')->middleware(['auth', 'admin']);
-Route::resource('categorias', 'CategoriaController')->except('show')->middleware(['auth', 'admin']);
-Route::resource('acuerdos', 'AcuerdoController')->middleware(['auth', 'admin']);
+Route::middleware(['auth', 'admin'])->group(function (){
+    Route::resource('reuniones', 'ReunionController');
+    Route::resource('categorias', 'CategoriaController')->except('show');
+    Route::resource('acuerdos', 'AcuerdoController');
 
 //rutas para vacunas
-Route::resource('vacunas', 'VacunaController')->except('show')->middleware('auth');
-Route::resource('pacientes', 'PacienteController')->middleware('auth');
+    Route::resource('vacunas', 'VacunaController')->except('show');
+    Route::resource('pacientes', 'PacienteController');
+});
+//routes para reuniones-acta
+
 
 //routes para edicion de perfil de usuarios
 
