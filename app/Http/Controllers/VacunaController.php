@@ -17,15 +17,110 @@ class VacunaController extends Controller
      */
     public function index()
     {
-        $TotalVacunados = Vacuna::all()->count();
-        $TotalEmbarazadas = Vacuna::with('paciente.tipo');
-dd($TotalEmbarazadas);
+        $totalVacunados = Vacuna::all()->count();
+        $totalVacunadosHoy = Vacuna::whereDay('vacuna_fecha', now()->day)->count();
+
+        $totalEmbarazadas = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Embarazadas')
+            ->count();
+        $totalEmbarazadasHoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Embarazadas')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
+
+        $totalFunPublicos = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Personal de Salud Público')
+            ->count();
+        $totalFunPublicosHoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Personal de Salud Público')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
+
+        $totalFunPrivado = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Personal de Salud Privado')
+            ->count();
+        $totalFunPrivadoHoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Personal de Salud Privado')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
+
+        $totalCronico1164 = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Crónico entre 11 y 64 años')
+            ->count();
+        $totalCronico1164Hoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Crónico entre 11 y 64 años')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
+
+        $total0610 = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', '6 meses a 10 años')
+            ->count();
+        $total0610Hoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', '6 meses a 10 años')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
+
+        $total65Mas = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', '65 y mas años')
+            ->count();
+        $total65MasHoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', '65 y mas años')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
+
+        $totalAvicolasCerdos = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Trab. avicolas y criadores de cerdos')
+            ->count();
+        $totalAvicolasCerdosHoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Trab. avicolas y criadores de cerdos')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
+
+        $totalOtros = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Otros')
+            ->count();
+        $totalOtrosHoy = \DB::table('vacunas')
+            ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
+            ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
+            ->where('tipos.tipo_nombre', '=', 'Otros')
+            ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
+            ->count();
 
         $vacunas = Vacuna::with('paciente.tipo')
             ->latest('vacuna_fecha')
             ->paginate(9);
 
-        return view('vacuna.index', compact('vacunas', 'TotalEmbarazadasHoy', 'TotalEmbarazadas'));
+        return view('vacuna.index', compact('vacunas', 'totalVacunados', 'totalVacunadosHoy', 'totalEmbarazadas', 'totalEmbarazadasHoy', 'totalFunPublicos', 'totalFunPublicosHoy', 'totalFunPrivado', 'totalFunPrivadoHoy', 'totalCronico1164', 'totalCronico1164Hoy', 'total0610', 'total0610Hoy', 'total65Mas', 'total65MasHoy', 'totalAvicolasCerdos', 'totalAvicolasCerdosHoy', 'totalOtros', 'totalOtrosHoy'));
     }
 
     /**

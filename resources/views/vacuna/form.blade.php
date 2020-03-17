@@ -17,7 +17,7 @@
     {!! Form::label('paciente_rut', 'Rut.', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-6">
         {!! Form::text('paciente_rut', null, ['class' => 'form-control form-control-sm'.($errors->has('paciente_rut') ? ' is-invalid' : ''), 'placeholder' =>
-        '00000000-X']) !!}
+        '00000000-X', 'required']) !!}
         @if ($errors->has('paciente_rut'))
             <span class="invalid-feedback">
                <strong>{{ $errors->first('paciente_rut') }}</strong>
@@ -29,7 +29,7 @@
     {!! Form::label('paciente_nombres', 'Nombres', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-10">
         {!! Form::text('paciente_nombres', null, ['class' => 'form-control form-control-sm'.($errors->has('paciente_nombres') ? ' is-invalid' : ''),
-    'placeholder' => 'Ingrese Nombres']) !!}
+    'placeholder' => 'Ingrese Nombres', 'required']) !!}
         @if ($errors->has('paciente_nombres'))
             <span class="invalid-feedback">
                           <strong>{{ $errors->first('paciente_nombres') }}</strong>
@@ -42,7 +42,7 @@
     {!! Form::label('apellidos', 'Apellidos', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-5">
         {!! Form::text('apellido_paterno',null, ['class' => 'form-control form-control-sm'.($errors->has('apellido_paterno') ? '
-        is-invalid' : ''), 'placeholder' => 'Apellido Paterno']) !!}
+        is-invalid' : ''), 'placeholder' => 'Apellido Paterno'], 'required') !!}
         @if ($errors->has('apellido_paterno'))
             <span class="invalid-feedback">
                           <strong>{{ $errors->first('apellido_paterno') }}</strong>
@@ -63,7 +63,7 @@
 <div class="form-group row">
     {!! Form::label('fecha_nacimiento', 'Fecha Nac.', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-5">
-        {!! Form::date('fecha_nacimiento',null, ['class' => 'form-control form-control-sm']) !!}
+        {!! Form::date('fecha_nacimiento',null, ['class' => 'form-control form-control-sm', 'required']) !!}
     </div>
     <div class="col-sm-5">
         {!! Form::select('paciente_sexo', ['Femenino' => 'Femenino', 'Masculino' => 'Masculino', 'Otro' => 'otro'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Sexo']) !!}
@@ -73,7 +73,7 @@
 <div class="form-group row">
     {!! Form::label('tipo', 'Tipo Obj.', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-10">
-        {!! Form::select('tipo_id', $tipos->pluck('tipo_nombre', 'id'), null, ['class' => 'form-control form-control-sm select-tipo', 'placeholder' => 'Seleccione tipo']) !!}
+        {!! Form::select('tipo_id', $tipos->pluck('tipo_nombre', 'id'), null, ['class' => 'form-control form-control-sm select-tipo', 'placeholder' => 'Seleccione tipo', 'required']) !!}
     </div>
 </div>
 <hr>
