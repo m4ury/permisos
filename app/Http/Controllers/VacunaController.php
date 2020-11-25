@@ -20,10 +20,10 @@ class VacunaController extends Controller
         $totalVacunados = Vacuna::all()->count();
         $totalVacunadosHoy = Vacuna::whereDay('vacuna_fecha', now()->day)->count();
 
-        $totalEmbarazadas = \DB::table('vacunas')
+        $totalEmbarazadas = Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
-            ->where('tipos.tipo_nombre', '=', 'Embarazadas')
+            ->where('tipo_nombre', 'Embarazadas')
             ->count();
         $totalEmbarazadasHoy = \DB::table('vacunas')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
@@ -32,7 +32,7 @@ class VacunaController extends Controller
             ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
             ->count();
 
-        $totalFunPublicos = \DB::table('vacunas')
+        $totalFunPublicos = Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
             ->where('tipos.tipo_nombre', '=', 'Personal de Salud Público')
@@ -44,7 +44,7 @@ class VacunaController extends Controller
             ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
             ->count();
 
-        $totalFunPrivado = \DB::table('vacunas')
+        $totalFunPrivado =  Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
             ->where('tipos.tipo_nombre', '=', 'Personal de Salud Privado')
@@ -56,7 +56,7 @@ class VacunaController extends Controller
             ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
             ->count();
 
-        $totalCronico1164 = \DB::table('vacunas')
+        $totalCronico1164 =  Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
             ->where('tipos.tipo_nombre', '=', 'Crónico entre 11 y 64 años')
@@ -68,7 +68,7 @@ class VacunaController extends Controller
             ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
             ->count();
 
-        $total0610 = \DB::table('vacunas')
+        $total0610 =  Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
             ->where('tipos.tipo_nombre', '=', '6 meses a 10 años')
@@ -80,7 +80,7 @@ class VacunaController extends Controller
             ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
             ->count();
 
-        $total65Mas = \DB::table('vacunas')
+        $total65Mas =  Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
             ->where('tipos.tipo_nombre', '=', '65 y mas años')
@@ -92,7 +92,7 @@ class VacunaController extends Controller
             ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
             ->count();
 
-        $totalAvicolasCerdos = \DB::table('vacunas')
+        $totalAvicolasCerdos =  Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
             ->where('tipos.tipo_nombre', '=', 'Trab. avicolas y criadores de cerdos')
@@ -104,7 +104,7 @@ class VacunaController extends Controller
             ->whereDay('vacunas.vacuna_fecha', '=', now()->day)
             ->count();
 
-        $totalOtros = \DB::table('vacunas')
+        $totalOtros =  Vacuna::with('paciente', 'tipo')
             ->join('pacientes', 'pacientes.id', '=', 'vacunas.paciente_id')
             ->join('tipos', 'tipos.id', '=', 'pacientes.tipo_id')
             ->where('tipos.tipo_nombre', '=', 'Otros')

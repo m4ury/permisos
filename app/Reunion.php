@@ -36,7 +36,7 @@ class Reunion extends Model
             return $query->where('dia_reunion', 'LIKE', "%$dia_reunion%");
     }
 
-    public function scopeCuerpo($query, $cuerpo)
+    public function scopeCuerpo($query, $cuerpo)    
     {
         if ($cuerpo)
             return $query->where('cuerpo_reunion', 'LIKE', "%$cuerpo%");

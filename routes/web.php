@@ -18,6 +18,7 @@ Route::get('capacitacion/{capacitacion}', 'PermisoController@showCap');
 Route::get('viatico/{viatico}', 'PermisoController@showViatico');
 
 Route::middleware(['auth', 'admin'])->group(function (){
+    Route::get('reuniones.all', 'ReunionController@all');
     Route::resource('reuniones', 'ReunionController');
     Route::resource('categorias', 'CategoriaController')->except('show');
     Route::resource('acuerdos', 'AcuerdoController');

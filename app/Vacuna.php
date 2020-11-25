@@ -13,6 +13,11 @@ class Vacuna extends Model
         return $this->belongsTo(Paciente::class);
     }
 
+    public function tipo()
+    {
+        return $this->belongsTo(Tipo::class);
+    }
+
     /*public function scopeSearch($query, $q)
     {
         if ($q)

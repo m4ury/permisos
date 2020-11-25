@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Acuerdo;
-use App\Reunion;
-use Illuminate\Http\Request;
+use App\Categoria;
 use App\Http\Requests\StoreReunion;
+use App\Reunion;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
-use App\User;
-use App\Categoria;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -25,7 +25,6 @@ class ReunionController extends Controller
         $titulo_reunion = $request->get('titulo_reunion');
         $dia_reunion = $request->get('dia_reunion');
         $cuerpo = $request->get('cuerpo_reunion');
-
 
         $reuniones = Reunion::latest('dia_reunion')
             ->tituloreunion($titulo_reunion)
@@ -50,6 +49,13 @@ class ReunionController extends Controller
         $users = User::select(\DB::raw('CONCAT(name, " ", apellido_paterno, " - ", rut) AS full_name, id'))->pluck('full_name', 'id');
 
         return view('reuniones.create', compact('reunion', 'users', 'categorias', 'acuerdo'));
+    }
+
+
+    public function all(){
+        $reuniones = Reunion::latest();
+
+        return redirect()->route('all', compact('reuniones'));
     }
 
     /**
