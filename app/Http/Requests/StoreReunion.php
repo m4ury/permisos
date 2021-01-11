@@ -28,7 +28,6 @@ class StoreReunion extends FormRequest
             'inicio_reunion' => 'required',
             'fin_reunion' => 'required|after_or_equal:inicio_reunion',
             'titulo_reunion' => 'required',
-            'cuerpo_reunion' => 'required|min:5'
         ];
     }
 }

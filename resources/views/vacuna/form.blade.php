@@ -17,7 +17,7 @@
     {!! Form::label('paciente_rut', 'Rut.', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-6">
         {!! Form::text('paciente_rut', null, ['class' => 'form-control form-control-sm'.($errors->has('paciente_rut') ? ' is-invalid' : ''), 'placeholder' =>
-        '00000000-X', 'required']) !!}
+        '00000000-X']) !!}
         @if ($errors->has('paciente_rut'))
             <span class="invalid-feedback">
                <strong>{{ $errors->first('paciente_rut') }}</strong>
@@ -29,7 +29,7 @@
     {!! Form::label('paciente_nombres', 'Nombres', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-10">
         {!! Form::text('paciente_nombres', null, ['class' => 'form-control form-control-sm'.($errors->has('paciente_nombres') ? ' is-invalid' : ''),
-    'placeholder' => 'Ingrese Nombres', 'required']) !!}
+    'placeholder' => 'Ingrese Nombres']) !!}
         @if ($errors->has('paciente_nombres'))
             <span class="invalid-feedback">
                           <strong>{{ $errors->first('paciente_nombres') }}</strong>
@@ -42,7 +42,7 @@
     {!! Form::label('apellidos', 'Apellidos', ['class' => 'col-sm-2 col-form-label']) !!}
     <div class="col-sm-5">
         {!! Form::text('apellido_paterno',null, ['class' => 'form-control form-control-sm'.($errors->has('apellido_paterno') ? '
-        is-invalid' : ''), 'placeholder' => 'Apellido Paterno'], 'required') !!}
+        is-invalid' : ''), 'placeholder' => 'Apellido Paterno']) !!}
         @if ($errors->has('apellido_paterno'))
             <span class="invalid-feedback">
                           <strong>{{ $errors->first('apellido_paterno') }}</strong>
@@ -50,13 +50,7 @@
         @endif
     </div>
     <div class="col-sm-5">
-        {!! Form::text('apellido_materno',null, ['class' => 'form-control form-control-sm'.($errors->has('apellido_materno') ? '
-        is-invalid' : ''), 'placeholder' => 'Apellido Materno']) !!}
-        @if ($errors->has('apellido_materno'))
-            <span class="invalid-feedback">
-                          <strong>{{ $errors->first('apellido_materno') }}</strong>
-                        </span>
-        @endif
+        {!! Form::text('apellido_materno',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Apellido Materno']) !!}
     </div>
 </div>
 

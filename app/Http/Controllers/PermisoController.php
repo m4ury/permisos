@@ -84,8 +84,8 @@ class PermisoController extends Controller
     {
         $permisos = Permiso::findOrFail($id);
 
-        $rango = $permisos->dia_fin > $permisos->dia_inicio ? implode(substr_replace($permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin), ' - ', 10, 0)) : Carbon\Carbon::parse($permisos->dia_inicio)->toFormattedDateString();
-
+        $rango = $permisos->dia_fin > $permisos->dia_inicio ? implode(substr_replace($permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin), ' - ', 10, 0)) :
+        Carbon\Carbon::parse($permisos->dia_inicio)->format('d'). " de " .ucfirst(Carbon\Carbon::create($permisos->dia_inicio)->locale("es")->monthName). " del año " .Carbon\Carbon::parse($permisos->dia_inicio)->format("Y");
         $view = view('permiso.show', compact('permisos', 'rango'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('a4', 'landscape')->setWarnings(false);
@@ -103,7 +103,7 @@ class PermisoController extends Controller
     {
         $permisos = Permiso::findOrFail($id);
 
-        $rango = $permisos->dia_fin > $permisos->dia_inicio ? implode(substr_replace($permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin), ' - ', 10, 0)) : Carbon\Carbon::parse($permisos->dia_inicio)->toFormattedDateString();
+        $rango = $permisos->dia_fin > $permisos->dia_inicio ? implode(substr_replace($permisos->fechasDesdeRango($permisos->dia_inicio, $permisos->dia_fin), ' - ', 10, 0)) : Carbon\Carbon::parse($permisos->dia_inicio)->format('d'). " de " .ucfirst(Carbon\Carbon::create($permisos->dia_inicio)->locale("es")->monthName). " del año " .Carbon\Carbon::parse($permisos->dia_inicio)->format("Y");;
 
         $view = view('capacitacion.show', compact('permisos', 'rango'));
         $pdf = App::make('dompdf.wrapper');

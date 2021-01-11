@@ -20,13 +20,13 @@
                         <td>{{ $categoria->nombre_categoria }}</td>
                         <td>{{ $categoria->descripcion_categoria }}</td>
 
-                        {!! Form::open(['route' => ['categorias.destroy', $categoria->id], 'method' => 'DELETE']) !!}
+                        {{-- {!! Form::open(['route' => ['categorias.destroy', $categoria->id], 'method' => 'DELETE']) !!}
                         <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
                                title="Editar" href="{{ url('categorias/'.$categoria->id.'/edit') }}"><i
                                         class="fas fa-pen"></i></a></td>
                         <td>{!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-simple btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Eliminar','onclick'=>'return confirm("seguro desea eliminar esta Categoria?")'] ) !!}
                             {!! Form::close() !!}
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
                 </tbody>

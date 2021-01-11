@@ -8,6 +8,6 @@ mix.js(['resources/js/app.js', 'resources/js/all.min.js', 'resources/js/chosen.j
     .autoload({
         jquery: ['$', 'window.$', 'window.jQuery']
     });
-/*mix.copy('node_modules/trumbowyg/dist/ui/icons.svg', 'public/svg');*/
+mix.copy('node_modules/trumbowyg/dist/ui/icons.svg', 'public/svg');
 
 mix.copy('node_modules/chosen-js/chosen-sprite.png', 'public/css/images/vendor/chosen-js');
