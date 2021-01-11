@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Acuerdo;
 use App\Categoria;
+use App\Events\newReunionHasCreatedEvent;
+use App\Events\ReunionCreada;
 use App\Http\Requests\StoreReunion;
+use App\Mail\notificarParticipanteMail;
 use App\Reunion;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class ReunionController extends Controller
@@ -52,7 +56,8 @@ class ReunionController extends Controller
     }
 
 
-    public function all(){
+    public function all()
+    {
         $reuniones = Reunion::latest();
 
         return redirect()->route('all', compact('reuniones'));
@@ -66,14 +71,21 @@ class ReunionController extends Controller
      */
     public function store(StoreReunion $request)
     {
+
+
         $reunion = new Reunion($request->except('_token'));
         $reunion->creador_reunion = Auth::user()->rut;
         $reunion->categoria_id = $request->categoria_id;
         $reunion->save();
 
         $reunion->users()->sync($request->users);
+        //Mail::to($reunion->users()->pluck('email'))->send(new notificarParticipanteMail());
+        //dd($reunion->users()->pluck(['email']) );
+
+        event(new newReunionHasCreatedEvent($reunion));
         return redirect()->route('reuniones.index')->with('success', 'Nueva Reunion ha sido creada con exito');
     }
+
 
     /**
      * Display the specified resource.

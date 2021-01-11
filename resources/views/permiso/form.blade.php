@@ -51,7 +51,18 @@
     @endif
 </div>
 
-<div class="row">
+<hr>
+<div class="row text-center">
+    <div class="col form-group btn btn-outline-success mx-3">
+        {!! Form::label('viatico', 'Viatico', ['class' => '' ]) !!} {!! Form::checkbox('incluye_viatico', 1, $permiso->incluye_viatico, ['class' => 'form-control']) !!}
+    </div>
+    <div class="col form-group btn btn-outline-primary mx-3">
+        {!! Form::label('es_capacitacion', 'Capacitación', ['class' => '' ]) !!} {!! Form::checkbox('es_capacitacion', 1, $permiso->es_capacitacion, ['class' => 'form-control es_capacitacion']) !!}
+    </div>
+</div>
+<hr>
+
+<div class="row" id="capacitacion-fields">
     <div class="col form-group">
         {!! Form::label('organizador', 'Organizador') !!} {!! Form::text('organizador', $permiso->organizador, ['class' => 'form-control', 'placeholder' => 'Quien Organiza']) !!}
     </div>
@@ -75,17 +86,6 @@
         {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
     </div>
 
-<hr>
-<div class="row text-center">
-<div class="col form-group btn btn-outline-success mx-3">
-    {!! Form::label('viatico', 'Viatico', ['class' => '' ]) !!} {!! Form::checkbox('incluye_viatico', 1, $permiso->incluye_viatico, ['class' => 'form-control']) !!}
-</div>
-<div class="col form-group btn btn-outline-primary mx-3">
-    {!! Form::label('es_capacitacion', 'Capacitación', ['class' => '' ]) !!} {!! Form::checkbox('es_capacitacion', 1, $permiso->es_capacitacion, ['class' => 'form-control']) !!}
-</div>
-</div>
-<hr>
-
 <div class="row">
     <div class="col">
         {!! Form::submit('Guardar', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
@@ -97,3 +97,9 @@
     </div>
 </div>
 {{ Form::close() }}
+<script>
+    $('#capacitacion-fields').hide();
+$('.es_capacitacion').click(function() {
+$('#capacitacion-fields').fadeIn()[this.checked ? "show" : "hide"]();
+});
+</script>

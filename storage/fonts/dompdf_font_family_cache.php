@@ -78,10 +78,10 @@
     'normal' => $rootDir . '\lib\fonts\DejaVuSerif',
   ),
   'nunito' => array(
-    'normal' => $fontDir . '\2ee5a7797d02fe4d560048b698835802',
+    'normal' => $fontDir . '/nunito-normal_7173294b894229c46ad1835001660d90',
   ),
   'material icons' => array(
-    'normal' => $fontDir . '\a83785ccbfc5713b63b97bbf71e6fa23',
+    'normal' => $fontDir . '/material-icons-normal_b58fda30e9a7fa49813c57fbfd44f0c0',
   ),
   'font awesome 5 brands' => array(
     'normal' => $fontDir . '\934deffeb50f9e7a377cd8fe495e45ac',

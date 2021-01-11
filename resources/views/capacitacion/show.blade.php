@@ -1,8 +1,16 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('nav')
 @stop
-@section('content')
+@section('content')--}}
     <?php use Freshwork\ChileanBundle\Rut;?>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pdf</title>
+    <link href="{{ public_path('css/pdf.css') }}" rel="stylesheet">
+</head>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4 clearfix text-center">
@@ -90,7 +98,9 @@
                     <tr>
                         <th>Fecha de realización</th>
 
-                        <td colspan="4">{{ $rango ?? $permisos->dia_inicio }}</td>
+                        <td colspan="4">{{ $rango ?? \Carbon\Carbon::parse($permisos->dia_inicio)->format("d-m-Y") }}</td>
+
+                        {{--dd(\Carbon\Carbon::parse($permisos->dia_inicio)->format("d-m-Y"))--}}
                     </tr>
                     <tr>
                         <th>Documento con el cual se informó</th>
@@ -147,4 +157,3 @@
             background: #ffffff;
         }
     </style>
-@stop

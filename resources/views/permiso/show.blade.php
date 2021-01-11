@@ -1,8 +1,16 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')
 @section('nav')
 @stop
-@section('content')
-    <?php use Freshwork\ChileanBundle\Rut; ?>
+@section('content')--}}
+<?php use Freshwork\ChileanBundle\Rut; ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pdf</title>
+    <link href="{{ public_path('css/pdf.css') }}" rel="stylesheet">
+</head>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 clearfix text-center">
@@ -17,13 +25,13 @@
 
         <div class="row">
             <div class="col">
-                <p class="text-center"><strong>LICANTEN</strong>, a {{ Carbon\Carbon::parse($permisos->created_at)->format("d") }} de {{ Carbon\Carbon::parse($permisos->created_at)->format("M") }} del {{ Carbon\Carbon::parse($permisos->created_at)->format("Y") }}</p>
+                <p class="text-center"><strong>LICANTEN</strong>, a {{ Carbon\Carbon::parse($permisos->dia_inicio)->format('d'). " de " .ucfirst(Carbon\Carbon::create($permisos->dia_inicio)->locale("es")->monthName). " del año " .Carbon\Carbon::parse($permisos->dia_inicio)->format("Y") }}</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <p>La Dirección del Hospital de Licantén autoriza a don(ña) <u class="text-uppercase">{{ $permisos->user->nombreCompleto(Auth::id()) }}</u>, C. Identidad Nº <u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u>, quien ostenta el cargo de <u class="text-uppercase">{{ $permisos->user->cargo->nombre }}</u>, </p>
-                <p>para ausentarse de las dependencias del Servicio desde las <u>{{ Carbon\Carbon::parse($permisos->hora_inicio)->format("H:i") }}</u> hasta las <u>{{ Carbon\Carbon::parse($permisos->hora_fin)->format("H:i") }}</u> horas del dia <u>{{ $rango }}</u>, con el objeto de realizar
+                <p>La Dirección del Hospital de Licantén autoriza a don(ña) <u class="text-uppercase">{{ $permisos->user->nombreCompleto() }}</u>, C. Identidad Nº <u>{{ Rut::parse($permisos->user->rut)->format(Rut::FORMAT_COMPLETE) }}</u>, quien ostenta el cargo de <u class="text-uppercase">{{ $permisos->user->cargo->nombre }}</u>, </p>
+                <p>para ausentarse de las dependencias del Servicio desde las <u>{{ Carbon\Carbon::parse($permisos->hora_inicio)->format("H:i") }}</u> hasta las <u>{{ Carbon\Carbon::parse($permisos->hora_fin)->format("H:i") }}</u> horas, el dia <u>{{ $rango }}</u>, con el objeto de realizar
                     <p>el siguiente cometido: <u class="text-uppercase">{{ $permisos->descripcion }}</u></p>
                 <p>en (lugar) <u class="text-uppercase">{{ $permisos->lugar.", ".$permisos->comuna }}</u></p>
                 <hr>
@@ -67,4 +75,3 @@
             background: #ffffff;
         }
     </style>
-@stop

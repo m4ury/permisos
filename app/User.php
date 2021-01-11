@@ -139,7 +139,7 @@ class User extends \TCG\Voyager\Models\User
 
     }
 
-    public function nombreCompleto($user_id){
+    public function nombreCompleto(){
         return strtoupper($this->name.' '.$this->apellido_paterno.' '.$this->apellido_materno);
     }
 }

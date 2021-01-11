@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\ReunionCreada;
 
 class Reunion extends Model
 {
     protected $fillable = ['dia_reunion', 'inicio_reunion', 'fin_reunion', 'titulo_reunion', 'cuerpo_reunion', 'observaciones_reunion', 'categoria_id'];
+
+    /*protected $events = [ 'creada' => ReunionCreada::class,
+
+    ];*/
 
     public function categoria()
     {
@@ -36,7 +41,7 @@ class Reunion extends Model
             return $query->where('dia_reunion', 'LIKE', "%$dia_reunion%");
     }
 
-    public function scopeCuerpo($query, $cuerpo)    
+    public function scopeCuerpo($query, $cuerpo)
     {
         if ($cuerpo)
             return $query->where('cuerpo_reunion', 'LIKE', "%$cuerpo%");
