@@ -130,10 +130,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Acuerdo::class);
     }
-    /*public function roles()
+    public function adminlte_image()
     {
-        return $this->belongsToMany(Role::class, 'user_roles');
-    }*/
+        return 'https://picsum.photos/300/300';
+        /*'https://source.unsplash.com/random/300x300';*/
+    }
+
+    public function adminlte_desc()
+    {
+        return $this->type;
+    }
+
+    public function adminlte_profile_url()
+    {
+        return 'perfil';
+    }
 
     function isAdmin(){
         return $this->type === 'admin';
