@@ -40,9 +40,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin'], function () {//routes 
+/*Route::group(['prefix' => 'admin'], function () {//routes 
     Voyager::routes();
-});
+});*/
 
 //Vue
 Route::get('categories', function (){

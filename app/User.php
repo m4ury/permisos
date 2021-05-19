@@ -2,10 +2,11 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use TCG\Voyager\Models\Role;
+/*use TCG\Voyager\Models\Role;*/
 
 /**
  * App\User
@@ -75,7 +76,7 @@ use TCG\Voyager\Models\Role;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends \TCG\Voyager\Models\User
+class User extends Authenticatable
 {
     use Notifiable;
 

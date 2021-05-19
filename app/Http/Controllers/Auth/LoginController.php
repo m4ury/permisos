@@ -43,8 +43,6 @@ class LoginController extends Controller
     {
         return 'rut';
     }
-<<<<<<< HEAD
-=======
 
     protected function validateLogin(Request $request)
     {
@@ -53,5 +51,4 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
     }
->>>>>>> inicio
 }
