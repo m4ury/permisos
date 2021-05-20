@@ -245,26 +245,30 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],*/
-        //['header' => 'Pacientes'],
+        ['header' => 'PERMISOS'],
         [
-            'text' => 'Permisos',
+            'text' => 'Cometidos',
             'route' => 'permisos.index',
             'icon' => 'fas fa-fw fa-user text-yellow',
         ],
-        //['header' => 'Patologias'],
         [
             'text' => 'Salidas',
             'route' => 'salidas.index',
             'icon' => 'fas fa-fw fa-arrow-left text-info',
             /*'can' => 'ver-patologias'*/
         ],
-        //['header' => 'Controles'],
+        ['header' => 'REUNIONES'],
         [
             'text' => 'Reuniones',
             'route' => 'reuniones.index',
             'icon' => 'fas fa-fw fa-users text-danger',
-            /*'can' => 'ver-patologias'*/
         ],
+        [
+            'text' => 'Categorias',
+            'route' => 'categorias.index',
+            'icon' => 'fas fa-fw fa-calendar text-light',
+        ],
+        ['header' => 'VACUNAS'],
         [
             'text' => 'Vacunas',
             'route' => 'vacunas.index',

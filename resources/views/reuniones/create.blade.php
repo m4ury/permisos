@@ -1,5 +1,5 @@
-@extends('layouts.app')
-
+@extends('adminlte::page')
+@section('title', 'nueva-reunion')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -19,7 +19,7 @@
                         @csrf
                         <div class="form-group">
                             {!! Form::label('categoria_id', 'CATEGORIAS') !!}
-                            {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control select-categoria', 'placeholder' => 'Seleccione una categoria...']) !!}
+                            {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control select-categoria', 'placeholder' => 'Seleccione una categoria...', 'id' => 'categorias']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('dia_reunion', 'DIA REUNION') !!} {!! Form::date('dia_reunion', $reunion->dia_reunion, ['class' => 'form-control'.($errors->has('dia_reunion') ? ' is-invalid' : ''), 'autofocus']) !!}
@@ -107,9 +107,8 @@
             width: "100%",
             class: "form-control"
         });
-        $(".select-categoria").chosen({
-            placeholder_text_single: "Seleccione una categoria",
-            no_results_text: "Oops, se encontraron resultados!",
+        $("#categorias").select2({
+            placeholder: "Seleccione una categoria",
             width: "100%"
         });
         $('.cuerpo_reunion').trumbowyg({

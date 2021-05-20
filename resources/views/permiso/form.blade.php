@@ -1,36 +1,33 @@
 {{ Form::open([ 'url' => $url, 'method' => $method, 'action' => $action,]) }}
-
 @csrf
-
 {!! Form::hidden('user_id', Auth::user()->id) !!}
-
 <div class="row">
-<div class="col form-group">
-    {!! Form::label('dia_inicio', 'Dia inicio') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control'.($errors->has('dia_inicio') ? ' is-invalid' : '')]) !!}
-    @if ($errors->has('dia_inicio'))
-        <span class="invalid-feedback">
+    <div class="col form-group">
+        {!! Form::label('dia_inicio', 'Dia inicio') !!} {!! Form::date('dia_inicio', $permiso->dia_inicio, ['class' => 'form-control'.($errors->has('dia_inicio') ? ' is-invalid' : '')]) !!}
+        @if ($errors->has('dia_inicio'))
+            <span class="invalid-feedback">
         <strong>{{ $errors->first('dia_inicio') }}</strong>
     </span>
-    @endif
-</div>
-<div class="col form-group">
-    {!! Form::label('dia_fin', 'Dia fin') !!} {!! Form::date('dia_fin', $permiso->dia_fin, ['class' => 'form-control'.($errors->has('dia_fin') ? ' is-invalid' : '')]) !!}
-    @if ($errors->has('dia_fin'))
-        <span class="invalid-feedback">
+        @endif
+    </div>
+    <div class="col form-group">
+        {!! Form::label('dia_fin', 'Dia fin') !!} {!! Form::date('dia_fin', $permiso->dia_fin, ['class' => 'form-control'.($errors->has('dia_fin') ? ' is-invalid' : '')]) !!}
+        @if ($errors->has('dia_fin'))
+            <span class="invalid-feedback">
         <strong>{{ $errors->first('dia_fin') }}</strong>
     </span>
-    @endif
-</div>
+        @endif
+    </div>
 </div>
 
 <div class="row">
     <div class="col form-group">
-    {!! Form::label('hora_inicio', 'Desde') !!} {!! Form::time('hora_inicio', $permiso->hora_inicio, ['class' => 'form-control'.($errors->has('hora_inicio') ? ' is-invalid' : '')]) !!}
-    @if ($errors->has('hora_inicio'))
-        <span class="invalid-feedback">
+        {!! Form::label('hora_inicio', 'Desde') !!} {!! Form::time('hora_inicio', $permiso->hora_inicio, ['class' => 'form-control'.($errors->has('hora_inicio') ? ' is-invalid' : '')]) !!}
+        @if ($errors->has('hora_inicio'))
+            <span class="invalid-feedback">
         <strong>{{ $errors->first('hora_inicio') }}</strong>
     </span>
-    @endif
+        @endif
     </div>
     <div class="col form-group">
         {!! Form::label('hora_fin', 'Hasta') !!} {!! Form::time('hora_fin', $permiso->hora_fin, ['class' => 'form-control'.($errors->has('hora_fin') ? ' is-invalid' : '')]) !!}
@@ -45,7 +42,7 @@
 <div class="form-group">
     {!! Form::label('descripcion', 'Descripción de la actividad') !!} {!! Form::textarea('descripcion', $permiso->descripcion, ['class' => 'form-control'.($errors->has('descripcion') ? ' is-invalid' : ''), 'rows' => "2"]) !!}
     @if ($errors->has('descripcion'))
-    <span class="invalid-feedback">
+        <span class="invalid-feedback">
         <strong>{{ $errors->first('descripcion') }}</strong>
     </span>
     @endif
@@ -78,13 +75,28 @@
     </div>
 
     <div class="col form-group">
-        {!! Form::label('comuna', 'Comuna') !!} {!! Form::select('comuna', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion', 'Curepto' => 'Curepto', 'Licanten' => 'Licanten', 'Hualañe' => 'Hualañe', 'Santiago' => 'Santiago' ], $permiso->comuna, ['class' => 'form-control', 'placeholder' => 'Comuna']) !!}
+        {!! Form::label('comuna', 'Comuna') !!} {!! Form::select('comuna', ['Talca' => 'Talca', 'Curico' => 'Curico', 'Constitucion' => 'Constitucion', 'Curepto' => 'Curepto', 'Licanten' => 'Licanten', 'Hualañe' => 'Hualañe', 'Santiago' => 'Santiago' ], $permiso->comuna, ['class' => 'form-control', 'id' => 'comuna', 'placeholder' => 'Seleccione Comuna']) !!}
     </div>
 </div>
 
-    <div class="form-group">
-        {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::select('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
+
+<div class="form-group row my-2 ml-2">
+    {!! Form::label('movilizacion_lavel', 'Vehiculo Servicio', ['class' => 'col-sm-3 col-form-label']) !!}
+    <div class="col-sm">
+        {!! Form::checkbox('movilizacion', "servicio", null, ['class' => 'form-control my-2 check1']) !!}
     </div>
+    {!! Form::label('movilizacion_lavel', 'Bus', ['class' => 'col-sm-3 col-form-label']) !!}
+    <div class="col-sm-3">
+        {!! Form::checkbox('movilizacion', "bus", null, ['class' => 'form-control my-2 check2']) !!}
+    </div>
+    {!! Form::label('movilizacion_lavel', 'Vehiculo particular', ['class' => 'col-sm-3 col-form-label']) !!}
+    <div class="col-sm-3">
+        {!! Form::checkbox('movilizacion', "particular", null, ['class' => 'form-control my-2 check3']) !!}
+    </div>
+</div>
+{{--<div class="form-group">
+    {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::checkbox('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
+</div>--}}
 
 <div class="row">
     <div class="col">
@@ -97,9 +109,28 @@
     </div>
 </div>
 {{ Form::close() }}
-<script>
-    $('#capacitacion-fields').hide();
-$('.es_capacitacion').click(function() {
-$('#capacitacion-fields').fadeIn()[this.checked ? "show" : "hide"]();
-});
-</script>
+@section('js')
+    <script>
+        $('#capacitacion-fields').hide();
+        $('.es_capacitacion').click(function () {
+            $('#capacitacion-fields').fadeIn()[this.checked ? "show" : "hide"]();
+        });
+    </script>
+    <script>
+        $('#comuna').select2({
+            theme: "classic",
+            width: '100%'
+        });
+    </script>
+    <script>
+        $('input.check1').on('change', function () {
+            $('input.check1').not(this).prop('checked', false);
+        });
+        $('input.check2').on('change', function () {
+            $('input.check2').not(this).prop('checked', false);
+        });
+        $('input.check3').on('change', function () {
+            $('input.check3').not(this).prop('checked', false);
+        });
+    </script>
+@endsection

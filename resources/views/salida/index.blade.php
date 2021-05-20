@@ -1,6 +1,7 @@
 <?php $salida = new App\Salida; ?>
 
-@extends('layouts.app')
+@extends('adminlte::page')
+@section('title', 'permisos')
 @section('content')
 
     <div class="row">

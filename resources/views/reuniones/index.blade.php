@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@section('title', 'reuniones')
 @section('content')
         <div class="row">
             <div class="col-md-12">
