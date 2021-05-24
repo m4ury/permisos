@@ -12,7 +12,8 @@
 */
 //routes 
 Route::resource('permisos', 'PermisoController');
-Route::resource('salidas', 'SalidaController');
+//Route::resource('salidas', 'SalidaController');
+Route::resource('problems', 'RelojController');
 Route::resource('viaticos', 'ViaticoController');
 Route::get('capacitacion/{capacitacion}', 'PermisoController@showCap');
 Route::get('viatico/{viatico}', 'PermisoController@showViatico');

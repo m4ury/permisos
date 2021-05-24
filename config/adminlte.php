@@ -65,10 +65,10 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-info',
-    'usermenu_image' => false,
-    'usermenu_desc' => false,
+    'usermenu_image' => true,
+    'usermenu_desc' => true,
     'usermenu_profile_url' => false,
 
     /*
@@ -252,9 +252,9 @@ return [
             'icon' => 'fas fa-fw fa-user text-yellow',
         ],
         [
-            'text' => 'Salidas',
-            'route' => 'salidas.index',
-            'icon' => 'fas fa-fw fa-arrow-left text-info',
+            'text' => 'Justif. Reloj Control',
+            'route' => 'problems.index',
+            'icon' => 'fas fa-fw fa-clock text-info',
             /*'can' => 'ver-patologias'*/
         ],
         ['header' => 'REUNIONES'],
@@ -466,8 +466,23 @@ return [
                 ],
             ],
         ],
+        'Trumbowyg' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/ui/trumbowyg.min.css'
+                ],
+            ],
+        ],
         'Chartjs' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',

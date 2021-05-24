@@ -1,11 +1,10 @@
 @extends('adminlte::page')
 @section('title', 'nuevo-cometido')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header"><i class="fas fa-business-time"></i> Nuevo Cometido</div>
+    <div class="row justify-content-left">
+        <div class="col-sx-8 col-sm-8 col">
+            <div class="card card-info card-outline">
+                <div class="card-header"><i class="fas fa-business-time"></i> Nuevo Cometido</div>
                     @if(session()->has('info'))
                         <div class="alert alert-success">{{ session('info') }}</div>
                     @elseif(session()->has('danger'))
@@ -20,5 +19,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

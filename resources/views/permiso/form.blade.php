@@ -94,6 +94,7 @@
         {!! Form::checkbox('movilizacion', "particular", null, ['class' => 'form-control my-2 check3']) !!}
     </div>
 </div>
+<hr>
 {{--<div class="form-group">
     {!! Form::label('movilizacion', 'Movilizacion') !!} {!! Form::checkbox('movilizacion', ['Vehiculo Servicio' => 'Vehiculo del Servicio', 'Bus' => 'Bus', 'Vehiculo Particular' => 'Vehiculo Particular' ], $permiso->movilizacion, ['class' => 'form-control', 'placeholder' => 'Se moviliza en ...']) !!}
 </div>--}}

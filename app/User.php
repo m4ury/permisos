@@ -42,8 +42,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Permiso[] $permisos
  * @property-read int|null $permisos_count
  * @property-read \App\Profesion|null $profesion
- * @property-read \TCG\Voyager\Models\Role|null $role
- * @property-read \Illuminate\Database\Eloquent\Collection|\TCG\Voyager\Models\Role[] $roles
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Salida[] $salidas
  * @property-read int|null $salidas_count
@@ -103,6 +101,10 @@ class User extends Authenticatable
     }
     public function permisos(){
         return $this->hasMany(Permiso::class);
+    }
+
+    public function problems(){
+        return $this->hasMany(Reloj::class);
     }
 
     public function cargo(){

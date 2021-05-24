@@ -26,13 +26,12 @@ class PermisoController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $descripcion = $request->get('descripcion');
+        //$descripcion = $request->get('descripcion');
 
         $user = User::findOrFail(Auth::id());
         $permisos = $user->permisos()
-            ->descripcion($descripcion)
             ->latest('dia_inicio')->paginate(5);
 
         return view('permiso.index', compact('permisos'));
@@ -63,12 +62,12 @@ class PermisoController extends Controller
                 $permiso = Permiso::updateOrCreate($request->except('_token'));
                 $permiso->crearConViatico($permiso->id);
 
-                return redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado con Viatico!');
+                return redirect()->route('permisos.index')->withSuccess('info', 'Nuevo permiso creado con Viatico!');
             } else
-                return $permiso = Permiso::updateOrCreate($request->except('_token')) ? redirect()->route('permisos.index')->with('info', 'Nuevo permiso creado!') : redirect()->route('permisos.create');
+                return $permiso = Permiso::updateOrCreate($request->except('_token')) ? redirect()->route('permisos.index')->withSuccess('Nuevo permiso creado!') : redirect()->route('permisos.create');
         } catch (PDOException $exception) {
             return back()
-                ->with('danger', 'Fecha Duplicada')
+                ->withErrors('Fecha Duplicada')
                 ->withInput()
                 ->withException($exception);
         }
