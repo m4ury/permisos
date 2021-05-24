@@ -51,9 +51,19 @@
                             {{ $problems->user->nombreCompleto() }}
                     </td>
                     <td>
-                        @if($problems->salida == 1)
+                        @if($problems->entrada == 1)
                         {{ $problems->salida }}
+                            <strong><i class="fas fa-check mr-1"></i>Compensado</strong>
                             @endif
+                    </td>
+                    <td>
+                        @if($problems->salida == 1)
+                            {{ $problems->salida }}
+                            <strong><i class="fas fa-check mr-1"></i>Compensado</strong>
+                        @endif
+                    </td>
+                    <td>
+                        {{ $problems->comentario_problema }}
                     </td>
                 </tr>
                 </tbody>
