@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>pdf</title>
     <link href="{{ public_path('css/pdf.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
     <div class="container-fluid">
         <div class="row">
@@ -37,12 +38,12 @@
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <p>
-                            Se moviliza en <u class="text-uppercase">{{ $permisos->movilizacion }}</u>
-                        </p>
+                            <p>
+                                Se moviliza en <u class="text-uppercase">{{ $permisos->movilizacion }}</u>
+                            </p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col">
                         @if ($permisos->incluye_viatico == 1)
                             <span class="badge badge-pill badge-success" style="border-radius: 6px">Incluye Viatico</span>

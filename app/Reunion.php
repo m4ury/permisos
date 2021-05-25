@@ -27,30 +27,4 @@ class Reunion extends Model
     {
         return $this->belongsToMany(User::class);
     }
-
-    //Scopes
-    public function scopeTituloReunion($query, $titulo_reunion)
-    {
-        if ($titulo_reunion)
-            return $query->where('titulo_reunion', 'LIKE', "%$titulo_reunion%");
-    }
-
-    public function scopeDiaReunion($query, $dia_reunion)
-    {
-        if ($dia_reunion)
-            return $query->where('dia_reunion', 'LIKE', "%$dia_reunion%");
-    }
-
-    public function scopeCuerpo($query, $cuerpo)
-    {
-        if ($cuerpo)
-            return $query->where('cuerpo_reunion', 'LIKE', "%$cuerpo%");
-    }
-
-    /*public function scopeCategoria($query, $nombre_categoria)
-    {
-
-        if($nombre_categoria)
-            return $query->where('titulo_reunion', 'LIKE', "%$nombre_categoria%");
-    }*/
 }

@@ -24,17 +24,21 @@
                 <tbody>
                 @foreach($problems as $problema)
                     <tr>
-                        <td nowrap="">{{ Carbon\Carbon::create($problema->fecha_problema)->locale("es")->dayName." ".Carbon\Carbon::parse($problema->fecha_problema)->format('d')." de ".Carbon\Carbon::create($problema->fecha_problema)->locale("es")->monthName." del año ".Carbon\Carbon::parse($problema->fecha_problema)->format("Y") }}</td>
-                        <td>{{ $problema->entrada }}</td>
-                        <td>{{ $problema->salida }}</td>
-                        <td>{{ $problema->comentario_problema }}</td>
-                        <td>{{ $problema->created_at }}</td>
-                        <td>
-                        <td>
-                            <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
-                               title="Cometido" href="{{ url('problems/'.$problema->id) }}"
-                               target="_blank"><i class="fas fa-clock"></i></a>
+                        <td nowrap="" class="text-uppercase">{{ Carbon\Carbon::create($problema->fecha_problema)->locale("es")->dayName." ".Carbon\Carbon::parse($problema->fecha_problema)->format('d')." de ".Carbon\Carbon::create($problema->fecha_problema)->locale("es")->monthName." del año ".Carbon\Carbon::parse($problema->fecha_problema)->format("Y") }}</td>
+                        <td class="text-center">@if($problema->entrada == 1)
+                                <p class="btn rounded-pill bg-gradient-success"><i class="fas fa-check"></i></P>
+                                @endif
                         </td>
+                        <td class="text-center">@if($problema->salida == 1)
+                                <p class="btn rounded-pill bg-gradient-secondary"><i class="fas fa-check"></i></P>
+                            @endif
+                        </td>
+                        <td>{{ $problema->comentario_problema }}</td>
+                        <td>{{ Carbon\Carbon::parse($problema->created_at)->format("d-m-Y") }}</td>
+                        <td class="text-center">
+                            <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
+                               title="Documento" href="{{ url('problems/'.$problema->id) }}"
+                               target="_blank"><i class="fas fa-file-pdf"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -56,8 +60,6 @@
                 buttons: [
                     'colvis',
                     'excel',
-                    'pdf',
-                    'print',
                 ],
                 language:
                     {

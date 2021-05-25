@@ -268,6 +268,12 @@ return [
             'route' => 'categorias.index',
             'icon' => 'fas fa-fw fa-calendar text-light',
         ],
+        [
+            'text' => 'Agenda',
+            'route' => 'agendas.index',
+            'icon' => 'fas fa-fw fa-calendar-day text-secondary',
+        ],
+        
         ['header' => 'VACUNAS'],
         [
             'text' => 'Vacunas',
@@ -533,6 +539,26 @@ return [
                     'type' => 'js',
                     'asset' => true,
                     'location' => 'vendor/pace-progress/pace.min.js',
+                ],
+            ],
+        ],
+        'Fullcalendar' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar/main.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar/main.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar/locales-all.min.js',
                 ],
             ],
         ],

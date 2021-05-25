@@ -87,11 +87,11 @@
     </div>
     {!! Form::label('movilizacion_lavel', 'Bus', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
-        {!! Form::checkbox('movilizacion', "bus", null, ['class' => 'form-control my-2 check2']) !!}
+        {!! Form::checkbox('movilizacion', "bus", null, ['class' => 'form-control my-2 check1']) !!}
     </div>
     {!! Form::label('movilizacion_lavel', 'Vehiculo particular', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
-        {!! Form::checkbox('movilizacion', "particular", null, ['class' => 'form-control my-2 check3']) !!}
+        {!! Form::checkbox('movilizacion', "particular", null, ['class' => 'form-control my-2 check1']) !!}
     </div>
 </div>
 <hr>
@@ -126,12 +126,6 @@
     <script>
         $('input.check1').on('change', function () {
             $('input.check1').not(this).prop('checked', false);
-        });
-        $('input.check2').on('change', function () {
-            $('input.check2').not(this).prop('checked', false);
-        });
-        $('input.check3').on('change', function () {
-            $('input.check3').not(this).prop('checked', false);
         });
     </script>
 @endsection

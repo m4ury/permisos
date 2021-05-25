@@ -1,12 +1,7 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@section('title', 'vacunas')
 @section('content')
     <div class="container">
-        @if(session()->has('success'))
-            <div id="alert" class="alert alert-success text-center">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>{{ session('success') }}</strong>
-            </div>
-        @endif
         <div class="row pb-3">
             <div class="col-sm-2 pb-2">
                 <div class="card">

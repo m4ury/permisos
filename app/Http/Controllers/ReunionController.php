@@ -24,16 +24,9 @@ class ReunionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $titulo_reunion = $request->get('titulo_reunion');
-        $dia_reunion = $request->get('dia_reunion');
-        $cuerpo = $request->get('cuerpo_reunion');
-
         $reuniones = Reunion::latest('dia_reunion')
-            ->tituloreunion($titulo_reunion)
-            ->diareunion($dia_reunion)
-            ->cuerpo($cuerpo)
             ->where('creador_reunion', Auth::user()->rut)
             ->paginate(9);
 

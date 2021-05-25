@@ -17,13 +17,4 @@ class Vacuna extends Model
     {
         return $this->belongsTo(Tipo::class);
     }
-
-    /*public function scopeSearch($query, $q)
-    {
-        if ($q)
-            return $query->where('paciente_rut', 'LIKE', "%$q%")
-                ->orWhere('paciente_nombres', 'LIKE', "%$q%")
-                ->orWhere('apellido_paterno', 'LIKE', "%$q%")
-                ->orWhere('apellido_materno', 'LIKE', "%$q%");
-    }*/
 }
