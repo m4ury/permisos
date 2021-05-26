@@ -273,7 +273,7 @@ return [
             'route' => 'agendas.index',
             'icon' => 'fas fa-fw fa-calendar-day text-secondary',
         ],
-        
+
         ['header' => 'VACUNAS'],
         [
             'text' => 'Vacunas',
@@ -543,7 +543,7 @@ return [
             ],
         ],
         'Fullcalendar' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'css',
@@ -555,10 +555,50 @@ return [
                     'asset' => true,
                     'location' => 'vendor/fullcalendar/main.min.js',
                 ],
+                /* [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar/main.esm.js',
+                ], */
                 [
                     'type' => 'js',
                     'asset' => true,
                     'location' => 'vendor/fullcalendar/locales-all.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar-plugins/bootstrap/main.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar-plugins/bootstrap/main.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar-plugins/daygrid/main.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar-plugins/daygrid/main.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar-plugins/timegrid/main.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar-plugins/timegrid/main.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/fullcalendar-plugins/interaction/main.min.js',
                 ],
             ],
         ],

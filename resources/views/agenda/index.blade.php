@@ -1,21 +1,25 @@
 @extends('adminlte::page')
 @section('title', 'agenda')
 @section('content')
+<div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="page-header">
-                <h2 class="title">Agenda Sala Reuniones</h2>
-            </div>
+        <h2 class="title">Agenda Sala Reuniones</h2>
+        <div id="agenda">
+
         </div>
     </div>
-    <div class="row">
-        <div class="col-sx-12 col-md-12 table-responsive">
-            
-        </div>
-    </div>
+</div>
 @section('js')
-    <script>
-        
-    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('agenda');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+              plugins: ['dayGrid', 'timeGrid', 'interaction'],
+              locale: 'es',
+              initialView: 'dayGridMonth'
+            });
+            calendar.render();
+          });
+</script>
 @endsection
 @stop
