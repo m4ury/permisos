@@ -27,8 +27,8 @@
                 <a href="{{ route('reuniones.index') }}" class="btn btn-secondary btn-block">Volver</a>
             </form>
             <hr>
-            <table class="table table-hover table-striped">
-                <thead class="thead-dark">
+            <table class="table table-hover">
+                <thead class="thead-light">
                 <tr>
                     <th>Fecha creación</th>
                     <th>Nombre Categoria</th>
