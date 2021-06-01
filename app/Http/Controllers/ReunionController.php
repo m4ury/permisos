@@ -130,11 +130,11 @@ class ReunionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reunion $reunion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reunion $reunion)
+    public function destroy($id)
     {
-        //
+        Reunion::destroy($id);
+        return redirect('reuniones')->withErrors('Registro eliminado con exito!');
     }
 }

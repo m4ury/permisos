@@ -1,33 +1,16 @@
 @extends('adminlte::page')
 @section('title', 'categorias')
 @section('content')
-    <div class="row justify-content-left">
-        <div class="col-sx-8 col-sm-8 col">
-            <div class="card card-success card-outline">
-            <div class="card-header"><i class="fas fa-calendar-check"></i> Nueva Categoria</div>
-                <div class="card-body">
-            <form action="{{ route('categorias.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <input type="text" name="nombre_categoria"
-                           class="form-control {{ ($errors->has('nombre_categoria') ? ' is-invalid' : '') }}"
-                           placeholder="Nombre de la Categoria"
-                           required autofocus>
-                    @if ($errors->has('nombre_categoria'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('nombre_categoria') }}</strong>
-                        </span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <input type="text" name="descripcion_categoria" class="form-control"
-                           placeholder="Descripción de la Categoria">
-                </div>
-                <button type="submit" class="btn btn-success btn-block">Guardar Categoria</button>
-                <a href="{{ route('reuniones.index') }}" class="btn btn-secondary btn-block">Volver</a>
-            </form>
-            <hr>
-            <table class="table table-hover">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2 class="title">Categorias</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sx-12 col-md-12 table-responsive">
+            <table class="table table-hover table-md-responsive table-bordered" id="categorias-table">
                 <thead class="thead-light">
                 <tr>
                     <th>Fecha creación</th>
@@ -37,7 +20,6 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($categorias as $categoria)
                     <tr>
                         <td nowrap>{{ Carbon\Carbon::parse($categoria->created_at)->format("d-m-Y") }}</td>
@@ -55,12 +37,57 @@
                 @endforeach
                 </tbody>
             </table>
-            <div>
-                {{ $categorias->links() }}
+            <div class="form-group d-inline-flex align-self-stretch">
+                <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#categoria"><i
+                        class="fas fa-calendar-check"></i>
+                    Nueva Categoria
+                </button>
             </div>
         </div>
     </div>
-        </div>
-    </div>
+    @include('categorias.modal')
+    
+@section('js')
+    <script>
+        $("#categorias-table").DataTable(
+            {
+                dom: 'Bfrtip',
+                buttons: [
+                    'colvis',
+                    'excel',
+                    'pdf',
+                    'print',
+                ],
+                language:
+                    {
+                        "processing": "Procesando...",
+                        "lengthMenu": "Mostrar _MENU_ registros",
+                        "zeroRecords": "No se encontraron resultados",
+                        "emptyTable": "Ningún dato disponible en esta tabla",
+                        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "search": "Buscar:",
+                        "infoThousands": ",",
+                        "loadingRecords": "Cargando...",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Último",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
+                        "aria": {
+                            "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sortDescending": ": Activar para ordenar la columna de manera descendente"
+                        }
+                    },
+            });
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+@endsection
 @endsection
 

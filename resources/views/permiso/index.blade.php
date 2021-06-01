@@ -22,6 +22,7 @@
                     <th>Motivo</th>
                     <th>Lugar</th>
                     <th class="text-center">Documentos</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +51,13 @@
                                 class="fas fa-file-invoice-dollar"></i></a>
                     </td>
                     @endif
+                    <td>
+                        {!! Form::open(['route' => ['permisos.destroy', $permiso->id], 'method' => 'DELETE']) !!}
+                        {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                        btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
+                        'Eliminar','onclick'=>'return confirm("seguro desea eliminar esta Registro?")'] ) !!}
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -59,10 +67,6 @@
                 <i class="fas fa-plus"></i>
             </a>
             <a href="{{ route('home') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Atras</a>
-
-        </div>
-        <div>
-            {{ $permisos->links() }}
         </div>
     </div>
 </div>

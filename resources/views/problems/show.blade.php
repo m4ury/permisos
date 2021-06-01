@@ -90,7 +90,7 @@
                 <tbody>
                     <tr>
                         <td nowrap="" class="text-uppercase">
-                            {{ Carbon\Carbon::create($problems->fecha_problems)->locale("es")->dayName." ".Carbon\Carbon::parse($problems->fecha_problems)->format('d')." de ".strtoupper(Carbon\Carbon::create($problems->fecha_problems)->locale("es")->monthName)." del año ".Carbon\Carbon::parse($problems->fecha_problems)->format("Y") }}
+                            {{ Carbon\Carbon::create($problems->fecha_problema)->locale("es")->dayName." ".Carbon\Carbon::parse($problems->fecha_problema)->format('d')." de ".strtoupper(Carbon\Carbon::create($problems->fecha_problema)->locale("es")->monthName)." del año ".Carbon\Carbon::parse($problems->fecha_problema)->format("Y") }}
                         </td>
                         <td disabled="">
                             @if ($problems->entrada == 1)

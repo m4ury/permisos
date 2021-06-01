@@ -142,6 +142,7 @@ class PermisoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Permiso::destroy($id);
+        return redirect('permisos')->withErrors('Registro eliminado con exito!');
     }
 }

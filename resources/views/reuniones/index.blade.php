@@ -1,8 +1,13 @@
 @extends('adminlte::page')
 @section('title', 'reuniones')
-
 @section('content')
-<div class="row">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2 class="title">Reuniones</h2>
+            </div>
+        </div>
+    </div>
     <div class="col-sx-12 col-md-12">
         <table id="reunion" class="table table-hover table-sm-responsive">
             <thead class="thead-light">
@@ -21,12 +26,22 @@
                     <td>{{ Carbon\Carbon::parse($reunion->inicio_reunion)->format("H:i") }}</td>
                     <td>{{ Carbon\Carbon::parse($reunion->fin_reunion)->format("H:i") }}</td>
                     <td>{{ $reunion->titulo_reunion }}</td>
-                    <td class="text-center"><a class="btn btn-outline-primary btn-sm mx-3" data-toggle="tooltip"
+                    {!! Form::open(['route' => ['reuniones.destroy', $reunion->id], 'method' => 'DELETE']) !!}
+                    <td class="text-center"><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip"
                             data-placement="bottom" title="Detalle Pdf" href="{{ url('reuniones/'.$reunion->id) }}"
                             target="_blank"><i class="fas fa-file-pdf"></i></a>
                         <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
                             title="Editar" href="{{ url('reuniones/'.$reunion->id.'/edit') }}"><i
-                                class="fas fa-pen"></i></a>
+                                class="fas fa-pen"></i>
+                        </a>
+                            {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                        btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' =>
+                        'Eliminar','onclick'=>'return confirm("seguro desea eliminar este Registro?")'] ) !!}
+                            {!! Form::close() !!}
+                        {{--{!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                        btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
+                        'Eliminar','onclick'=>'return confirm("seguro desea eliminar este Registro?")'] ) !!}
+                        {!! Form::close() !!}--}}
                     </td>
                 </tr>
                 @endforeach
@@ -37,13 +52,11 @@
                 <i class="fas fa-plus"></i>
             </a>
             <a href="{{ route('home') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Atras</a>
-
         </div>
         <div>
             {{ $reuniones->links() }}
         </div>
     </div>
-</div>
 @section('js')
 <script>
     $("#reunion").DataTable(

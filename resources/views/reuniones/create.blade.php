@@ -19,6 +19,10 @@
                     <div class="form-group">
                         {!! Form::label('categoria_id', 'CATEGORIAS') !!}
                         {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control select-categoria', 'placeholder' => 'Seleccione una categoria...', 'id' => 'categorias']) !!}
+                        {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoria"><i
+                                class="fas fa-calendar-check"></i>
+                            Categoria
+                        </button>--}}
                     </div>
                     <div class="form-group">
                         {!! Form::label('dia_reunion', 'DIA REUNION') !!} {!! Form::date('dia_reunion', $reunion->dia_reunion, ['class' => 'form-control'.($errors->has('dia_reunion') ? ' is-invalid' : ''), 'autofocus']) !!}
