@@ -17,7 +17,7 @@ class CategoriaController extends Controller
     {
         $categorias = Categoria::orderBy('created_at', 'desc')->paginate(8);
 
-        return view('categorias.index', compact('categorias'));
+        return view('categorias.index', compact('categorias'))->with('fireAlert', true);
 
     }
 
@@ -41,7 +41,7 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::updateOrCreate($request->except('_token'));
 
-        return back()->with('success', 'Categoria creada con exito!');
+        return back()->withSuccess('Categoria creada con exito!');
     }
 
     /**

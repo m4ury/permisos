@@ -24,7 +24,7 @@ class StoreCategoria extends FormRequest
     public function rules()
     {
         return [
-            'nombre_categoria' => 'required|unique:categorias|min:5'
+            'nombre_categoria' => 'required|unique:categorias|min:3'
         ];
     }
 }
