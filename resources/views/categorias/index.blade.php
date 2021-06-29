@@ -46,7 +46,6 @@
         </div>
     </div>
     @include('categorias.modal')
-    
 @section('js')
     <script>
         $("#categorias-table").DataTable(

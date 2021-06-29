@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Marca;
+use FontLib\EOT\File;
 use Illuminate\Http\Request;
 
 class MarcaController extends Controller
@@ -14,7 +15,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        //
+        return view('marca.index');
     }
 
     /**
@@ -35,7 +36,11 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $fp = fopen($request->file, "r");
+         $cont = fgets($fp);
+         $arr = explode('\t', $cont.PHP_EOL);
+        
+        dd($arr);
     }
 
     /**

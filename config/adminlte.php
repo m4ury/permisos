@@ -281,6 +281,13 @@ return [
             'icon' => 'fas fa-fw fa-disease text-success',
             /*'can' => 'estadisticas'*/
         ],
+        ['header' => 'MARCAS'],
+        [
+            'text' => 'Reloj Bio',
+            'route' => 'marcas.index',
+            'icon' => 'fas fa-fw fa-business-time text-orange',
+            /*'can' => 'estadisticas'*/
+        ],
         /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',

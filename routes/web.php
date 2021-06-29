@@ -13,6 +13,7 @@
 //routes 
 Route::resource('permisos', 'PermisoController');
 //Route::resource('salidas', 'SalidaController');
+Route::Resource('marcas', 'MarcaController');
 Route::resource('problems', 'RelojController');
 Route::resource('agendas', 'AgendaController');
 Route::resource('viaticos', 'ViaticoController');
